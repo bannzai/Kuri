@@ -31,7 +31,7 @@ I believe that the following concepts are necessary in iOS CleanArchitecture.
 - **Entity** -  Value object.
 - **DataStore** -  Data store for Entity.
 - **Repository** -  Operation Datastore interface.
-- **UseCase** -  Application operation. translate CRUD operation to repository.
+- **UseCase** -  Application operation. translate and CRUD operation to repository.
 - **Translator** -  Translate Entity to Model or Model to Entity.
 - **Model** - Converted Entity for UI.
 - **Presenter** -  Event handle for View.
