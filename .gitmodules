@@ -1,0 +1,9 @@
+[submodule "xcp"]
+	path = xcp
+	url = git@github.com:bannzai/xcp.git
+[submodule "SwiftShell"]
+	path = SwiftShell
+	url = git@github.com:kareman/SwiftShell.git
+[submodule "YamlSwift"]
+	path = YamlSwift
+	url = git@github.com:behrang/YamlSwift.git
