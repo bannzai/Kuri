@@ -1,4 +1,5 @@
 # Kuri
+
 **Kuri** is a tool that automatically generates necessary code for _iOS CleanArchitecture_ and imports it into Xcode project.
 
 #### Usage tutorial.
@@ -71,9 +72,11 @@ Now only manual installation method is available.
 2. Execute `git submodule init` and `git submodule update`.
 3. Open **Kuri.xcodeproj** and build it.
 4. Confirm for generated command line product name **kuri**
-Like this
+Like this  
+
  ![](https://cloud.githubusercontent.com/assets/10897361/21470539/3703c490-cad1-11e6-9147-55dd8fcde4a2.png)
 5. Copy **kuri**.(location of **kuri** by **show in finder** right click on the **kuri** icon).
+
 ![](https://cloud.githubusercontent.com/assets/10897361/21470544/7b741f44-cad1-11e6-9cf8-d80b02eab7b6.png)
 6. Paste it where you can execute from the CLI.
 
