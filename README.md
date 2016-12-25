@@ -56,6 +56,13 @@ The form of the *generate* command basically looks like this
 `kuri generate "MyName"`.
 After Executing *generate* command, you can comfirm to want to append files and directories for *MyNameEntity*, *MyNameRepository*, *MyNameView* and so on into Xcode project.
 
+e.g
+Execute on terminal where project root directory.
+```
+$ kuri generate Kuri
+```
+![](https://cloud.githubusercontent.com/assets/10897361/21471548/01c91b3a-cafa-11e6-8f33-58c2c8b3c68e.png)
+
 Instructions with options [here](./Documents/generate.md).
 
 ## Customize
