@@ -11,7 +11,7 @@ You can customize **Kuri.yml** according to the following rules.
 
 If you run the *setup* command the contents of **Kuri.yml** should look something like this.
 
-```
+```yaml
 TemplateRootPath: ./
 ProjectRootPath: ./
 ProjectFileName: KuriDemo.xcodeproj
@@ -34,7 +34,7 @@ For example, if you change **CustomSuffix**, the suffix of `View` file will chan
 It can also be divided by Interface or Implement.
 In this example it is made to be the same as the result of the *setup* command.
 
-```
+```yaml
 TemplateRootPath: ./
 
 Entity:

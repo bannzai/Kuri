@@ -24,7 +24,7 @@ They are replaced by the name of each component.
 e.g.
 
 Prepare this kind of template
-```
+```swift
 //
 //  __REPOSITORY__Impl.swift
 //  Kuri
@@ -57,7 +57,7 @@ kuri generate Kuri
 ```
 
 The output looks like this
-```
+```swift
 //
 //  KuriRepositoryImpl.swift
 //  Kuri
