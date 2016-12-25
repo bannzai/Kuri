@@ -68,17 +68,8 @@ Instructions with options [here](./Documents/generate.md).
 ## Installation
 Now only manual installation method is available.
 ### Manual
-1. Download **Kuri** `git clone git@github.com:bannzai/Kuri.git`
-2. Execute `git submodule init` and `git submodule update`.
-3. Open **Kuri.xcodeproj** and build it.
-4. Confirm for generated command line product name **kuri**
-Like this  
-
- ![](https://cloud.githubusercontent.com/assets/10897361/21470539/3703c490-cad1-11e6-9147-55dd8fcde4a2.png)
-5. Copy **kuri**.(location of **kuri** by **show in finder** right click on the **kuri** icon).
-
-![](https://cloud.githubusercontent.com/assets/10897361/21470544/7b741f44-cad1-11e6-9cf8-d80b02eab7b6.png)
-6. Paste it where you can execute from the CLI.
+1. Download **Kuri** from [latest release version](https://github.com/bannzai/Kuri/releases)
+2. Copy **kuri** and paste it where you can execute from the CLI.
 
 You can now run the **kuri** command.
 
