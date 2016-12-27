@@ -49,7 +49,7 @@ But using *setup* command will prepare these two.
 ### setup
 In project file root directory.
 You can type `kuri setup` and press enter in CLI tool.
-The "Kuri.yml" and "KuriTemplate" directories are created unser the current directory.
+The "Kuri.yml" and "KuriTemplate" directories are created under the current directory.
 
 ### generate
 The form of the *generate* command basically looks like this
