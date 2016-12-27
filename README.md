@@ -49,7 +49,7 @@ But using *setup* command will prepare these two.
 ### setup
 In project file root directory.
 You can type `kuri setup` and press enter in CLI tool.
-The "Kuri.yml" and "KuriTemplate" directories are created unser the current directory.
+The "Kuri.yml" and "KuriTemplate" directories are created under the current directory.
 
 ### generate
 The form of the *generate* command basically looks like this
@@ -76,7 +76,7 @@ Instructions with options [here](./Documents/generate.md).
 Now only manual installation method is available.
 ### Manual
 1. Download **Kuri** from [latest release version](https://github.com/bannzai/Kuri/releases)
-2. Copy **kuri** and paste it where you can execute from the CLI.
+2. Copy **kuri** and paste it where you can execute from the CLI. (e.g. `/usr/local/bin/`. Every directory is okay if the path passed.)
 
 You can now run the **kuri** command.
 
