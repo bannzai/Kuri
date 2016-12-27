@@ -76,7 +76,7 @@ Instructions with options [here](./Documents/generate.md).
 Now only manual installation method is available.
 ### Manual
 1. Download **Kuri** from [latest release version](https://github.com/bannzai/Kuri/releases)
-2. Copy **kuri** and paste it where you can execute from the CLI.
+2. Copy **kuri** and paste it where you can execute from the CLI. (e.g. `/usr/local/bin/`. Every directory is okay if the path passed.)
 
 You can now run the **kuri** command.
 
