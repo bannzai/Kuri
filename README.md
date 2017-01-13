@@ -73,7 +73,10 @@ Instructions with options [here](./Documents/generate.md).
 
 
 ## Installation
-Now only manual installation method is available.
+### Homebrew(recommended)
+`$ brew tap bannzai/homebrew-Kuri`  
+`$ brew install kuri`
+
 ### Manual
 1. Download **Kuri** from [latest release version](https://github.com/bannzai/Kuri/releases)
 2. Copy **kuri** and paste it where you can execute from the CLI. (e.g. `/usr/local/bin/`. Every directory is okay if the path passed.)
