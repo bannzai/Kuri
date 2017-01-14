@@ -42,42 +42,5 @@ do {
     exit(3)
 }
 
-
-//let mainProjectPath = main.currentdirectory
-//let mainGeneratePath = mainProjectPath + "Kuri/"
-
-//func getStandardInput() throws -> String {
-//    guard
-//        let characters = main.stdin.readSome()?.characters.dropLast()
-//        else{
-//            throw KuriErrorType.readInputError
-//    }
-//    let input = String(characters)
-//    return input
-//}
-
-//func generateMainProject() throws -> XCProject {
-//    if let yamlProjectPath = yaml?.dictionary?[.string(MainYamlProperty.Project.rawValue)]?.string {
-//        let url = URL(fileURLWithPath: yamlProjectPath + "/" + "project.pbxproj")
-//        return try XCProject(for: url)
-//    }
-//    
-//    let xcodeprojcts = run(bash: "ls | grep xcodeproj").components(separatedBy: "\n")
-//    if xcodeprojcts.count > 1 {
-//        fatalError("There are many Xcode project found, please specify one.")
-//    }
-//    
-//    guard
-//        let _ = xcodeprojcts.first?.components(separatedBy: ".").first
-//        else {
-//            fatalError("No Xcode project found, please specify one")
-//    }
-//    
-//    let xcodeprojectFilePath = mainProjectPath + run(bash: "ls | grep xcodeproj") + "/"
-//    let xcodeprojectFileUrl = URL(fileURLWithPath: xcodeprojectFilePath + "project.pbxproj")
-//    return try XCProject(for: xcodeprojectFileUrl)
-//}
-
-
 exit(0)
 
