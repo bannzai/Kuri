@@ -195,8 +195,8 @@
 		6C221F661DF174B9009BB032 /* Kuri */ = {
 			isa = PBXGroup;
 			children = (
-				9C1CDE311E0E49E2002624EE /* Template */,
 				6C221F671DF174B9009BB032 /* main.swift */,
+				9C1CDE311E0E49E2002624EE /* Template */,
 				9C64AD1F1E0D293500CC3E85 /* Yaml */,
 				9C64AD121E0D292A00CC3E85 /* Command */,
 				BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */,
