@@ -7,3 +7,6 @@
 [submodule "YamlSwift"]
 	path = YamlSwift
 	url = git@github.com:behrang/YamlSwift.git
+[submodule "KuriDemo"]
+	path = KuriDemo
+	url = git@github.com:bannzai/KuriDemo.git
