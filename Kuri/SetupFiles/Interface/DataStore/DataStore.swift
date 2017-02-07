@@ -9,5 +9,5 @@
 import Foundation
 
 protocol __DATASTORE__ {
-    func fetch() throws -> __ENTITY__
+    func fetch() throws -> ((__ENTITY__) -> Void) 
 }

@@ -16,7 +16,7 @@ struct DataStoreTemplate: Templatable {
             "import Foundation",
             "",
             "protocol __DATASTORE__ {",
-            "    func fetch() throws -> __ENTITY__",
+            "    func fetch() throws -> ((__ENTITY__) -> Void) ",
             "}",
             ].joined(separator: "\n")
     }
@@ -34,7 +34,7 @@ struct DataStoreTemplate: Templatable {
             "import Foundation",
             "",
             "struct __DATASTORE__Impl: __DATASTORE__ {",
-            "    func fetch() throws -> __ENTITY__ {",
+            "    func fetch() throws -> ((__ENTITY__) -> Void)  {",
             "        // you can write get entity method",
             "    }",
             "}",

@@ -15,7 +15,7 @@ struct __REPOSITORY__Impl: __REPOSITORY__ {
         self.dataStore = dataStore
     }
     
-    func fetch() throws -> __ENTITY__ {
+    func fetch() throws -> ((__ENTITY__) -> Void)  {
         return try dataStore.fetch()
     }
 }

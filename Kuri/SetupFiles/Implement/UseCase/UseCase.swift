@@ -18,7 +18,7 @@ struct __USECASE__Impl: __USECASE__ {
         self.translator = translator 
     }
     
-    func fetch() throws -> __ENTITY__ {
+    func fetch() throws -> ((__ENTITY__) -> Void)  {
         return try repository.fetch()
     }
 }
