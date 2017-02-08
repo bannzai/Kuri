@@ -9,7 +9,7 @@
 import Foundation
 
 struct Setup: CommandProtocol {
-    let options: [String]
+    let args: [String] 
     let fileOperator: FileOperator
     
     static let templateDirectoryName = "KuriTemplate"

@@ -9,56 +9,84 @@
 import Foundation
 
 struct Generate: CommandProtocol {
-    let options: [String]
+    let args: [String]
     let yamlReader: YamlReader
     
+    fileprivate var prefix: String? {
+        return args.first
+    }
+    fileprivate var options: [String] {
+        return Array(args.dropFirst())
+    }
+    fileprivate var hasOption: Bool {
+        return options.count > 1
+    }
+    
     func execute() throws {
-        guard let entityName = options.first else {
+        guard let entityName = prefix else {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
         
-        guard let optionString = options.second else {
+        guard hasOption else {
             try generate(with: entityName)
             return
         }
         
-        guard let option = Generate.OptionType(shortCut: optionString) else {
-            throw KuriErrorType.missingArgument("Unknown opition for \(optionString)")
-        }
+        let offsetAndOption = try options.enumerated()
+            .filter { $1.contains("-") }
+            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
+            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
         
-        try executeAnyOption(with: option, name: entityName)
+        try offsetAndOption.forEach { offset, option in
+            try executeAnyOption(with: option, prefix: entityName)
+        }
     }
 }
 
 extension Generate {
     enum OptionType: String, ArgumentOptionProtocol {
-        case specity
+        // sort by priority
+        case templateSpecify
+        case specify
         case interactive
         
-        init?(shortCut: String) {
+        init(shortCut: String) throws {
             switch shortCut {
-            case "-s":
-                self = .specity
-            case "-i":
+            case OptionType.templateSpecify.shortCut:
+                self = .templateSpecify
+            case OptionType.specify.shortCut:
+                self = .specify
+            case OptionType.interactive.shortCut:
                 self = .interactive
             default:
-                return nil
+                throw KuriErrorType.missingArgument(assertionMessage(description: "Unknown option for \(shortCut)"))
+            }
+        }
+        
+        fileprivate var shortCut: String {
+            switch self {
+            case .templateSpecify:
+                return "-t"
+            case .specify:
+                return "-s"
+            case .interactive:
+                return "-i"
             }
         }
     }
-}
 
-fileprivate extension Generate {
-    fileprivate func executeAnyOption(with option: Generate.OptionType, name: String) throws {
+    fileprivate func executeAnyOption(with option: Generate.OptionType, prefix: String) throws {
         switch option {
-        case .specity:
-            try executeForSpecity(with: name)
+        case .templateSpecify:
+            try executeForTemplateSpecify(with: prefix)
+        case .specify:
+            try executeForSpecity(with: prefix)
         case .interactive:
-            try executeForInteractive(with: name)
+            try executeForInteractive(with: prefix)
         }
     }
     
-    fileprivate func executeForInteractive(with name: String) throws {
+    fileprivate func executeForInteractive(with prefix: String) throws {
         let answeredComponents = try ComponentType.elements.filter {
             let message = "Do you want to \($0.name) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
@@ -68,19 +96,61 @@ fileprivate extension Generate {
             })
             return answer == "y" || answer == "Y"
         }
-        try generate(with: name, for: answeredComponents)
+        try generate(with: prefix, for: answeredComponents)
     }
     
-    fileprivate func executeForSpecity(with name: String) throws {
+    fileprivate func executeForSpecity(with prefix: String) throws {
         if options.count < 3 {
-            // generate specity XXXX
-            throw KuriErrorType.missingArgument("Should ")
+            // generate specify XXXX
+            throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
         let componentOptions = options[2..<options.count]
         let components = componentOptions.flatMap { ComponentType(name: $0.capitalized) }
-        try generate(with: name, for: components)
+        try generate(with: prefix, for: components)
     }
     
+    fileprivate func executeForTemplateSpecify(with prefix: String) throws {
+        let templateSpecity = OptionType.templateSpecify
+        
+        guard let templateDirectoryName = try optionArgument(for: templateSpecity).first else {
+            throw KuriErrorType.missingArgument("Not enough argument for kuri \(templateSpecity.shortCut)")
+        }
+        
+        try generate(with: prefix, templateDirectoryName: templateDirectoryName)
+    }
+    
+    fileprivate func optionArgument(for option: OptionType) throws -> [String] {
+        
+        let isMatchOption: ((String) -> Bool) = { string in
+            return option.shortCut == string || option.rawValue == string
+        }
+        
+        let optionAndArgument = options.reduce([String]()) { result, optionString in
+            let isMatch = isMatchOption(optionString)
+            if isMatch {
+                return result + [optionString]
+            }
+            
+            if !isMatch, result.count > 0 {
+                return result
+            }
+            
+            if result.count > 0 {
+                return result + [optionString]
+            }
+            
+            return result
+        }
+        
+        if optionAndArgument.count > 1 {
+            throw KuriErrorType.missingArgument("Not enough argument for kuri \(option.shortCut)")
+        }
+        
+        return Array(optionAndArgument.dropLast())
+    }
+}
+
+fileprivate extension Generate {
     fileprivate func convert(for content: String, to structure: String) -> String {
         let userName = run(bash: "echo $USER")
         let date = { _ -> String in
@@ -107,7 +177,7 @@ fileprivate extension Generate {
     }
     
     
-    fileprivate func generate(with name: String, for components: [ComponentType] = ComponentType.elements) throws {
+    fileprivate func generate(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
         var pathAndXcodeProject: [String: XCProject] = [:]
         try components.flatMap { type in
             return GenerateType.elements.map { (type, $0) }
@@ -115,16 +185,18 @@ fileprivate extension Generate {
             .forEach { componentType, generateType in
                 let typeFor = (componentType, generateType)
                 
-                let kuriTemplatePath = yamlReader.kuriTemplatePath(from: typeFor)
+                let kuriTemplatePath = templateDirectoryName != nil ?
+                    yamlReader.templateRootPath(from: typeFor) + templateDirectoryName! :
+                    yamlReader.kuriTemplatePath(from: typeFor)
                 let templatePath = kuriTemplatePath + generateType.name + "/" + componentType.name + "/" + componentType.fileName
                 let generateRootPath = yamlReader.generateRootPath(from: typeFor)
                 let projectRootPath = yamlReader.projectRootPath(from: typeFor)
                 let projectFileName = yamlReader.projectFileName(from: typeFor)
                 
                 let projectFilePath = projectRootPath + projectFileName + "/"
-                let directoryPath = generateRootPath + name + "/" + componentType.name + "/"
+                let directoryPath = generateRootPath + prefix + "/" + componentType.name + "/"
                 let suffix = yamlReader.customSuffix(for: componentType) ?? componentType.name
-                let filePath = directoryPath + name + suffix + generateType.fileSuffix + ".swift"
+                let filePath = directoryPath + prefix + suffix + generateType.fileSuffix + ".swift"
                 
                 let project: XCProject
                 if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
@@ -140,7 +212,7 @@ fileprivate extension Generate {
                     print("can't find: \(generateType.name)/\(componentType.name)")
                     return
                 }
-                let writeCotent = convert(for: templateContent, to: name)
+                let writeCotent = convert(for: templateContent, to: prefix)
                 try fileOperator.createDirectory(for: directoryPath)
                 fileOperator.createFile(for: filePath)
                 
