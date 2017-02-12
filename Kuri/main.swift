@@ -22,14 +22,16 @@ do {
         else {
             throw KuriErrorType.missingArgument("Please command name Kuri XXXX")
     }
-   let options = Array(args.dropFirst())
+    
+    let options = Array(args.dropFirst())
     switch command {
     case .setup:
-        try Setup(options: options, fileOperator: FileOperator(fileManager: Files)).execute()
+        try Setup(args: options, fileOperator: FileOperator(fileManager: Files)).execute()
     case .generate:
         let yaml = try YamlResource.loadYamlIfPossible()
         let yamlReader = YamlReader(yaml: yaml, env: env)
-         try Generate(options: options, yamlReader: yamlReader).execute()
+        var generater = Generate(args: options, yamlReader: yamlReader)
+        try generater.execute()
     }
 } catch let e as KuriErrorType {
     print("ErrorType \(e) description: \(e.errorDescription())")

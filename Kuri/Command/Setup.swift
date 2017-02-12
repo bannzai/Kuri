@@ -9,7 +9,7 @@
 import Foundation
 
 struct Setup: CommandProtocol {
-    let options: [String]
+    let args: [String] 
     let fileOperator: FileOperator
     
     static let templateDirectoryName = "KuriTemplate"
@@ -66,6 +66,7 @@ struct Setup: CommandProtocol {
         
         let content = [
             "\(ComponentYamlProperty.TemplateRootPath.rawValue): ./",
+            "\(ComponentYamlProperty.DefaltTemplateDirectoryName.rawValue): ./\(Setup.templateDirectoryName)/",
             "\(ComponentYamlProperty.ProjectRootPath.rawValue): ./",
             "\(ComponentYamlProperty.ProjectFileName.rawValue): \(xcodeProjectFileName)",
             "\(ComponentYamlProperty.GenerateRootPath.rawValue): ./\(projectName)/",

@@ -15,7 +15,7 @@ struct UseCaseTemplate: Templatable {
             "import Foundation",
             "",
             "protocol __USECASE__ {",
-            "    func fetch() throws -> ((__MODEL__) -> Void) ",
+            "    func fetch(_ closure: (__MODEL__) -> Void) throws ",
             "}",
             ].joined(separator: "\n")
     }
@@ -44,8 +44,12 @@ struct UseCaseTemplate: Templatable {
             "        self.translator = translator",
             "    }",
             "    ",
-            "    func fetch() throws -> ((__MODEL__) -> Void)  {",
-            "        return try repository.fetch()",
+            "    func fetch(_ closure: (__MODEL__) -> Void) throws  {",
+            "        try repository.fetch { ",
+            "           closure(",
+            "              translator.translate(from: $0)",
+            "           )",
+            "      }",
             "    }",
             "}",
             ].joined(separator: "\n")

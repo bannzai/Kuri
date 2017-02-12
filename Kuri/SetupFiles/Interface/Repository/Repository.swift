@@ -7,5 +7,5 @@
 //
 
 protocol __REPOSITORY__ {
-    func fetch() throws -> ((__ENTITY__) -> Void) 
+    func fetch(_ closure: (__ENTITY__) -> Void) throws 
 }
