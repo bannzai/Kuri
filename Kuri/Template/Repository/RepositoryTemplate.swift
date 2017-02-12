@@ -14,7 +14,7 @@ struct RepositoryTemplate: Templatable {
             "//",
             "",
             "protocol __REPOSITORY__ {",
-            "    func fetch() throws -> ((__ENTITY__) -> Void) ",
+            "    func fetch(_ closure: (__ENTITY__) -> Void) throws ",
             "}",
         ].joined(separator: "\n")
     }
@@ -38,8 +38,8 @@ struct RepositoryTemplate: Templatable {
             "        self.dataStore = dataStore",
             "    }",
             "    ",
-            "    func fetch() throws -> ((__ENTITY__) -> Void)  {",
-            "        return try dataStore.fetch()",
+            "    func fetch(_ closure: (__ENTITY__) -> Void) throws  {",
+            "        return try dataStore.fetch(closure)",
             "    }",
             "}",
         ].joined(separator: "\n")

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol __USECASE__ {
-    func fetch() throws -> ((__MODEL__) -> Void) 
+    func fetch(_ closure: (__MODEL__) -> Void) throws 
 }
