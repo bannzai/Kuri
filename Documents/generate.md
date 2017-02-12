@@ -12,3 +12,7 @@ You can generate with the components you specified.
 #### -i
 `kuri generate "MyName" -i`
 You can interactively select the items you want to generate.
+
+#### -t
+'kuri generate "TemplateDirectoryName"
+You can select the template directory.
