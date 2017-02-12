@@ -19,16 +19,27 @@ struct Generate: CommandProtocol {
         return Array(args.dropFirst())
     }
     fileprivate var hasOption: Bool {
-        return options.count > 1
+        return !options.isEmpty
     }
     
-    func execute() throws {
+    fileprivate var templateDirectoryName: String? = nil
+    fileprivate var generateComponents: [ComponentType] = ComponentType.elements
+    
+    init(
+        args: [String],
+        yamlReader: YamlReader
+        ) {
+        self.args = args
+        self.yamlReader = yamlReader
+    }
+    
+    mutating func execute() throws {
         guard let entityName = prefix else {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
         
         guard hasOption else {
-            try generate(with: entityName)
+            try generateOnce(with: entityName)
             return
         }
         
@@ -38,14 +49,15 @@ struct Generate: CommandProtocol {
             .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
         
         try offsetAndOption.forEach { offset, option in
-            try executeAnyOption(with: option, prefix: entityName)
+            try setupForExec(with: option)
         }
+        
+        try generateOnce(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
     }
 }
 
 extension Generate {
     enum OptionType: String, ArgumentOptionProtocol {
-        // sort by priority
         case templateSpecify
         case specify
         case interactive
@@ -75,18 +87,18 @@ extension Generate {
         }
     }
 
-    fileprivate func executeAnyOption(with option: Generate.OptionType, prefix: String) throws {
+    fileprivate mutating func setupForExec(with option: Generate.OptionType) throws {
         switch option {
         case .templateSpecify:
-            try executeForTemplateSpecify(with: prefix)
+            templateDirectoryName = try executeForTemplateSpecify()
         case .specify:
-            try executeForSpecity(with: prefix)
+            generateComponents = try executeForSpecity()
         case .interactive:
-            try executeForInteractive(with: prefix)
+            generateComponents = try executeForInteractive()
         }
     }
     
-    fileprivate func executeForInteractive(with prefix: String) throws {
+    fileprivate func executeForInteractive() throws -> [ComponentType] {
         let answeredComponents = try ComponentType.elements.filter {
             let message = "Do you want to \($0.name) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
@@ -96,31 +108,32 @@ extension Generate {
             })
             return answer == "y" || answer == "Y"
         }
-        try generate(with: prefix, for: answeredComponents)
+        
+        return answeredComponents
     }
     
-    fileprivate func executeForSpecity(with prefix: String) throws {
-        if options.count < 3 {
+    fileprivate func executeForSpecity() throws -> [ComponentType] {
+        let optionArguments = try optionArgument(for: OptionType.specify)
+        if optionArguments.isEmpty {
             // generate specify XXXX
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
-        let componentOptions = options[2..<options.count]
-        let components = componentOptions.flatMap { ComponentType(name: $0.capitalized) }
-        try generate(with: prefix, for: components)
+        
+        let components = optionArguments.flatMap { ComponentType(name: $0.capitalized) }
+        return components
     }
     
-    fileprivate func executeForTemplateSpecify(with prefix: String) throws {
+    fileprivate func executeForTemplateSpecify() throws -> String {
         let templateSpecity = OptionType.templateSpecify
         
         guard let templateDirectoryName = try optionArgument(for: templateSpecity).first else {
             throw KuriErrorType.missingArgument("Not enough argument for kuri \(templateSpecity.shortCut)")
         }
         
-        try generate(with: prefix, templateDirectoryName: templateDirectoryName)
+        return templateDirectoryName
     }
     
     fileprivate func optionArgument(for option: OptionType) throws -> [String] {
-        
         let isMatchOption: ((String) -> Bool) = { string in
             return option.shortCut == string || option.rawValue == string
         }
@@ -131,7 +144,7 @@ extension Generate {
                 return result + [optionString]
             }
             
-            if !isMatch, result.count > 0 {
+            if optionString.contains("-"), !isMatch {
                 return result
             }
             
@@ -142,11 +155,11 @@ extension Generate {
             return result
         }
         
-        if optionAndArgument.count > 1 {
+        guard optionAndArgument.count > 1 else {
             throw KuriErrorType.missingArgument("Not enough argument for kuri \(option.shortCut)")
         }
         
-        return Array(optionAndArgument.dropLast())
+        return Array(optionAndArgument.dropFirst())
     }
 }
 
@@ -176,8 +189,11 @@ fileprivate extension Generate {
         return replacedContent
     }
     
+    fileprivate func generateOnce(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
+        try generate(with: prefix, for: components, templateDirectoryName: templateDirectoryName)
+    }
     
-    fileprivate func generate(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
+    private func generate(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
         var pathAndXcodeProject: [String: XCProject] = [:]
         try components.flatMap { type in
             return GenerateType.elements.map { (type, $0) }
@@ -186,7 +202,7 @@ fileprivate extension Generate {
                 let typeFor = (componentType, generateType)
                 
                 let kuriTemplatePath = templateDirectoryName != nil ?
-                    yamlReader.templateRootPath(from: typeFor) + templateDirectoryName! :
+                    yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
                     yamlReader.kuriTemplatePath(from: typeFor)
                 let templatePath = kuriTemplatePath + generateType.name + "/" + componentType.name + "/" + componentType.fileName
                 let generateRootPath = yamlReader.generateRootPath(from: typeFor)

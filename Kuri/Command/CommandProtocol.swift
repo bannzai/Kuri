@@ -10,5 +10,4 @@ import Foundation
 
 protocol CommandProtocol {
     var args: [String] { get }
-    func execute() throws
 }

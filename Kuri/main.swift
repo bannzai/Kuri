@@ -30,7 +30,8 @@ do {
     case .generate:
         let yaml = try YamlResource.loadYamlIfPossible()
         let yamlReader = YamlReader(yaml: yaml, env: env)
-        try Generate(args: options, yamlReader: yamlReader).execute()
+        var generater = Generate(args: options, yamlReader: yamlReader)
+        try generater.execute()
     }
 } catch let e as KuriErrorType {
     print("ErrorType \(e) description: \(e.errorDescription())")
