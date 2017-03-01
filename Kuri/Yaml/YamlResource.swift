@@ -12,7 +12,7 @@ enum ComponentYamlProperty: String {
     case Target
     case CustomSuffix
     case TemplateRootPath
-    case DefaltTemplateDirectoryName
+    case DefaultTemplateDirectoryName
     case ProjectRootPath
     case ProjectFileName
     case GenerateRootPath

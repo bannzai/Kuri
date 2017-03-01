@@ -43,7 +43,7 @@ struct YamlReader {
     }
     
     func kuriTemplatePath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.DefaltTemplateDirectoryName, from: typeFor)
+        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryName, from: typeFor)
     }
     
     func generateRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
