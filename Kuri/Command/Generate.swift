@@ -202,8 +202,8 @@ fileprivate extension Generate {
                 let typeFor = (componentType, generateType)
                 
                 let kuriTemplatePath = templateDirectoryName != nil ?
-                    yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
-                    yamlReader.kuriTemplatePath(from: typeFor)
+                    yamlReader.templateRootPath(from: typeFor) + templateDirectoryName! + "/" :
+                    yamlReader.templateRootPath(from: typeFor) + yamlReader.kuriTemplatePath(from: typeFor) + "/"
                 let templatePath = kuriTemplatePath + generateType.name + "/" + componentType.name + "/" + componentType.fileName
                 let generateRootPath = yamlReader.generateRootPath(from: typeFor)
                 let projectRootPath = yamlReader.projectRootPath(from: typeFor)
