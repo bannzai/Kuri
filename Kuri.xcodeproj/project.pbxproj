@@ -63,7 +63,6 @@
 		BA31E6C71DF2C95900EB2FDF /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6BE1DF2C95900EB2FDF /* Stream.swift */; };
 		BA31E6C81DF2C95900EB2FDF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6BF1DF2C95900EB2FDF /* String.swift */; };
 		BA31E6DC1DF2CE9000EB2FDF /* KuriErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */; };
-		BA31E6F01DF2F5F000EB2FDF /* GenerateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6EF1DF2F5F000EB2FDF /* GenerateType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -156,7 +155,6 @@
 		BA31E6BE1DF2C95900EB2FDF /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		BA31E6BF1DF2C95900EB2FDF /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KuriErrorType.swift; sourceTree = "<group>"; };
-		BA31E6EF1DF2F5F000EB2FDF /* GenerateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +196,6 @@
 				9C64AD1F1E0D293500CC3E85 /* Yaml */,
 				9C64AD121E0D292A00CC3E85 /* Command */,
 				BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */,
-				BA31E6EF1DF2F5F000EB2FDF /* GenerateType.swift */,
 				9C64AD241E0D294B00CC3E85 /* ComponentType.swift */,
 				6C7358FF1E0BCB2400DA1BCB /* KuriExtension.swift */,
 				9C3C541A1E0CD70A00F13310 /* FileOperator.swift */,
@@ -701,7 +698,6 @@
 				9C1CDE4D1E0E49E2002624EE /* UseCaseTemplate.swift in Sources */,
 				9C64AD821E0D54E700CC3E85 /* PathComponent.swift in Sources */,
 				9C64AD8E1E0D54E700CC3E85 /* XCPHelperer.swift in Sources */,
-				BA31E6F01DF2F5F000EB2FDF /* GenerateType.swift in Sources */,
 				BA31E6C81DF2C95900EB2FDF /* String.swift in Sources */,
 				BA31E6C51DF2C95900EB2FDF /* Array.swift in Sources */,
 				9C1CDE4A1E0E49E2002624EE /* PresenterTemplate.swift in Sources */,
