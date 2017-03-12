@@ -64,7 +64,6 @@
 		BA31E6C81DF2C95900EB2FDF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6BF1DF2C95900EB2FDF /* String.swift */; };
 		BA31E6DC1DF2CE9000EB2FDF /* KuriErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */; };
 		BA31E6F01DF2F5F000EB2FDF /* GenerateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6EF1DF2F5F000EB2FDF /* GenerateType.swift */; };
-		BA31E6F61DF31E9600EB2FDF /* CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31E6F51DF31E9600EB2FDF /* CRUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -158,7 +157,6 @@
 		BA31E6BF1DF2C95900EB2FDF /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KuriErrorType.swift; sourceTree = "<group>"; };
 		BA31E6EF1DF2F5F000EB2FDF /* GenerateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateType.swift; sourceTree = "<group>"; };
-		BA31E6F51DF31E9600EB2FDF /* CRUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +198,6 @@
 				9C64AD1F1E0D293500CC3E85 /* Yaml */,
 				9C64AD121E0D292A00CC3E85 /* Command */,
 				BA31E6DA1DF2CE9000EB2FDF /* KuriErrorType.swift */,
-				BA31E6F51DF31E9600EB2FDF /* CRUD.swift */,
 				BA31E6EF1DF2F5F000EB2FDF /* GenerateType.swift */,
 				9C64AD241E0D294B00CC3E85 /* ComponentType.swift */,
 				6C7358FF1E0BCB2400DA1BCB /* KuriExtension.swift */,
@@ -730,7 +727,6 @@
 				9C1CDE481E0E49E2002624EE /* EntityTemplate.swift in Sources */,
 				9C1CDE491E0E49E2002624EE /* ModelTemplate.swift in Sources */,
 				6CE8FAC61E07C2D2002D00E2 /* YAMLOperators.swift in Sources */,
-				BA31E6F61DF31E9600EB2FDF /* CRUD.swift in Sources */,
 				BA31E6C61DF2C95900EB2FDF /* Lazy-split.swift in Sources */,
 				9C64AD1C1E0D292A00CC3E85 /* CommandProtocol.swift in Sources */,
 				9C64AD1D1E0D292A00CC3E85 /* Generate.swift in Sources */,
