@@ -13,20 +13,20 @@ struct YamlReader {
     let env: [String: String]
     
     func readYaml(for key: String,
-                  from typeFor: ComponentType) -> String? {
-        let yamlForComponentType = yaml[.string(typeFor.name)]
+                  from typeFor: SetupComponentType) -> String? {
+        let yamlForSetupComponentType = yaml[.string(typeFor.name)]
         let yamlForBasic = yaml
         
-        return yamlForComponentType[.string(key)].string
+        return yamlForSetupComponentType[.string(key)].string
             ?? yamlForBasic[.string(key)].string
     }
     
-    func customSuffix(for componentType: ComponentType) -> String? {
+    func customSuffix(for componentType: SetupComponentType) -> String? {
         return yaml[.string(componentType.name)][.string(ComponentYamlProperty.CustomSuffix.rawValue)].string
     }
     
     func path(for nameProperty: ComponentYamlProperty,
-              from typeFor: ComponentType) -> String {
+              from typeFor: SetupComponentType) -> String {
         let name = nameProperty.rawValue
         guard let path = env[name]
             ?? readYaml(for: name, from: typeFor)
@@ -36,27 +36,27 @@ struct YamlReader {
         return path
     }
     
-    func templateRootPath(from typeFor: ComponentType) -> String {
+    func templateRootPath(from typeFor: SetupComponentType) -> String {
         return path(for: ComponentYamlProperty.TemplateRootPath, from: typeFor)
     }
     
-    func kuriTemplatePath(from typeFor: ComponentType) -> String {
+    func kuriTemplatePath(from typeFor: SetupComponentType) -> String {
         return path(for: ComponentYamlProperty.DefaltTemplateDirectoryName, from: typeFor)
     }
     
-    func generateRootPath(from typeFor: ComponentType) -> String {
+    func generateRootPath(from typeFor: SetupComponentType) -> String {
         return path(for: ComponentYamlProperty.GenerateRootPath, from: typeFor)
     }
     
-    func projectRootPath(from typeFor: ComponentType) -> String {
+    func projectRootPath(from typeFor: SetupComponentType) -> String {
         return path(for: ComponentYamlProperty.ProjectRootPath, from: typeFor)
     }
     
-    func projectFileName(from typeFor: ComponentType) -> String {
+    func projectFileName(from typeFor: SetupComponentType) -> String {
         return path(for: ComponentYamlProperty.ProjectFileName, from: typeFor)
     }
     
-    func targetName(from typeFor: ComponentType) -> String {
+    func targetName(from typeFor: SetupComponentType) -> String {
         return path(for: ComponentYamlProperty.Target, from: typeFor)
     }
 }

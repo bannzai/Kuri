@@ -1,5 +1,5 @@
 //
-//  ComponentType.swift
+//  SetupComponentType.swift
 //  Kuri
 //
 //  Created by kingkong999yhirose on 2016/12/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ComponentType: Int, Enumerable {
+enum SetupComponentType: Int, Enumerable {
     case Entity
     case DataStore
     case Repository
@@ -21,7 +21,7 @@ enum ComponentType: Int, Enumerable {
     case Builder
     
     init?(name: String) {
-        guard let element = ComponentType
+        guard let element = SetupComponentType
             .elements
             .filter ({ $0.name == name })
             .first

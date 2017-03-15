@@ -23,7 +23,7 @@ struct Setup: CommandProtocol {
     
     fileprivate func setupTemplate() throws {
         let templatePath = "./\(Setup.templateDirectoryName)/"
-        try ComponentType.elements.forEach { componentType in
+        try SetupComponentType.elements.forEach { componentType in
             let directoryPath = templatePath + componentType.name + "/"
             try fileOperator.createDirectory(for: directoryPath)
             
@@ -37,7 +37,7 @@ struct Setup: CommandProtocol {
         }
     }
     
-    fileprivate func readSetupTemplate(for typeFor: ComponentType) throws -> String {
+    fileprivate func readSetupTemplate(for typeFor: SetupComponentType) throws -> String {
         return typeFor.template().interface() + "\n\n\n" + typeFor.template().implement()
     }
     
@@ -65,7 +65,7 @@ struct Setup: CommandProtocol {
             "\(ComponentYamlProperty.GenerateRootPath.rawValue): ./\(projectName)/",
             "\(ComponentYamlProperty.Target.rawValue): \(projectName)",
             "",
-            "\(ComponentType.View.name):",
+            "\(SetupComponentType.View.name):",
             " \(ComponentYamlProperty.CustomSuffix.rawValue): ViewController"
             ].joined(separator: "\n")
         

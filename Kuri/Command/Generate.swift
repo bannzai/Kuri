@@ -23,7 +23,7 @@ struct Generate: CommandProtocol {
     }
     
     fileprivate var templateDirectoryName: String? = nil
-    fileprivate var generateComponents: [ComponentType] = ComponentType.elements
+    fileprivate var generateComponents: [SetupComponentType] = SetupComponentType.elements
     
     init(
         args: [String],
@@ -98,8 +98,8 @@ extension Generate {
         }
     }
     
-    fileprivate func executeForInteractive() throws -> [ComponentType] {
-        let answeredComponents = try ComponentType.elements.filter {
+    fileprivate func executeForInteractive() throws -> [SetupComponentType] {
+        let answeredComponents = try SetupComponentType.elements.filter {
             let message = "Do you want to \($0.name) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
                 with: message,
@@ -112,14 +112,14 @@ extension Generate {
         return answeredComponents
     }
     
-    fileprivate func executeForSpecity() throws -> [ComponentType] {
+    fileprivate func executeForSpecity() throws -> [SetupComponentType] {
         let optionArguments = try optionArgument(for: OptionType.specify)
         if optionArguments.isEmpty {
             // generate specify XXXX
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
         
-        let components = optionArguments.flatMap { ComponentType(name: $0.capitalized) }
+        let components = optionArguments.flatMap { SetupComponentType(name: $0.capitalized) }
         return components
     }
     
@@ -178,7 +178,7 @@ fileprivate extension Generate {
             return "\(year)/\(month)/\(day)"
         }()
         
-        let replacedContent = ComponentType.elements
+        let replacedContent = SetupComponentType.elements
             .reduce(content) { content, componentType in
                 let suffix = yamlReader.customSuffix(for: componentType) ?? componentType.name
                 return content
@@ -189,11 +189,11 @@ fileprivate extension Generate {
         return replacedContent
     }
     
-    fileprivate func generateOnce(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
+    fileprivate func generateOnce(with prefix: String, for components: [SetupComponentType] = SetupComponentType.elements, templateDirectoryName: String? = nil) throws {
         try generate(with: prefix, for: components, templateDirectoryName: templateDirectoryName)
     }
     
-    private func generate(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
+    private func generate(with prefix: String, for components: [SetupComponentType] = SetupComponentType.elements, templateDirectoryName: String? = nil) throws {
         var pathAndXcodeProject: [String: XCProject] = [:]
         try components.forEach { componentType in
                 let typeFor = componentType
