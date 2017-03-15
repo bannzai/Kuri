@@ -23,7 +23,7 @@ struct Generate: CommandProtocol {
     }
     
     fileprivate var templateDirectoryName: String? = nil
-    fileprivate var generateComponents: [SetupComponentType] = SetupComponentType.elements
+    fileprivate var generateComponents: [String] = []
     
     init(
         args: [String],
@@ -39,7 +39,7 @@ struct Generate: CommandProtocol {
         }
         
         guard hasOption else {
-            try generateOnce(with: entityName)
+            try generateOnce(with: entityName, for: generateComponents)
             return
         }
         
@@ -98,9 +98,9 @@ extension Generate {
         }
     }
     
-    fileprivate func executeForInteractive() throws -> [SetupComponentType] {
-        let answeredComponents = try SetupComponentType.elements.filter {
-            let message = "Do you want to \($0.name) [y/N]"
+    fileprivate func executeForInteractive() throws -> [String] {
+        let answeredComponents = try generateComponents.filter {
+            let message = "Do you want to \($0) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
                 with: message,
                 validation: { (input) -> Bool in
@@ -112,14 +112,16 @@ extension Generate {
         return answeredComponents
     }
     
-    fileprivate func executeForSpecity() throws -> [SetupComponentType] {
+    fileprivate func executeForSpecity() throws -> [String] {
         let optionArguments = try optionArgument(for: OptionType.specify)
         if optionArguments.isEmpty {
             // generate specify XXXX
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
         
-        let components = optionArguments.flatMap { SetupComponentType(name: $0.capitalized) }
+        let components = optionArguments.filter {
+            return generateComponents.contains($0)
+        }
         return components
     }
     
@@ -178,22 +180,22 @@ fileprivate extension Generate {
             return "\(year)/\(month)/\(day)"
         }()
         
-        let replacedContent = SetupComponentType.elements
+        let replacedContent = generateComponents
             .reduce(content) { content, componentType in
-                let suffix = yamlReader.customSuffix(for: componentType) ?? componentType.name
+                let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
                 return content
-                    .replacingOccurrences(of: componentType.templateName, with: structure + suffix)
+                    .replacingOccurrences(of: componentType, with: structure + suffix) // TODO: convert from template
                     .replacingOccurrences(of: "__USERNAME__", with: userName)
                     .replacingOccurrences(of: "__DATE__", with: date)
         }
         return replacedContent
     }
     
-    fileprivate func generateOnce(with prefix: String, for components: [SetupComponentType] = SetupComponentType.elements, templateDirectoryName: String? = nil) throws {
+    fileprivate func generateOnce(with prefix: String, for components: [String], templateDirectoryName: String? = nil) throws {
         try generate(with: prefix, for: components, templateDirectoryName: templateDirectoryName)
     }
     
-    private func generate(with prefix: String, for components: [SetupComponentType] = SetupComponentType.elements, templateDirectoryName: String? = nil) throws {
+    private func generate(with prefix: String, for components: [String], templateDirectoryName: String? = nil) throws {
         var pathAndXcodeProject: [String: XCProject] = [:]
         try components.forEach { componentType in
                 let typeFor = componentType
@@ -201,14 +203,14 @@ fileprivate extension Generate {
                 let kuriTemplatePath = templateDirectoryName != nil ?
                     yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
                     yamlReader.kuriTemplatePath(from: typeFor)
-                let templatePath = kuriTemplatePath + componentType.name + "/" + componentType.fileName
+                let templatePath = kuriTemplatePath + componentType + "/" + componentType 
                 let generateRootPath = yamlReader.generateRootPath(from: typeFor)
                 let projectRootPath = yamlReader.projectRootPath(from: typeFor)
                 let projectFileName = yamlReader.projectFileName(from: typeFor)
                 
                 let projectFilePath = projectRootPath + projectFileName + "/"
-                let directoryPath = generateRootPath + prefix + "/" + componentType.name + "/"
-                let suffix = yamlReader.customSuffix(for: componentType) ?? componentType.name
+                let directoryPath = generateRootPath + prefix + "/" + componentType + "/"
+                let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
                 let filePath = directoryPath + prefix + suffix + ".swift"
                 
                 let project: XCProject
@@ -222,7 +224,7 @@ fileprivate extension Generate {
                 
                 let fileOperator = FileOperator(fileManager: Files)
                 guard let templateContent = try? fileOperator.read(for: templatePath) else {
-                    print("can't find: \(componentType.name)")
+                    print("can't find: \(componentType)")
                     return
                 }
                 let writeCotent = convert(for: templateContent, to: prefix)
