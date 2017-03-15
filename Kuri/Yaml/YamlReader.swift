@@ -13,13 +13,11 @@ struct YamlReader {
     let env: [String: String]
     
     func readYaml(for key: String,
-                  from typeFor: (component: ComponentType, generate: GenerateType)) -> String? {
-        let yamlForComponentType = yaml[.string(typeFor.component.name)]
-        let yamlForGenerateType = yamlForComponentType[.string(typeFor.generate.name)]
+                  from typeFor: ComponentType) -> String? {
+        let yamlForComponentType = yaml[.string(typeFor.name)]
         let yamlForBasic = yaml
         
-        return yamlForGenerateType[.string(key)].string
-            ?? yamlForComponentType[.string(key)].string
+        return yamlForComponentType[.string(key)].string
             ?? yamlForBasic[.string(key)].string
     }
     
@@ -28,7 +26,7 @@ struct YamlReader {
     }
     
     func path(for nameProperty: ComponentYamlProperty,
-              from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
+              from typeFor: ComponentType) -> String {
         let name = nameProperty.rawValue
         guard let path = env[name]
             ?? readYaml(for: name, from: typeFor)
@@ -38,27 +36,27 @@ struct YamlReader {
         return path
     }
     
-    func templateRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
+    func templateRootPath(from typeFor: ComponentType) -> String {
         return path(for: ComponentYamlProperty.TemplateRootPath, from: typeFor)
     }
     
-    func kuriTemplatePath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryName, from: typeFor)
+    func kuriTemplatePath(from typeFor: ComponentType) -> String {
+        return path(for: ComponentYamlProperty.DefaltTemplateDirectoryName, from: typeFor)
     }
     
-    func generateRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
+    func generateRootPath(from typeFor: ComponentType) -> String {
         return path(for: ComponentYamlProperty.GenerateRootPath, from: typeFor)
     }
     
-    func projectRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
+    func projectRootPath(from typeFor: ComponentType) -> String {
         return path(for: ComponentYamlProperty.ProjectRootPath, from: typeFor)
     }
     
-    func projectFileName(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
+    func projectFileName(from typeFor: ComponentType) -> String {
         return path(for: ComponentYamlProperty.ProjectFileName, from: typeFor)
     }
     
-    func targetName(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
+    func targetName(from typeFor: ComponentType) -> String {
         return path(for: ComponentYamlProperty.Target, from: typeFor)
     }
 }

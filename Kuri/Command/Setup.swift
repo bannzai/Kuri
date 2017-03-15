@@ -24,28 +24,21 @@ struct Setup: CommandProtocol {
     fileprivate func setupTemplate() throws {
         let templatePath = "./\(Setup.templateDirectoryName)/"
         try ComponentType.elements.forEach { componentType in
-            try GenerateType.elements.forEach { generateType in
-                let directoryPath = templatePath + generateType.name + "/" + componentType.name + "/"
-                try fileOperator.createDirectory(for: directoryPath)
-                
-                let filePath = directoryPath + componentType.fileName
-                fileOperator.createFile(for: filePath)
-                
-                let content = try readSetupTemplate(for: (componentType, generateType))
-                try fileOperator.write(to: filePath, this: content)
-                
-            }
+            let directoryPath = templatePath + componentType.name + "/"
+            try fileOperator.createDirectory(for: directoryPath)
+            
+            let filePath = directoryPath + componentType.fileName
+            fileOperator.createFile(for: filePath)
+            
+            let content = try readSetupTemplate(for: (componentType))
+            try fileOperator.write(to: filePath, this: content)
+            
             print("created template for \(componentType.name)")
         }
     }
     
-    fileprivate func readSetupTemplate(for typeFor: (component: ComponentType ,generate: GenerateType)) throws -> String {
-        switch typeFor.generate {
-        case .Interface:
-            return typeFor.component.template().interface()
-        case .Implement:
-            return typeFor.component.template().implement()
-        }
+    fileprivate func readSetupTemplate(for typeFor: ComponentType) throws -> String {
+        return typeFor.template().interface() + "\n\n\n" + typeFor.template().implement()
     }
     
     fileprivate func setupYaml() throws {

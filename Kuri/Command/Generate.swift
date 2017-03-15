@@ -195,16 +195,13 @@ fileprivate extension Generate {
     
     private func generate(with prefix: String, for components: [ComponentType] = ComponentType.elements, templateDirectoryName: String? = nil) throws {
         var pathAndXcodeProject: [String: XCProject] = [:]
-        try components.flatMap { type in
-            return GenerateType.elements.map { (type, $0) }
-            }
-            .forEach { componentType, generateType in
-                let typeFor = (componentType, generateType)
+        try components.forEach { componentType in
+                let typeFor = componentType
                 
                 let kuriTemplatePath = templateDirectoryName != nil ?
-                    yamlReader.templateRootPath(from: typeFor) + templateDirectoryName! + "/" :
-                    yamlReader.templateRootPath(from: typeFor) + yamlReader.kuriTemplatePath(from: typeFor) + "/"
-                let templatePath = kuriTemplatePath + generateType.name + "/" + componentType.name + "/" + componentType.fileName
+                    yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
+                    yamlReader.kuriTemplatePath(from: typeFor)
+                let templatePath = kuriTemplatePath + componentType.name + "/" + componentType.fileName
                 let generateRootPath = yamlReader.generateRootPath(from: typeFor)
                 let projectRootPath = yamlReader.projectRootPath(from: typeFor)
                 let projectFileName = yamlReader.projectFileName(from: typeFor)
@@ -212,7 +209,7 @@ fileprivate extension Generate {
                 let projectFilePath = projectRootPath + projectFileName + "/"
                 let directoryPath = generateRootPath + prefix + "/" + componentType.name + "/"
                 let suffix = yamlReader.customSuffix(for: componentType) ?? componentType.name
-                let filePath = directoryPath + prefix + suffix + generateType.fileSuffix + ".swift"
+                let filePath = directoryPath + prefix + suffix + ".swift"
                 
                 let project: XCProject
                 if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
@@ -225,7 +222,7 @@ fileprivate extension Generate {
                 
                 let fileOperator = FileOperator(fileManager: Files)
                 guard let templateContent = try? fileOperator.read(for: templatePath) else {
-                    print("can't find: \(generateType.name)/\(componentType.name)")
+                    print("can't find: \(componentType.name)")
                     return
                 }
                 let writeCotent = convert(for: templateContent, to: prefix)
