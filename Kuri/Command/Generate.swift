@@ -38,11 +38,6 @@ struct Generate: CommandProtocol {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
         
-        guard hasOption else {
-            try generateOnce(with: entityName, for: generateComponents)
-            return
-        }
-        
         let offsetAndOption = try options.enumerated()
             .filter { $1.contains("-") }
             .map { (offset: $0, option: try OptionType(shortCut: $1)) }
@@ -51,6 +46,20 @@ struct Generate: CommandProtocol {
         try offsetAndOption.forEach { offset, option in
             try setupForExec(with: option)
         }
+        
+        guard let templateDirectoryName = templateDirectoryName else {
+            throw KuriErrorType.readYamlError("Unexpected read template name")
+            return
+        }
+        
+        guard hasOption else {
+            try generateOnce(with: entityName, for: generateComponents)
+            return
+        }
+        
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -maxdepth 1 -type d")
+            .components(separatedBy: "\n")
+            .map { String($0.characters.dropFirst().dropFirst()) }
         
         try generateOnce(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
     }
@@ -93,8 +102,10 @@ extension Generate {
             templateDirectoryName = try executeForTemplateSpecify()
         case .specify:
             generateComponents = try executeForSpecity()
+            templateDirectoryName = Setup.templateDirectoryName
         case .interactive:
             generateComponents = try executeForInteractive()
+            templateDirectoryName = Setup.templateDirectoryName
         }
     }
     
@@ -196,6 +207,10 @@ fileprivate extension Generate {
     }
     
     private func generate(with prefix: String, for components: [String], templateDirectoryName: String? = nil) throws {
+        print("Begin generate")
+        defer {
+            print("End generate")
+        }
         var pathAndXcodeProject: [String: XCProject] = [:]
         try components.forEach { componentType in
                 let typeFor = componentType
@@ -203,7 +218,7 @@ fileprivate extension Generate {
                 let kuriTemplatePath = templateDirectoryName != nil ?
                     yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
                     yamlReader.kuriTemplatePath(from: typeFor)
-                let templatePath = kuriTemplatePath + componentType + "/" + componentType 
+                let templatePath = kuriTemplatePath + componentType + "/" + componentType
                 let generateRootPath = yamlReader.generateRootPath(from: typeFor)
                 let projectRootPath = yamlReader.projectRootPath(from: typeFor)
                 let projectFileName = yamlReader.projectFileName(from: typeFor)
