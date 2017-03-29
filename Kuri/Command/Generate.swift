@@ -47,19 +47,24 @@ struct Generate: CommandProtocol {
             try setupForExec(with: option)
         }
         
+        if templateDirectoryName == nil {
+            templateDirectoryName = "KuriTemplate"
+        }
+        
         guard let templateDirectoryName = templateDirectoryName else {
             throw KuriErrorType.readYamlError("Unexpected read template name")
-            return
+        }
+        
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -maxdepth 2 -type d")
+            .components(separatedBy: "\n")
+            .flatMap {
+                $0.components(separatedBy: "/").last
         }
         
         guard hasOption else {
             try generateOnce(with: entityName, for: generateComponents)
             return
         }
-        
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -maxdepth 1 -type d")
-            .components(separatedBy: "\n")
-            .map { String($0.characters.dropFirst().dropFirst()) }
         
         try generateOnce(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
     }
