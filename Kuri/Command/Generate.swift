@@ -59,6 +59,12 @@ struct Generate: CommandProtocol {
             .components(separatedBy: "\n")
             .flatMap {
                 $0.components(separatedBy: "/").last
+            }
+            .filter {
+                $0 != "KuriTemplate" && $0 != "Implement" && $0 != "Interface" 
+            }
+            .filter {
+                !$0.isEmpty
         }
         
         guard hasOption else {
