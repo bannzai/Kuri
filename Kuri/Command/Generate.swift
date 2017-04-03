@@ -55,13 +55,10 @@ struct Generate: CommandProtocol {
             throw KuriErrorType.readYamlError("Unexpected read template name")
         }
         
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -maxdepth 2 -type d")
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -maxdepth 1 -type d")
             .components(separatedBy: "\n")
             .flatMap {
                 $0.components(separatedBy: "/").last
-            }
-            .filter {
-                $0 != "KuriTemplate" && $0 != "Implement" && $0 != "Interface" 
             }
             .filter {
                 !$0.isEmpty
