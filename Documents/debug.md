@@ -23,7 +23,7 @@ Because Kuri needs set some **Argument** and **Environtment** when debug on run 
 
 Explain what to do about the environment and argument.  
 You can set **Arguments passed on launch** and **Environtment variables** in Xcode.  
-Please open **Edit Scheme** window.  
+Please open **Edit Scheme** window.    
 `Xcode menu` > `Product` > `Scheme` > `Edit Scheme`  
 
 <img width="320px" src="https://cloud.githubusercontent.com/assets/10897361/24594231/faea3e0c-1865-11e7-9ab5-39da7007dcba.png" />
@@ -50,7 +50,7 @@ You should set key and value of **WorkingDirectory**.
 In the above example, **WorkingDirectory** is submodule in Kuri in my local.  
 Please rewrite this as absolute path in each environment  
   
-So, If you run the Kuri.xcodeproj, that generate **Hoge** in your **WorkingDirectory**project.  
+So, If you run the Kuri.xcodeproj, that generate **Hoge** in your **WorkingDirectory** project.  
 If successful, you can debug to use breakpoint, print, and so.  
 
 I hope nice PR!!.  
