@@ -83,5 +83,9 @@ Instructions with options [here](./Documents/generate.md).
 
 You can now run the **kuri** command.
 
+### How to debug
+If you want to debug for **Kuri**.
+You should see [here](./Documents/debug.md).
+
 ## License
 *Kuri* is available under the MIT license. See the LICENSE file for more info.
