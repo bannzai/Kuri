@@ -17,8 +17,7 @@ Program ended with exit code: 1
 ```
 
 Why Error message?
-Because Kuri needs set some **Argument** and **Environtment** for run that.
-
+Because Kuri needs set some **Argument** and **Environtment** when debug on run time.
 
 ### Environtment and Argumenets
 
@@ -37,7 +36,9 @@ And you should set these.
 
 **Arguments Passed On Launch** set for option when kuri command.  
 
-In the above example, it has the same meaning as this.
+In the above example.  
+**Arguments Passed On Launch** set `generate Hoge`
+it has the same meaning as this.
 
 ```
 $ kuri generate Hoge
