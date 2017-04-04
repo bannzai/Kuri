@@ -13,20 +13,22 @@ struct YamlReader {
     let env: [String: String]
     
     func readYaml(for key: String,
-                  from typeFor: String) -> String? {
-        let yamlForSetupComponentType = yaml[.string(typeFor)]
-        let yamlForBasic = yaml
-        
-        return yamlForSetupComponentType[.string(key)].string
-            ?? yamlForBasic[.string(key)].string
+                  from typeFor: String?) -> String? {
+        switch typeFor {
+        case .none:
+            let yamlForBasic = yaml
+            return yamlForBasic[.string(key)].string
+        case .some(let typeFor):
+            let yamlForSetupComponentType = yaml[.string(typeFor)]
+            return yamlForSetupComponentType[.string(key)].string
+        }
     }
     
     func customSuffix(for componentType: String) -> String? {
         return yaml[.string(componentType)][.string(ComponentYamlProperty.CustomSuffix.rawValue)].string
     }
     
-    func path(for nameProperty: ComponentYamlProperty,
-              from typeFor: String) -> String {
+    func path(for nameProperty: ComponentYamlProperty, from typeFor: String?) -> String {
         let name = nameProperty.rawValue
         guard let path = env[name]
             ?? readYaml(for: name, from: typeFor)
@@ -40,7 +42,7 @@ struct YamlReader {
         return path(for: ComponentYamlProperty.TemplateRootPath, from: typeFor)
     }
     
-    func kuriTemplatePath(from typeFor: String) -> String {
+    func kuriTemplateName(from typeFor: String? = nil) -> String {
         return path(for: ComponentYamlProperty.DefaultTemplateDirectoryName, from: typeFor)
     }
     

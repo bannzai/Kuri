@@ -22,8 +22,8 @@ struct Generate: CommandProtocol {
         return !options.isEmpty
     }
     
-    fileprivate var templateDirectoryName: String? = nil
-    fileprivate var generateComponents: [String] = []
+    var templateDirectoryName: String
+    var generateTemplateFilePaths: [String]
     
     init(
         args: [String],
@@ -31,6 +31,9 @@ struct Generate: CommandProtocol {
         ) {
         self.args = args
         self.yamlReader = yamlReader
+        
+        templateDirectoryName = yamlReader.kuriTemplateName()
+        generateTemplateFilePaths = main.run(bash: "find \(templateDirectoryName) -name '*.swift'").components(separatedBy: "\n")
     }
     
     mutating func execute() throws {
@@ -38,38 +41,21 @@ struct Generate: CommandProtocol {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
         
-        let offsetAndOption = try options.enumerated()
-            .filter { $1.contains("-") }
-            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
-            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
+//        let offsetAndOption = try options.enumerated()
+//            .filter { $1.contains("-") }
+//            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
+//            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
+//        
+//        try offsetAndOption.forEach { offset, option in
+//            try setupForExec(with: option)
+//        }
+//        
+//        guard hasOption else {
+//            try generateOnce(with: entityName, for: generateTemplateFilePaths)
+//            return
+//        }
         
-        try offsetAndOption.forEach { offset, option in
-            try setupForExec(with: option)
-        }
-        
-        if templateDirectoryName == nil {
-            templateDirectoryName = "KuriTemplate"
-        }
-        
-        guard let templateDirectoryName = templateDirectoryName else {
-            throw KuriErrorType.readYamlError("Unexpected read template name")
-        }
-        
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
-            .components(separatedBy: "\n")
-            .flatMap {
-                $0.components(separatedBy: "/").last
-            }
-            .filter {
-                !$0.isEmpty
-        }
-        
-        guard hasOption else {
-            try generateOnce(with: entityName, for: generateComponents)
-            return
-        }
-        
-        try generateOnce(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
+        try generateOnce(with: entityName, for: generateTemplateFilePaths, templateDirectoryName: templateDirectoryName)
     }
 }
 
@@ -109,16 +95,16 @@ extension Generate {
         case .templateSpecify:
             templateDirectoryName = try executeForTemplateSpecify()
         case .specify:
-            generateComponents = try executeForSpecity()
+            generateTemplateFilePaths = try executeForSpecity()
             templateDirectoryName = Setup.templateDirectoryName
         case .interactive:
-            generateComponents = try executeForInteractive()
+            generateTemplateFilePaths = try executeForInteractive()
             templateDirectoryName = Setup.templateDirectoryName
         }
     }
     
     fileprivate func executeForInteractive() throws -> [String] {
-        let answeredComponents = try generateComponents.filter {
+        let answeredComponents = try generateTemplateFilePaths.filter {
             let message = "Do you want to \($0) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
                 with: message,
@@ -139,7 +125,7 @@ extension Generate {
         }
         
         let components = optionArguments.filter {
-            return generateComponents.contains($0)
+            return generateTemplateFilePaths.contains($0)
         }
         return components
     }
@@ -199,7 +185,7 @@ fileprivate extension Generate {
             return "\(year)/\(month)/\(day)"
         }()
         
-        let replacedContent = generateComponents
+        let replacedContent = generateTemplateFilePaths
             .reduce(content) { content, componentType in
                 let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
                 return content
@@ -225,7 +211,7 @@ fileprivate extension Generate {
             
             let kuriTemplatePath = templateDirectoryName != nil ?
                 yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
-                yamlReader.kuriTemplatePath(from: typeFor)
+                yamlReader.kuriTemplateName(from: typeFor) + "/"
             let templatePath = kuriTemplatePath + componentType + "/" + componentType
             let generateRootPath = yamlReader.generateRootPath(from: typeFor)
             let projectRootPath = yamlReader.projectRootPath(from: typeFor)
