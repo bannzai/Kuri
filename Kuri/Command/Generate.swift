@@ -55,7 +55,7 @@ struct Generate: CommandProtocol {
         self.args = args
         self.yamlReader = yamlReader
         
-        templateDirectoryName = yamlReader.kuriTemplateName()
+        templateDirectoryName = yamlReader.kuri
         generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'").components(separatedBy: "\n").map( GenerateComponent.init )
     }
     
