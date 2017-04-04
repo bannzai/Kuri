@@ -55,7 +55,7 @@ struct Generate: CommandProtocol {
             throw KuriErrorType.readYamlError("Unexpected read template name")
         }
         
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -maxdepth 1 -type d")
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
             .components(separatedBy: "\n")
             .flatMap {
                 $0.components(separatedBy: "/").last
