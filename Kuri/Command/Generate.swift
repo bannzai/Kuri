@@ -55,7 +55,7 @@ struct Generate: CommandProtocol {
         self.args = args
         self.yamlReader = yamlReader
         
-        templateDirectoryName = yamlReader.kuri
+        templateDirectoryName = yamlReader.kuriTemplateName()
         generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'").components(separatedBy: "\n").map( GenerateComponent.init )
     }
     
@@ -235,9 +235,9 @@ fileprivate extension Generate {
             let templateDirectoryComponents = component.templateDirectoryPath
             
             let templatePath = templateDirectoryComponents.joined(separator: "/") + "/"
-            let generateRootPath = yamlReader.generateRootPath(from: typeFor)
-            let projectRootPath = yamlReader.projectRootPath(from: typeFor)
-            let projectFileName = yamlReader.projectFileName(from: typeFor)
+            let generateRootPath = yamlReader.generateRootPath(for: typeFor)
+            let projectRootPath = yamlReader.projectRootPath(for: typeFor)
+            let projectFileName = yamlReader.projectFileName(for: typeFor)
             
             let projectFilePath = projectRootPath + projectFileName + "/"
             let directoryPath = generateRootPath + component.generateDirectoryPath.joined(separator: "/") + "/"
@@ -261,7 +261,7 @@ fileprivate extension Generate {
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
-            let targetName = yamlReader.targetName(from: typeFor)
+            let targetName = yamlReader.targetName(for: typeFor)
             project.appendFilePath(
                 with: projectRootPath,
                 filePath: filePath,
