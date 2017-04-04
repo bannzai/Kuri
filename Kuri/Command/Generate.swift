@@ -221,49 +221,49 @@ fileprivate extension Generate {
         }
         var pathAndXcodeProject: [String: XCProject] = [:]
         try components.forEach { componentType in
-                let typeFor = componentType
-                
-                let kuriTemplatePath = templateDirectoryName != nil ?
-                    yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
-                    yamlReader.kuriTemplatePath(from: typeFor)
-                let templatePath = kuriTemplatePath + componentType + "/" + componentType
-                let generateRootPath = yamlReader.generateRootPath(from: typeFor)
-                let projectRootPath = yamlReader.projectRootPath(from: typeFor)
-                let projectFileName = yamlReader.projectFileName(from: typeFor)
-                
-                let projectFilePath = projectRootPath + projectFileName + "/"
-                let directoryPath = generateRootPath + prefix + "/" + componentType + "/"
-                let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
-                let filePath = directoryPath + prefix + suffix + ".swift"
-                
-                let project: XCProject
-                if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
-                    project = alreadyExistsProject
-                } else {
-                    let xcodeprojectFileUrl = URL(fileURLWithPath: projectFilePath + "project.pbxproj")
-                    project = try XCProject(for: xcodeprojectFileUrl)
-                    pathAndXcodeProject[projectFilePath] = project
-                }
-                
-                let fileOperator = FileOperator(fileManager: Files)
-                guard let templateContent = try? fileOperator.read(for: templatePath) else {
-                    print("can't find: \(componentType)")
-                    return
-                }
-                let writeCotent = convert(for: templateContent, to: prefix)
-                try fileOperator.createDirectory(for: directoryPath)
-                fileOperator.createFile(for: filePath)
-                
-                let targetName = yamlReader.targetName(from: typeFor)
-                project.appendFilePath(
-                    with: projectRootPath,
-                    filePath: filePath,
-                    targetName: targetName
-                )
-                
-                try fileOperator.write(to: filePath, this: writeCotent)
-                
-                print("created: \(filePath)")
+            let typeFor = componentType
+            
+            let kuriTemplatePath = templateDirectoryName != nil ?
+                yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
+                yamlReader.kuriTemplatePath(from: typeFor)
+            let templatePath = kuriTemplatePath + componentType + "/" + componentType
+            let generateRootPath = yamlReader.generateRootPath(from: typeFor)
+            let projectRootPath = yamlReader.projectRootPath(from: typeFor)
+            let projectFileName = yamlReader.projectFileName(from: typeFor)
+            
+            let projectFilePath = projectRootPath + projectFileName + "/"
+            let directoryPath = generateRootPath + prefix + "/" + componentType + "/"
+            let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
+            let filePath = directoryPath + prefix + suffix + ".swift"
+            
+            let project: XCProject
+            if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
+                project = alreadyExistsProject
+            } else {
+                let xcodeprojectFileUrl = URL(fileURLWithPath: projectFilePath + "project.pbxproj")
+                project = try XCProject(for: xcodeprojectFileUrl)
+                pathAndXcodeProject[projectFilePath] = project
+            }
+            
+            let fileOperator = FileOperator(fileManager: Files)
+            guard let templateContent = try? fileOperator.read(for: templatePath) else {
+                print("can't find: \(componentType)")
+                return
+            }
+            let writeCotent = convert(for: templateContent, to: prefix)
+            try fileOperator.createDirectory(for: directoryPath)
+            fileOperator.createFile(for: filePath)
+            
+            let targetName = yamlReader.targetName(from: typeFor)
+            project.appendFilePath(
+                with: projectRootPath,
+                filePath: filePath,
+                targetName: targetName
+            )
+            
+            try fileOperator.write(to: filePath, this: writeCotent)
+            
+            print("created: \(filePath)")
         }
         
         try pathAndXcodeProject.values.forEach {
