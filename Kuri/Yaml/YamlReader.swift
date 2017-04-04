@@ -24,10 +24,6 @@ struct YamlReader {
         }
     }
     
-    func customSuffix(for componentType: String) -> String? {
-        return yaml[.string(componentType)][.string(ComponentYamlProperty.CustomSuffix.rawValue)].string
-    }
-    
     func path(for nameProperty: ComponentYamlProperty, from typeFor: String?) -> String {
         let name = nameProperty.rawValue
         guard let path = env[name]

@@ -8,6 +8,29 @@
 
 import Foundation
 
+struct GenerateComponent {
+    let filePath: String
+    
+    var fileName: String {
+        return URL(fileURLWithPath: filePath).lastPathComponent
+    }
+    
+    var componentType: String {
+        guard let componentType = fileName.components(separatedBy: ".").first else {
+            fatalError("Unexpected format file name \(fileName)")
+        }
+        return componentType
+    }
+    
+    var templateDirectoryPath: [String] {
+        return Array(filePath.components(separatedBy: "/").dropLast())
+    }
+    
+    var generateDirectoryPath: [String] {
+        return Array(templateDirectoryPath.dropFirst())
+    }
+}
+
 struct Generate: CommandProtocol {
     let args: [String]
     let yamlReader: YamlReader
@@ -22,8 +45,8 @@ struct Generate: CommandProtocol {
         return !options.isEmpty
     }
     
-    var templateDirectoryName: String
-    var generateTemplateFilePaths: [String]
+    fileprivate var templateDirectoryName: String
+    fileprivate var generateComponents: [GenerateComponent]
     
     init(
         args: [String],
@@ -33,7 +56,7 @@ struct Generate: CommandProtocol {
         self.yamlReader = yamlReader
         
         templateDirectoryName = yamlReader.kuriTemplateName()
-        generateTemplateFilePaths = main.run(bash: "find \(templateDirectoryName) -name '*.swift'").components(separatedBy: "\n")
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'").components(separatedBy: "\n").map( GenerateComponent.init )
     }
     
     mutating func execute() throws {
@@ -45,7 +68,7 @@ struct Generate: CommandProtocol {
 //            .filter { $1.contains("-") }
 //            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
 //            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
-//        
+//
 //        try offsetAndOption.forEach { offset, option in
 //            try setupForExec(with: option)
 //        }
@@ -55,7 +78,7 @@ struct Generate: CommandProtocol {
 //            return
 //        }
         
-        try generateOnce(with: entityName, for: generateTemplateFilePaths, templateDirectoryName: templateDirectoryName)
+        try generateOnce(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
     }
 }
 
@@ -95,16 +118,16 @@ extension Generate {
         case .templateSpecify:
             templateDirectoryName = try executeForTemplateSpecify()
         case .specify:
-            generateTemplateFilePaths = try executeForSpecity()
+//            generateTemplateFilePaths = try executeForSpecity()
             templateDirectoryName = Setup.templateDirectoryName
         case .interactive:
-            generateTemplateFilePaths = try executeForInteractive()
+//            generateTemplateFilePaths = try executeForInteractive()
             templateDirectoryName = Setup.templateDirectoryName
         }
     }
     
     fileprivate func executeForInteractive() throws -> [String] {
-        let answeredComponents = try generateTemplateFilePaths.filter {
+        let answeredComponents = try generateComponents.map { $0.componentType }.filter {
             let message = "Do you want to \($0) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
                 with: message,
@@ -125,7 +148,7 @@ extension Generate {
         }
         
         let components = optionArguments.filter {
-            return generateTemplateFilePaths.contains($0)
+            return generateComponents.map { $0.componentType }.contains($0)
         }
         return components
     }
@@ -185,42 +208,40 @@ fileprivate extension Generate {
             return "\(year)/\(month)/\(day)"
         }()
         
-        let replacedContent = generateTemplateFilePaths
+        let replacedContent = generateComponents.map { $0.componentType }
             .reduce(content) { content, componentType in
-                let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
                 return content
-                    .replacingOccurrences(of: componentType, with: structure + suffix) // TODO: convert from template
+                    .replacingOccurrences(of: componentType, with: structure + componentType) // TODO: convert from template
                     .replacingOccurrences(of: "__USERNAME__", with: userName)
                     .replacingOccurrences(of: "__DATE__", with: date)
         }
         return replacedContent
     }
     
-    fileprivate func generateOnce(with prefix: String, for components: [String], templateDirectoryName: String? = nil) throws {
+    fileprivate mutating func generateOnce(with prefix: String, for components: [GenerateComponent], templateDirectoryName: String) throws {
         try generate(with: prefix, for: components, templateDirectoryName: templateDirectoryName)
     }
     
-    private func generate(with prefix: String, for components: [String], templateDirectoryName: String? = nil) throws {
+    private func generate(with prefix: String, for components: [GenerateComponent], templateDirectoryName: String? = nil) throws {
         print("Begin generate")
         defer {
             print("End generate")
         }
         var pathAndXcodeProject: [String: XCProject] = [:]
-        try components.forEach { componentType in
+        try components.forEach { component in
+            let componentType = component.componentType
             let typeFor = componentType
             
-            let kuriTemplatePath = templateDirectoryName != nil ?
-                yamlReader.templateRootPath(from: typeFor) + "./" + templateDirectoryName! + "/" :
-                yamlReader.kuriTemplateName(from: typeFor) + "/"
-            let templatePath = kuriTemplatePath + componentType + "/" + componentType
+            let templateDirectoryComponents = component.templateDirectoryPath
+            
+            let templatePath = templateDirectoryComponents.joined(separator: "/") + "/"
             let generateRootPath = yamlReader.generateRootPath(from: typeFor)
             let projectRootPath = yamlReader.projectRootPath(from: typeFor)
             let projectFileName = yamlReader.projectFileName(from: typeFor)
             
             let projectFilePath = projectRootPath + projectFileName + "/"
-            let directoryPath = generateRootPath + prefix + "/" + componentType + "/"
-            let suffix = yamlReader.customSuffix(for: componentType) ?? componentType
-            let filePath = directoryPath + prefix + suffix + ".swift"
+            let directoryPath = generateRootPath + component.generateDirectoryPath.joined(separator: "/") + "/"
+            let filePath = directoryPath + component.fileName
             
             let project: XCProject
             if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {

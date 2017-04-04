@@ -10,7 +10,6 @@ import Foundation
 
 enum ComponentYamlProperty: String {
     case Target
-    case CustomSuffix
     case TemplateRootPath
     case DefaultTemplateDirectoryName
     case ProjectRootPath
