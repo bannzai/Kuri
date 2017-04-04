@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 enum ComponentYamlProperty: String {
     case Target
     case TemplateRootPath
