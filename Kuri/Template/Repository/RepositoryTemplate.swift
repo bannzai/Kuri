@@ -17,6 +17,8 @@ struct RepositoryTemplate: Templatable {
     }
     func interface() -> String {
         return [
+            "import Foundation",
+            "",
             "protocol __PREFIX__Repository {",
             "    func fetch(_ closure: (__PREFIX__Entity) -> Void) throws ",
             "}",
