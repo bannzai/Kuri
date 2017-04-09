@@ -197,28 +197,43 @@ extension Generate {
     }
 }
 
+fileprivate extension Int {
+    func toString() -> String {
+        return String(self)
+    }
+}
+
 fileprivate extension Generate {
-    fileprivate func convert(for content: String, to prefix: String, with generateComponent: GenerateComponent) -> String {
+    struct DateComponent {
+        let year: Int
+        let month: Int
+        let day: Int
+        
+        var date: String {
+            return "\(year)/\(month)/\(day)"
+        }
+    }
+    fileprivate func convert(for content: String, to prefix: String) -> String {
         let userName = run(bash: "echo $USER")
-        let date = { _ -> String in
+        let date: DateComponent = { _ -> DateComponent in
             let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
             guard
                 let year = component.year,
                 let month = component.month,
                 let day = component.day
                 else {
-                    return "unknown date"
+                    fatalError("Can't get system date")
             }
-            return "\(year)/\(month)/\(day)"
+            return DateComponent(year: year, month: month, day: day)
         }()
         
-        let replacedContent = generateComponents
-            .reduce(content) { content, component in
-                return content
-                    .replacingOccurrences(of: component.componentTypeVariable, with: prefix + component.componentType)
-                    .replacingOccurrences(of: "__USERNAME__", with: userName)
-                    .replacingOccurrences(of: "__DATE__", with: date)
-        }
+        let replacedContent = content
+            .replacingOccurrences(of: "__PREFIX__", with: prefix)
+            .replacingOccurrences(of: "__USERNAME__", with: userName)
+            .replacingOccurrences(of: "__DATE__", with: date.date)
+            .replacingOccurrences(of: "__YEAR__", with: date.year.toString())
+            .replacingOccurrences(of: "__MONTH__", with: date.month.toString())
+            .replacingOccurrences(of: "__DAY__", with: date.day.toString())
         return replacedContent
     }
     
@@ -261,7 +276,7 @@ fileprivate extension Generate {
                 print("can't find: \(componentType)")
                 return
             }
-            let writeCotent = convert(for: templateContent, to: prefix, with: component)
+            let writeCotent = convert(for: templateContent, to: prefix)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
