@@ -73,10 +73,13 @@ struct Generate: CommandProtocol {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
         
-//        let offsetAndOption = try options.enumerated()
-//            .filter { $1.contains("-") }
-//            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
-//            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
+        let offsetAndOption = try options.enumerated()
+            .filter { $1.contains("-") }
+            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
+            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
+        
+        print(options)
+        print(offsetAndOption)
 //
 //        try offsetAndOption.forEach { offset, option in
 //            try setupForExec(with: option)
@@ -87,7 +90,7 @@ struct Generate: CommandProtocol {
 //            return
 //        }
         
-        try generateOnce(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
+        try generate(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
     }
 }
 
@@ -242,11 +245,7 @@ fileprivate extension Generate {
         return replacedContent
     }
     
-    fileprivate mutating func generateOnce(with prefix: String, for components: [GenerateComponent], templateDirectoryName: String) throws {
-        try generate(with: prefix, for: components, templateDirectoryName: templateDirectoryName)
-    }
-    
-    private func generate(with prefix: String, for components: [GenerateComponent], templateDirectoryName: String? = nil) throws {
+    fileprivate func generate(with prefix: String, for components: [GenerateComponent], templateDirectoryName: String? = nil) throws {
         print("Begin generate")
         defer {
             print("End generate")
