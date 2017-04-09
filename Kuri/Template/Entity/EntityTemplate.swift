@@ -6,16 +6,16 @@ struct EntityTemplate: Templatable {
     func interface() -> String {
         return [
             "//",
-            "//  __ENTITY__.swift",
+            "//  __PREFIX__Entity.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
             "import Foundation",
             "",
-            "protocol __ENTITY__ {",
+            "protocol __PREFIX__Entity {",
             "    var id: Int { get }",
             "}",
             ].joined(separator: "\n")
@@ -23,16 +23,16 @@ struct EntityTemplate: Templatable {
     func implement() -> String {
         return [
             "//",
-            "//  __ENTITY__Impl.swift",
+            "//  __PREFIX__EntityImpl.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
             "import Foundation",
             "",
-            "struct __ENTITY__Impl: __ENTITY__ {",
+            "struct __PREFIX__EntityImpl: __PREFIX__Entity {",
             "    let id: Int",
             "}",
             ]

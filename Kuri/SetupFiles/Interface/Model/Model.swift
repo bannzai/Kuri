@@ -1,13 +1,13 @@
 //
-//  __MODEL__.swift
+//  __PREFIX__Model.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import Foundation
 
-protocol __MODEL__ {
+protocol __PREFIX__Model {
     var id: Int { get }
 }

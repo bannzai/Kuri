@@ -1,13 +1,13 @@
 //
-//  __ENTITY__Impl.swift
+//  __PREFIX__EntityImpl.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import Foundation
 
-struct __ENTITY__Impl: __ENTITY__ {
+struct __PREFIX__EntityImpl: __PREFIX__Entity {
     let id: Int
 }

@@ -1,13 +1,13 @@
 //
-//  __MODEL__Impl.swift
+//  __PREFIX__ModelImpl.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import Foundation
 
-struct __MODEL__Impl: __MODEL__ {
+struct __PREFIX__ModelImpl: __PREFIX__Model {
     let id: Int
 }

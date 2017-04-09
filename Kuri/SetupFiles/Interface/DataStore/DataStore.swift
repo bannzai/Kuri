@@ -1,13 +1,13 @@
 //
-//  __DATASTORE__.swift
+//  __PREFIX__DataStore.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import Foundation
 
-protocol __DATASTORE__ {
-    func fetch(_ closure: (__ENTITY__) -> Void) throws 
+protocol __PREFIX__DataStore {
+    func fetch(_ closure: (__PREFIX__Entity) -> Void) throws 
 }

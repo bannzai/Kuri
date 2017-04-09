@@ -1,11 +1,11 @@
 //
-//  __REPOSITORY__.swift
+//  __PREFIX__Repository.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
-protocol __REPOSITORY__ {
-    func fetch(_ closure: (__ENTITY__) -> Void) throws 
+protocol __PREFIX__Repository {
+    func fetch(_ closure: (__PREFIX__Entity) -> Void) throws 
 }
