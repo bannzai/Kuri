@@ -22,6 +22,10 @@ struct GenerateComponent {
         return componentType
     }
     
+    var componentTypeVariable: String {
+        return "__\(componentType.uppercased())__"
+    }
+    
     var templateDirectoryPath: [String] {
         return Array(filePath.components(separatedBy: "/").dropLast())
     }
@@ -194,7 +198,7 @@ extension Generate {
 }
 
 fileprivate extension Generate {
-    fileprivate func convert(for content: String, to structure: String) -> String {
+    fileprivate func convert(for content: String, to prefix: String, with generateComponent: GenerateComponent) -> String {
         let userName = run(bash: "echo $USER")
         let date = { _ -> String in
             let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
@@ -208,10 +212,10 @@ fileprivate extension Generate {
             return "\(year)/\(month)/\(day)"
         }()
         
-        let replacedContent = generateComponents.map { $0.componentType }
-            .reduce(content) { content, componentType in
+        let replacedContent = generateComponents
+            .reduce(content) { content, component in
                 return content
-                    .replacingOccurrences(of: componentType, with: structure + componentType) // TODO: convert from template
+                    .replacingOccurrences(of: component.componentTypeVariable, with: prefix + component.componentType)
                     .replacingOccurrences(of: "__USERNAME__", with: userName)
                     .replacingOccurrences(of: "__DATE__", with: date)
         }
@@ -234,8 +238,8 @@ fileprivate extension Generate {
             
             let templateDirectoryComponents = component.templateDirectoryPath
             
-            let templatePath = templateDirectoryComponents.joined(separator: "/") + "/"
-            let generateRootPath = yamlReader.generateRootPath(for: typeFor)
+            let templatePath = templateDirectoryComponents.joined(separator: "/") + "/" + component.fileName
+            let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
             let projectRootPath = yamlReader.projectRootPath(for: typeFor)
             let projectFileName = yamlReader.projectFileName(for: typeFor)
             
@@ -257,7 +261,7 @@ fileprivate extension Generate {
                 print("can't find: \(componentType)")
                 return
             }
-            let writeCotent = convert(for: templateContent, to: prefix)
+            let writeCotent = convert(for: templateContent, to: prefix, with: component)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
