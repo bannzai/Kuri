@@ -80,15 +80,15 @@ struct Generate: CommandProtocol {
         
         print(options)
         print(offsetAndOption)
-//
-//        try offsetAndOption.forEach { offset, option in
-//            try setupForExec(with: option)
-//        }
-//        
-//        guard hasOption else {
-//            try generateOnce(with: entityName, for: generateTemplateFilePaths)
-//            return
-//        }
+
+        try offsetAndOption.forEach { offset, option in
+            try setupForExec(with: option)
+        }
+        
+        guard hasOption else {
+            try generate(with: entityName, for: generateComponents)
+            return
+        }
         
         try generate(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
     }
@@ -130,17 +130,15 @@ extension Generate {
         case .templateSpecify:
             templateDirectoryName = try executeForTemplateSpecify()
         case .specify:
-//            generateTemplateFilePaths = try executeForSpecity()
-            templateDirectoryName = Setup.templateDirectoryName
+            generateComponents = try generateComponentsForSpecity()
         case .interactive:
-//            generateTemplateFilePaths = try executeForInteractive()
-            templateDirectoryName = Setup.templateDirectoryName
+            generateComponents = try generateComponentsForInteractive()
         }
     }
     
-    fileprivate func executeForInteractive() throws -> [String] {
-        let answeredComponents = try generateComponents.map { $0.componentType }.filter {
-            let message = "Do you want to \($0) [y/N]"
+    fileprivate func generateComponentsForInteractive() throws -> [GenerateComponent] {
+        let answeredComponents = try generateComponents.filter {
+            let message = "Do you want to \($0.componentType) [y/N]"
             let answer = try CommandInput.waitStandardInputWhileInvalid(
                 with: message,
                 validation: { (input) -> Bool in
@@ -152,15 +150,16 @@ extension Generate {
         return answeredComponents
     }
     
-    fileprivate func executeForSpecity() throws -> [String] {
+    fileprivate func generateComponentsForSpecity() throws -> [GenerateComponent] {
         let optionArguments = try optionArgument(for: OptionType.specify)
         if optionArguments.isEmpty {
-            // generate specify XXXX
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
         
-        let components = optionArguments.filter {
-            return generateComponents.map { $0.componentType }.contains($0)
+        let components = generateComponents.filter { component in
+            return optionArguments.contains { option in
+                return component.componentType == option
+            }
         }
         return components
     }
@@ -205,12 +204,6 @@ extension Generate {
     }
 }
 
-fileprivate extension Int {
-    func toString() -> String {
-        return String(self)
-    }
-}
-
 fileprivate extension Generate {
     struct DateComponent {
         let year: Int
@@ -239,9 +232,9 @@ fileprivate extension Generate {
             .replacingOccurrences(of: "__PREFIX__", with: prefix)
             .replacingOccurrences(of: "__USERNAME__", with: userName)
             .replacingOccurrences(of: "__DATE__", with: date.date)
-            .replacingOccurrences(of: "__YEAR__", with: date.year.toString())
-            .replacingOccurrences(of: "__MONTH__", with: date.month.toString())
-            .replacingOccurrences(of: "__DAY__", with: date.day.toString())
+            .replacingOccurrences(of: "__YEAR__", with: "\(date.year)")
+            .replacingOccurrences(of: "__MONTH__", with: "\(date.month)")
+            .replacingOccurrences(of: "__DAY__", with: "\(date.day)")
         return replacedContent
     }
     
