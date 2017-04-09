@@ -2,7 +2,7 @@
 import Foundation
 
 struct BuilderTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
             "//  __PREFIX__Builder.swift",
@@ -12,6 +12,10 @@ struct BuilderTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import UIKit",
             "",
             "protocol __PREFIX__Builder {",
@@ -22,14 +26,6 @@ struct BuilderTemplate: Templatable {
 
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__BuilderImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import UIKit",
             "",
             "struct __PREFIX__BuilderImpl: __PREFIX__Builder {",

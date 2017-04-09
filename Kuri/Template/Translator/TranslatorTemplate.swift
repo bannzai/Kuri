@@ -1,7 +1,7 @@
 import Foundation
 
 struct TranslatorTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
             "//  __PREFIX__Translator.swift",
@@ -11,7 +11,10 @@ struct TranslatorTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
-            "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
             "protocol __PREFIX__Translator {",
@@ -23,14 +26,6 @@ struct TranslatorTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__TranslatorImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import Foundation",
             "",
             "struct __PREFIX__TranslatorImpl: __PREFIX__Translator {",

@@ -3,7 +3,7 @@
 import Foundation
 
 struct EntityTemplate: Templatable {
-    func interface() -> String {
+    internal func comment() -> String {
         return [
             "//",
             "//  __PREFIX__Entity.swift",
@@ -13,6 +13,11 @@ struct EntityTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
             "protocol __PREFIX__Entity {",
@@ -22,14 +27,6 @@ struct EntityTemplate: Templatable {
     }
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__EntityImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import Foundation",
             "",
             "struct __PREFIX__EntityImpl: __PREFIX__Entity {",

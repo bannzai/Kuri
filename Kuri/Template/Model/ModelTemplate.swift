@@ -3,7 +3,7 @@
 import Foundation
 
 struct ModelTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
             "//  __PREFIX__Model.swift",
@@ -13,6 +13,10 @@ struct ModelTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
             "protocol __PREFIX__Model {",
@@ -22,14 +26,6 @@ struct ModelTemplate: Templatable {
     }
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__ModelImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import Foundation",
             "",
             "struct __PREFIX__ModelImpl: __PREFIX__Model {",

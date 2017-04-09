@@ -3,7 +3,7 @@
 import Foundation
 
 struct DataStoreTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
             "//  __PREFIX__DataStore.swift",
@@ -13,6 +13,12 @@ struct DataStoreTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+
+    }
+    
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
             "protocol __PREFIX__DataStore {",

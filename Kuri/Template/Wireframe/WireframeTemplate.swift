@@ -2,7 +2,7 @@
 import Foundation
 
 struct WireframeTemplate: Templatable {
-    func interface() -> String {
+    internal func comment() -> String {
         return [
             "//",
             "//  __PREFIX__Wireframe.swift",
@@ -12,6 +12,10 @@ struct WireframeTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import UIKit",
             "",
             "protocol __PREFIX__Wireframe: class {",
@@ -22,14 +26,6 @@ struct WireframeTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__WireframeImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import UIKit",
             "",
             "class __PREFIX__WireframeImpl: __PREFIX__Wireframe {",

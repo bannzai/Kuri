@@ -2,7 +2,7 @@
 import Foundation
 
 struct PresenterTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
             "//  __PREFIX__Presenter.swift",
@@ -12,6 +12,10 @@ struct PresenterTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
             "protocol __PREFIX__Presenter: class {",
@@ -21,14 +25,6 @@ struct PresenterTemplate: Templatable {
     }
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__PresenterImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import Foundation",
             "",
             "class __PREFIX__PresenterImpl: __PREFIX__Presenter {",

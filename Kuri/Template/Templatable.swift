@@ -9,6 +9,7 @@
 import Foundation
 
 protocol Templatable {
+    func comment() -> String
     func interface() -> String
     func implement() -> String
 }

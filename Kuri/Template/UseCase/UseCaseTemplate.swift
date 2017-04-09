@@ -2,7 +2,7 @@
 import Foundation
 
 struct UseCaseTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
             "//  __PREFIX__UseCase.swift",
@@ -12,6 +12,10 @@ struct UseCaseTemplate: Templatable {
             "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
             "protocol __PREFIX__UseCase {",
@@ -22,14 +26,6 @@ struct UseCaseTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "//",
-            "//  __PREFIX__UseCaseImpl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
-            "//",
-            "",
             "import Foundation",
             "",
             "struct __PREFIX__UseCaseImpl: __PREFIX__UseCase {",
