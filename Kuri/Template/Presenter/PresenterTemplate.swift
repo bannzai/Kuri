@@ -25,8 +25,6 @@ struct PresenterTemplate: Templatable {
     }
     func implement() -> String {
         return [
-            "import Foundation",
-            "",
             "class __PREFIX__PresenterImpl: __PREFIX__Presenter {",
             "    private weak var view: __PREFIX__ViewOutput?",
             "    private let wireframe: __PREFIX__Wireframe",

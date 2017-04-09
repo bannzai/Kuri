@@ -26,8 +26,6 @@ struct ViewTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "import UIKit",
-            "",
             "class __PREFIX__View: UIViewController {",
             "    ",
             "    private var presenter: __PREFIX__Presenter!",

@@ -26,8 +26,6 @@ struct TranslatorTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "import Foundation",
-            "",
             "struct __PREFIX__TranslatorImpl: __PREFIX__Translator {",
             "func translate(from model: __PREFIX__Model) -> __PREFIX__Entity {",
             "    return __PREFIX__EntityImpl(id: model.id)",

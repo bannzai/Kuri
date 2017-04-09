@@ -26,8 +26,6 @@ struct WireframeTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "import UIKit",
-            "",
             "class __PREFIX__WireframeImpl: __PREFIX__Wireframe {",
             "    private weak var viewController: UIViewController!",
             "    ",

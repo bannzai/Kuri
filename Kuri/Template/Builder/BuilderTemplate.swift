@@ -26,8 +26,6 @@ struct BuilderTemplate: Templatable {
 
     func implement() -> String {
         return [
-            "import UIKit",
-            "",
             "struct __PREFIX__BuilderImpl: __PREFIX__Builder {",
             "    func build() -> UIViewController {",
             "        let viewController = __PREFIX__View()",

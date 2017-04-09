@@ -27,8 +27,6 @@ struct EntityTemplate: Templatable {
     }
     func implement() -> String {
         return [
-            "import Foundation",
-            "",
             "struct __PREFIX__EntityImpl: __PREFIX__Entity {",
             "    let id: Int",
             "}",

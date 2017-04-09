@@ -26,8 +26,6 @@ struct UseCaseTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "import Foundation",
-            "",
             "struct __PREFIX__UseCaseImpl: __PREFIX__UseCase {",
             "    private let repository: __PREFIX__Repository",
             "    private let translator: __PREFIX__Translator",
