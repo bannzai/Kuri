@@ -23,6 +23,6 @@ class __PREFIX__View: UIViewController {
     }
 }
 
-extension __PREFIX__View: __PREFIX__ViewOutput {
+extension __PREFIX__View: __PREFIX__View {
     
 }

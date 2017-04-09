@@ -66,7 +66,6 @@ struct Setup: CommandProtocol {
             "\(ComponentYamlProperty.GenerateRootPath.rawValue): ./\(projectName)/",
             "\(ComponentYamlProperty.Target.rawValue): \(projectName)",
             "",
-            "\(SetupComponentType.View.name):"
             ].joined(separator: "\n")
         
         try fileOperator.write(to: "./Kuri.yml", this: content)

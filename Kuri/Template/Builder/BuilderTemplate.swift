@@ -28,7 +28,7 @@ struct BuilderTemplate: Templatable {
         return [
             "struct __PREFIX__BuilderImpl: __PREFIX__Builder {",
             "    func build() -> UIViewController {",
-            "        let viewController = __PREFIX__View()",
+            "        let viewController = __PREFIX__ViewController()",
             "        viewController.inject(",
             "            presenter: __PREFIX__PresenterImpl(",
             "                view: viewController,",

@@ -18,7 +18,7 @@ struct ViewTemplate: Templatable {
         return [
             "import UIKit",
             "",
-            "protocol __PREFIX__ViewOutput: class {",
+            "protocol __PREFIX__View: class {",
             "    ",
             "}",
             ].joined(separator: "\n")
@@ -26,7 +26,7 @@ struct ViewTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "class __PREFIX__View: UIViewController {",
+            "class __PREFIX__ViewController: UIViewController {",
             "    ",
             "    private var presenter: __PREFIX__Presenter!",
             "    ",
@@ -41,7 +41,7 @@ struct ViewTemplate: Templatable {
             "    }",
             "}",
             "",
-            "extension __PREFIX__View: __PREFIX__ViewOutput {",
+            "extension __PREFIX__ViewController: __PREFIX__View {",
             "    ",
             "}",
             ].joined(separator: "\n")

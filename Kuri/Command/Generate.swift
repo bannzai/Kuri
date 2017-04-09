@@ -31,7 +31,9 @@ struct GenerateComponent {
     }
     
     var generateDirectoryPath: [String] {
-        return Array(templateDirectoryPath.dropFirst())
+        // remove current directory ./
+        // and template directory name.
+        return Array(templateDirectoryPath.dropFirst().dropFirst())
     }
 }
 

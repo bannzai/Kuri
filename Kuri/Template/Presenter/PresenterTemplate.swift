@@ -26,12 +26,12 @@ struct PresenterTemplate: Templatable {
     func implement() -> String {
         return [
             "class __PREFIX__PresenterImpl: __PREFIX__Presenter {",
-            "    private weak var view: __PREFIX__ViewOutput?",
+            "    private weak var view: __PREFIX__View?",
             "    private let wireframe: __PREFIX__Wireframe",
             "    private let useCase: __PREFIX__UseCase",
             "    ",
             "    init(",
-            "        view: __PREFIX__ViewOutput,",
+            "        view: __PREFIX__View,",
             "        wireframe: __PREFIX__Wireframe,",
             "        useCase: __PREFIX__UseCase",
             "        ) {",

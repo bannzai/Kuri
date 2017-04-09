@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol __PREFIX__ViewOutput: class {
+protocol __PREFIX__View: class {
     
 }

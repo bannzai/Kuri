@@ -27,12 +27,12 @@ struct TranslatorTemplate: Templatable {
     func implement() -> String {
         return [
             "struct __PREFIX__TranslatorImpl: __PREFIX__Translator {",
-            "func translate(from model: __PREFIX__Model) -> __PREFIX__Entity {",
-            "    return __PREFIX__EntityImpl(id: model.id)",
-            "}",
-            "func translate(from entity: __PREFIX__Entity) -> __PREFIX__Model {",
-            "    return __PREFIX__ModelImpl(id: entity.id)",
-            "}",
+            "   func translate(from model: __PREFIX__Model) -> __PREFIX__Entity {",
+            "       return __PREFIX__EntityImpl(id: model.id)",
+            "   }",
+            "   func translate(from entity: __PREFIX__Entity) -> __PREFIX__Model {",
+            "       return __PREFIX__ModelImpl(id: entity.id)",
+            "   }",
             "}",
             ].joined(separator: "\n")
     }
