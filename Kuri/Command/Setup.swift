@@ -38,7 +38,8 @@ struct Setup: CommandProtocol {
     }
     
     fileprivate func readSetupTemplate(for typeFor: SetupComponentType) throws -> String {
-        return typeFor.template().interface() + "\n\n\n" + typeFor.template().implement()
+        let template = typeFor.template()
+        return template.comment() + "\n" + template.interface() + "\n\n\n" + template.implement()
     }
     
     fileprivate func setupYaml() throws {
