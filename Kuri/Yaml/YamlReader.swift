@@ -85,11 +85,7 @@ struct YamlReader {
     }
     
     func templateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.TemplateRootPath, and: componentType, with: generateComponent)
-    }
-    
-    func kuriTemplateName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryName, and: componentType, with: generateComponent)
+        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryPath, and: componentType, with: generateComponent)
     }
     
     func generateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {

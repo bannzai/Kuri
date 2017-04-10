@@ -61,7 +61,7 @@ struct Generate: CommandProtocol {
         self.args = args
         self.yamlReader = yamlReader
         
-        templateDirectoryName = yamlReader.kuriTemplateName()
+        templateDirectoryName = yamlReader.templateRootPath()
         generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
             .components(separatedBy: "\n")
             .filter { !$0.isEmpty }
@@ -90,7 +90,7 @@ struct Generate: CommandProtocol {
             return
         }
         
-        try generate(with: entityName, for: generateComponents, templateDirectoryName: templateDirectoryName)
+        try generate(with: entityName, for: generateComponents)
     }
 }
 
@@ -238,7 +238,7 @@ fileprivate extension Generate {
         return replacedContent
     }
     
-    fileprivate func generate(with prefix: String, for components: [GenerateComponent], templateDirectoryName: String? = nil) throws {
+    fileprivate func generate(with prefix: String, for components: [GenerateComponent]) throws {
         print("Begin generate")
         defer {
             print("End generate")

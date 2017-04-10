@@ -1,4 +1,5 @@
 //
+
 //  Setup.swift
 //  Kuri
 //
@@ -59,8 +60,7 @@ struct Setup: CommandProtocol {
         fileOperator.createFile(for: "./Kuri.yml")
         
         let content = [
-            "\(ComponentYamlProperty.TemplateRootPath.rawValue): ./",
-            "\(ComponentYamlProperty.DefaultTemplateDirectoryName.rawValue): ./\(Setup.templateDirectoryName)/",
+            "\(ComponentYamlProperty.DefaultTemplateDirectoryPath.rawValue): ./\(Setup.templateDirectoryName)/",
             "\(ComponentYamlProperty.ProjectRootPath.rawValue): ./",
             "\(ComponentYamlProperty.ProjectFileName.rawValue): \(xcodeProjectFileName)",
             "\(ComponentYamlProperty.GenerateRootPath.rawValue): ./\(projectName)/",
