@@ -9,15 +9,15 @@
 import Foundation
 
 struct GenerateComponent {
-    let filePath: String
+    let templateFilePath: String
     
-    var fileName: String {
-        return URL(fileURLWithPath: filePath).lastPathComponent
+    var templateFileName: String {
+        return URL(fileURLWithPath: templateFilePath).lastPathComponent
     }
     
     var componentType: String {
-        guard let componentType = fileName.components(separatedBy: ".").first else {
-            fatalError("Unexpected format file name \(fileName)")
+        guard let componentType = templateFileName.components(separatedBy: ".").first else {
+            fatalError("Unexpected format file name \(templateFileName)")
         }
         return componentType
     }
@@ -27,7 +27,7 @@ struct GenerateComponent {
     }
     
     var templateDirectoryPath: [String] {
-        return Array(filePath.components(separatedBy: "/").dropLast())
+        return Array(templateFilePath.components(separatedBy: "/").dropLast())
     }
     
     var generateDirectoryPath: [String] {
@@ -250,14 +250,14 @@ fileprivate extension Generate {
             
             let templateDirectoryComponents = component.templateDirectoryPath
             
-            let templatePath = templateDirectoryComponents.joined(separator: "/") + "/" + component.fileName
+            let templatePath = templateDirectoryComponents.joined(separator: "/") + "/" + component.templateFileName
             let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
             let projectRootPath = yamlReader.projectRootPath(for: typeFor)
             let projectFileName = yamlReader.projectFileName(for: typeFor)
             
             let projectFilePath = projectRootPath + projectFileName + "/"
             let directoryPath = generateRootPath + component.generateDirectoryPath.joined(separator: "/") + "/"
-            let filePath = directoryPath + component.fileName
+            let filePath = directoryPath + prefix + component.templateFileName
             
             let project: XCProject
             if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
