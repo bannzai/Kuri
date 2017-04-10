@@ -37,16 +37,10 @@ struct Generator {
         let offsetAndOption = try argument.options.enumerated()
             .filter { $1.contains("-") }
             .map { (offset: $0, option: try OptionType(shortCut: $1)) }
-            // order by priority for execute option
             .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
         
         try offsetAndOption.forEach { offset, option in
-            switch option {
-            case .templateSpecify:
-                overwriteTemplateDirectory(for: option)
-            case .specify, .interactive:
-                overwriteGenerateComponents(for: option)
-            }
+            try setupForExec(with: option)
         }
         
         guard argument.hasOption else {
@@ -55,30 +49,6 @@ struct Generator {
         }
         
         try generate(with: entityName, for: generateComponents)
-    }
-    
-    mutating func overwriteTemplateDirectory(for option: OptionType) {
-        switch option {
-        case .templateSpecify:
-            break
-        default:
-            fatalError("Unexpected option for \(option.rawValue)")
-        }
-        
-        guard let templateDirectoryName = argument.options.first else {
-            fatalError("Unexpected option for \(option.rawValue) and argument value: \(argument.options)")
-        }
-        
-        self.templateDirectoryName = templateDirectoryName
-    }
-    
-    mutating func overwriteGenerateComponents(for option: OptionType) {
-        switch option {
-        case .templateSpecify:
-            break
-        case .specify, .interactive:
-            overwriteGenerateComponents(for: option)
-        }
     }
 }
 
@@ -113,6 +83,17 @@ extension Generator {
         }
     }
 
+    fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
+        switch option {
+        case .templateSpecify:
+            templateDirectoryName = try executeForTemplateSpecify()
+        case .specify:
+            generateComponents = try generateComponentsForSpecity()
+        case .interactive:
+            generateComponents = try generateComponentsForInteractive()
+        }
+    }
+    
     fileprivate func generateComponentsForInteractive() throws -> [GenerateComponent] {
         let answeredComponents = try generateComponents.filter {
             let message = "Do you want to \($0.componentType) [y/N]"
