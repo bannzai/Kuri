@@ -22,12 +22,12 @@ struct GenerateArgument {
         return !options.isEmpty
     }
     
-    func optionArgument(for option: OptionType) throws -> [String] {
+    func optionArgument(for option: Generator.OptionType) throws -> [String] {
         let isMatchOption: ((String) -> Bool) = { string in
             return option.shortCut == string || option.rawValue == string
         }
         
-        let optionAndArgument = argument.options.reduce([String]()) { result, optionString in
+        let optionAndArgument = options.reduce([String]()) { result, optionString in
             let isMatch = isMatchOption(optionString)
             if isMatch {
                 return result + [optionString]
