@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C221F681DF174B9009BB032 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C221F671DF174B9009BB032 /* main.swift */; };
+		6C47CCE41E9B363700022959 /* GenerateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C47CCE31E9B363700022959 /* GenerateComponent.swift */; };
 		6C7359001E0BCB2400DA1BCB /* KuriExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7358FF1E0BCB2400DA1BCB /* KuriExtension.swift */; };
 		6CE8FAC51E07C2D2002D00E2 /* Yaml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE8FABF1E07C2D2002D00E2 /* Yaml.swift */; };
 		6CE8FAC61E07C2D2002D00E2 /* YAMLOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE8FAC01E07C2D2002D00E2 /* YAMLOperators.swift */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		6C221F641DF174B9009BB032 /* kuri */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = kuri; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C221F671DF174B9009BB032 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6C47CCE31E9B363700022959 /* GenerateComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateComponent.swift; sourceTree = "<group>"; };
 		6C7358FF1E0BCB2400DA1BCB /* KuriExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KuriExtension.swift; sourceTree = "<group>"; };
 		6CE8FABF1E07C2D2002D00E2 /* Yaml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yaml.swift; sourceTree = "<group>"; };
 		6CE8FAC01E07C2D2002D00E2 /* YAMLOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YAMLOperators.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				9C64AD151E0D292A00CC3E85 /* CommandIO.swift */,
 				9C64AD161E0D292A00CC3E85 /* CommandProtocol.swift */,
 				9C64AD171E0D292A00CC3E85 /* Generator.swift */,
+				6C47CCE31E9B363700022959 /* GenerateComponent.swift */,
 				9C64AD181E0D292A00CC3E85 /* Setup.swift */,
 			);
 			path = Command;
@@ -719,6 +722,7 @@
 				9C64AD831E0D54E700CC3E85 /* SourceTree.swift in Sources */,
 				BA31E6C31DF2C95900EB2FDF /* FileHandle.swift in Sources */,
 				BA31E6C41DF2C95900EB2FDF /* Files.swift in Sources */,
+				6C47CCE41E9B363700022959 /* GenerateComponent.swift in Sources */,
 				9C1CDE4B1E0E49E2002624EE /* RepositoryTemplate.swift in Sources */,
 				9C1CDE481E0E49E2002624EE /* EntityTemplate.swift in Sources */,
 				9C1CDE491E0E49E2002624EE /* ModelTemplate.swift in Sources */,
