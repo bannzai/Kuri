@@ -78,9 +78,6 @@ struct Generate: CommandProtocol {
             .map { (offset: $0, option: try OptionType(shortCut: $1)) }
             .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
         
-        print(options)
-        print(offsetAndOption)
-
         try offsetAndOption.forEach { offset, option in
             try setupForExec(with: option)
         }
