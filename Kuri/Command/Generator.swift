@@ -12,8 +12,7 @@ struct Generator {
     let argument: GenerateArgument
     let yamlReader: YamlReader
     
-    fileprivate var templateDirectoryName: String
-    fileprivate var generateComponents: [GenerateComponent]
+    fileprivate var generateComponents: [GenerateComponent] = []
     
     init(
         argument: GenerateArgument,
@@ -22,11 +21,8 @@ struct Generator {
         self.argument = argument
         self.yamlReader = yamlReader
         
-        templateDirectoryName = yamlReader.templateRootPath()
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
-            .components(separatedBy: "\n")
-            .filter { !$0.isEmpty }
-            .map( GenerateComponent.init )
+        let templateDirectoryName = yamlReader.templateRootPath()
+        resetGenerateComponents(for: templateDirectoryName)
     }
     
     mutating func execute() throws {
@@ -49,6 +45,13 @@ struct Generator {
         }
         
         try generate(with: entityName, for: generateComponents)
+    }
+    
+    mutating func resetGenerateComponents(for templateDirectoryName: String) {
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
+            .components(separatedBy: "\n")
+            .filter { !$0.isEmpty }
+            .map( GenerateComponent.init )
     }
 }
 
@@ -86,7 +89,8 @@ extension Generator {
     fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
         switch option {
         case .templateSpecify:
-            templateDirectoryName = try executeForTemplateSpecify()
+            let templateDirectoryName = try executeForTemplateSpecify()
+            resetGenerateComponents(for: templateDirectoryName)
         case .specify:
             generateComponents = try generateComponentsForSpecity()
         case .interactive:
@@ -144,6 +148,7 @@ fileprivate extension Generator {
             return "\(year)/\(month)/\(day)"
         }
     }
+    
     fileprivate func convert(for content: String, to prefix: String) -> String {
         let userName = run(bash: "echo $USER")
         let date: DateComponent = { _ -> DateComponent in
