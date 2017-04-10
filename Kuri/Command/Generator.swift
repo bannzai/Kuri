@@ -1,5 +1,5 @@
 //
-//  Generate.swift
+//  Generator.swift
 //  Kuri
 //
 //  Created by kingkong999yhirose on 2016/12/22.
@@ -37,7 +37,7 @@ struct GenerateComponent {
     }
 }
 
-struct Generate: CommandProtocol {
+struct Generator: CommandProtocol {
     let args: [String]
     let yamlReader: YamlReader
     
@@ -91,7 +91,7 @@ struct Generate: CommandProtocol {
     }
 }
 
-extension Generate {
+extension Generator {
     enum OptionType: String, ArgumentOptionProtocol {
         case templateSpecify
         case specify
@@ -122,7 +122,7 @@ extension Generate {
         }
     }
 
-    fileprivate mutating func setupForExec(with option: Generate.OptionType) throws {
+    fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
         switch option {
         case .templateSpecify:
             templateDirectoryName = try executeForTemplateSpecify()
@@ -201,7 +201,7 @@ extension Generate {
     }
 }
 
-fileprivate extension Generate {
+fileprivate extension Generator {
     struct DateComponent {
         let year: Int
         let month: Int

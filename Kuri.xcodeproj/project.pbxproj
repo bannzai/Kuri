@@ -31,7 +31,7 @@
 		9C64AD1A1E0D292A00CC3E85 /* CommandEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD141E0D292A00CC3E85 /* CommandEnum.swift */; };
 		9C64AD1B1E0D292A00CC3E85 /* CommandIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD151E0D292A00CC3E85 /* CommandIO.swift */; };
 		9C64AD1C1E0D292A00CC3E85 /* CommandProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD161E0D292A00CC3E85 /* CommandProtocol.swift */; };
-		9C64AD1D1E0D292A00CC3E85 /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD171E0D292A00CC3E85 /* Generate.swift */; };
+		9C64AD1D1E0D292A00CC3E85 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD171E0D292A00CC3E85 /* Generator.swift */; };
 		9C64AD1E1E0D292A00CC3E85 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD181E0D292A00CC3E85 /* Setup.swift */; };
 		9C64AD221E0D293500CC3E85 /* YamlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD201E0D293500CC3E85 /* YamlReader.swift */; };
 		9C64AD231E0D293500CC3E85 /* YamlResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64AD211E0D293500CC3E85 /* YamlResource.swift */; };
@@ -123,7 +123,7 @@
 		9C64AD141E0D292A00CC3E85 /* CommandEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandEnum.swift; sourceTree = "<group>"; };
 		9C64AD151E0D292A00CC3E85 /* CommandIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandIO.swift; sourceTree = "<group>"; };
 		9C64AD161E0D292A00CC3E85 /* CommandProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProtocol.swift; sourceTree = "<group>"; };
-		9C64AD171E0D292A00CC3E85 /* Generate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
+		9C64AD171E0D292A00CC3E85 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		9C64AD181E0D292A00CC3E85 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		9C64AD201E0D293500CC3E85 /* YamlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YamlReader.swift; sourceTree = "<group>"; };
 		9C64AD211E0D293500CC3E85 /* YamlResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YamlResource.swift; sourceTree = "<group>"; };
@@ -526,7 +526,7 @@
 				9C64AD141E0D292A00CC3E85 /* CommandEnum.swift */,
 				9C64AD151E0D292A00CC3E85 /* CommandIO.swift */,
 				9C64AD161E0D292A00CC3E85 /* CommandProtocol.swift */,
-				9C64AD171E0D292A00CC3E85 /* Generate.swift */,
+				9C64AD171E0D292A00CC3E85 /* Generator.swift */,
 				9C64AD181E0D292A00CC3E85 /* Setup.swift */,
 			);
 			path = Command;
@@ -725,7 +725,7 @@
 				6CE8FAC61E07C2D2002D00E2 /* YAMLOperators.swift in Sources */,
 				BA31E6C61DF2C95900EB2FDF /* Lazy-split.swift in Sources */,
 				9C64AD1C1E0D292A00CC3E85 /* CommandProtocol.swift in Sources */,
-				9C64AD1D1E0D292A00CC3E85 /* Generate.swift in Sources */,
+				9C64AD1D1E0D292A00CC3E85 /* Generator.swift in Sources */,
 				9C64AD811E0D54E700CC3E85 /* LastKnownFileType.swift in Sources */,
 				9C64AD851E0D54E700CC3E85 /* Abstract.swift in Sources */,
 				9C64AD8F1E0D54E700CC3E85 /* XCProject.swift in Sources */,
