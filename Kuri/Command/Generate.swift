@@ -248,9 +248,6 @@ fileprivate extension Generate {
             let componentType = component.componentType
             let typeFor = componentType
             
-            let templateDirectoryComponents = component.templateDirectoryPath
-            
-            let templatePath = templateDirectoryComponents.joined(separator: "/") + "/" + component.templateFileName
             let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
             let projectRootPath = yamlReader.projectRootPath(for: typeFor)
             let projectFileName = yamlReader.projectFileName(for: typeFor)
@@ -269,6 +266,7 @@ fileprivate extension Generate {
             }
             
             let fileOperator = FileOperator(fileManager: Files)
+            let templatePath = component.templateDirectoryPath.joined(separator: "/") + "/" + component.templateFileName
             guard let templateContent = try? fileOperator.read(for: templatePath) else {
                 print("can't find: \(componentType)")
                 return
