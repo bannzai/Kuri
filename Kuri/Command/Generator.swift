@@ -8,28 +8,18 @@
 
 import Foundation
 
-struct Generator: CommandProtocol {
-    let args: [String]
+struct Generator {
+    let argument: GenerateArgument
     let yamlReader: YamlReader
-    
-    fileprivate var prefix: String? {
-        return args.first
-    }
-    fileprivate var options: [String] {
-        return Array(args.dropFirst())
-    }
-    fileprivate var hasOption: Bool {
-        return !options.isEmpty
-    }
     
     fileprivate var templateDirectoryName: String
     fileprivate var generateComponents: [GenerateComponent]
     
     init(
-        args: [String],
+        argument: GenerateArgument,
         yamlReader: YamlReader
         ) {
-        self.args = args
+        self.argument = argument
         self.yamlReader = yamlReader
         
         templateDirectoryName = yamlReader.templateRootPath()
@@ -40,30 +30,60 @@ struct Generator: CommandProtocol {
     }
     
     mutating func execute() throws {
-        guard let entityName = prefix else {
+        guard let entityName = argument.prefix else {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
         
-        let offsetAndOption = try options.enumerated()
+        let offsetAndOption = try argument.options.enumerated()
             .filter { $1.contains("-") }
             .map { (offset: $0, option: try OptionType(shortCut: $1)) }
+            // order by priority for execute option
             .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
         
         try offsetAndOption.forEach { offset, option in
-            try setupForExec(with: option)
+            switch option {
+            case .templateSpecify:
+                overwriteTemplateDirectory(for: option)
+            case .specify, .interactive:
+                overwriteGenerateComponents(for: option)
+            }
         }
         
-        guard hasOption else {
+        guard argument.hasOption else {
             try generate(with: entityName, for: generateComponents)
             return
         }
         
         try generate(with: entityName, for: generateComponents)
     }
+    
+    mutating func overwriteTemplateDirectory(for option: OptionType) {
+        switch option {
+        case .templateSpecify:
+            break
+        default:
+            fatalError("Unexpected option for \(option.rawValue)")
+        }
+        
+        guard let templateDirectoryName = argument.options.first else {
+            fatalError("Unexpected option for \(option.rawValue) and argument value: \(argument.options)")
+        }
+        
+        self.templateDirectoryName = templateDirectoryName
+    }
+    
+    mutating func overwriteGenerateComponents(for option: OptionType) {
+        switch option {
+        case .templateSpecify:
+            break
+        case .specify, .interactive:
+            overwriteGenerateComponents(for: option)
+        }
+    }
 }
 
 extension Generator {
-    enum OptionType: String, ArgumentOptionProtocol {
+    enum OptionType: String {
         case templateSpecify
         case specify
         case interactive
@@ -81,7 +101,7 @@ extension Generator {
             }
         }
         
-        fileprivate var shortCut: String {
+        var shortCut: String {
             switch self {
             case .templateSpecify:
                 return "-t"
@@ -93,17 +113,6 @@ extension Generator {
         }
     }
 
-    fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
-        switch option {
-        case .templateSpecify:
-            templateDirectoryName = try executeForTemplateSpecify()
-        case .specify:
-            generateComponents = try generateComponentsForSpecity()
-        case .interactive:
-            generateComponents = try generateComponentsForInteractive()
-        }
-    }
-    
     fileprivate func generateComponentsForInteractive() throws -> [GenerateComponent] {
         let answeredComponents = try generateComponents.filter {
             let message = "Do you want to \($0.componentType) [y/N]"
@@ -119,7 +128,7 @@ extension Generator {
     }
     
     fileprivate func generateComponentsForSpecity() throws -> [GenerateComponent] {
-        let optionArguments = try optionArgument(for: OptionType.specify)
+        let optionArguments = try argument.optionArgument(for: OptionType.specify)
         if optionArguments.isEmpty {
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
@@ -135,41 +144,13 @@ extension Generator {
     fileprivate func executeForTemplateSpecify() throws -> String {
         let templateSpecity = OptionType.templateSpecify
         
-        guard let templateDirectoryName = try optionArgument(for: templateSpecity).first else {
+        guard let templateDirectoryName = try argument.optionArgument(for: templateSpecity).first else {
             throw KuriErrorType.missingArgument("Not enough argument for kuri \(templateSpecity.shortCut)")
         }
         
         return templateDirectoryName
     }
     
-    fileprivate func optionArgument(for option: OptionType) throws -> [String] {
-        let isMatchOption: ((String) -> Bool) = { string in
-            return option.shortCut == string || option.rawValue == string
-        }
-        
-        let optionAndArgument = options.reduce([String]()) { result, optionString in
-            let isMatch = isMatchOption(optionString)
-            if isMatch {
-                return result + [optionString]
-            }
-            
-            if optionString.contains("-"), !isMatch {
-                return result
-            }
-            
-            if result.count > 0 {
-                return result + [optionString]
-            }
-            
-            return result
-        }
-        
-        guard optionAndArgument.count > 1 else {
-            throw KuriErrorType.missingArgument("Not enough argument for kuri \(option.shortCut)")
-        }
-        
-        return Array(optionAndArgument.dropFirst())
-    }
 }
 
 fileprivate extension Generator {

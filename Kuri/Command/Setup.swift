@@ -9,7 +9,7 @@
 
 import Foundation
 
-struct Setup: CommandProtocol {
+struct Setup {
     let args: [String] 
     let fileOperator: FileOperator
     

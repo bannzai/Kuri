@@ -30,7 +30,8 @@ do {
     case .generate:
         let yaml = try YamlResource.loadYamlIfPossible()
         let yamlReader = YamlReader(yaml: yaml, env: env)
-        var generater = Generator(args: options, yamlReader: yamlReader)
+        let argument = GenerateArgument(args: options, yamlReader: yamlReader)
+        var generater = Generator(argument: argument, yamlReader: yamlReader)
         try generater.execute()
     }
 } catch let e as KuriErrorType {
