@@ -25,7 +25,7 @@ The amount of code that one writes is large.
 
 So, I thought about making a tool to automatically generate code from some templates. That is **Kuri**.
 
-### Components
+### Components(Default)
 I believe that the following concepts are necessary in iOS CleanArchitecture.
 **Kuri** will arrange the mechanism for it.
 - **Entity** -  Value object.
