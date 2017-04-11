@@ -1,14 +1,14 @@
 //
-//  __WIREFRAME__.swift
+//  __PREFIX__Wireframe.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import UIKit
 
-class __WIREFRAME__Impl: __WIREFRAME__ {
+class __PREFIX__WireframeImpl: __PREFIX__Wireframe {
     private weak var viewController: UIViewController!
     
     init(

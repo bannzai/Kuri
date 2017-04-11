@@ -1,24 +1,24 @@
 //
-//  __USECASE__Impl.swift
+//  __PREFIX__UseCaseImpl.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
-struct __USECASE__Impl: __USECASE__ {
-    private let repository: __REPOSITORY__
-    private let translator: __TRANSLATOR__
+struct __PREFIX__UseCaseImpl: __PREFIX__UseCase {
+    private let repository: __PREFIX__Repository
+    private let translator: __PREFIX__Translator
     
     init(
-        repository: __REPOSITORY__,
-        translator: __TRANSLATOR__
+        repository: __PREFIX__Repository,
+        translator: __PREFIX__Translator
         ) {
         self.repository = repository
         self.translator = translator 
     }
     
-    func fetch(_ closure: (__MODEL__) -> Void) throws  {
+    func fetch(_ closure: (__PREFIX__Model) -> Void) throws  {
         try repository.fetch {
             closure(
                 translator.translate(from: $0)

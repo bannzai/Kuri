@@ -12,53 +12,95 @@ struct YamlReader {
     let yaml: Yaml
     let env: [String: String]
     
-    func readYaml(for key: String,
-                  from typeFor: (component: ComponentType, generate: GenerateType)) -> String? {
-        let yamlForComponentType = yaml[.string(typeFor.component.name)]
-        let yamlForGenerateType = yamlForComponentType[.string(typeFor.generate.name)]
-        let yamlForBasic = yaml
+    private func readYaml(for key: String, from yaml: Yaml) -> Yaml {
+        return yaml[.string(key)]
+    }
+    
+    private func readString(for key: String, from yaml: Yaml) -> String? {
+        return readYaml(for: key, from: yaml).string
+    }
+    
+    private func readStringFromRoot(for key: ComponentYamlProperty) -> String? {
+        guard let value = readString(for: key.rawValue, from: yaml) else {
+            fatalError("Can't find for \(key.rawValue)")
+        }
+        return value
+    }
+    
+    private func readYamlFromComponent(for key: ComponentYamlProperty, and componentType: String, from yaml: Yaml) -> String? {
+        let yamlForCompoennt = yaml[.string(componentType)]
+        return yamlForCompoennt[.string(key.rawValue)].string
+    }
+    
+    private func readYamlForComponent(componentType: String, from yaml: Yaml) -> Yaml {
+        if readYaml(for: componentType, from: yaml) == .null {
+            fatalError("Can't find component \(componentType)")
+        }
+        return readYaml(for: componentType, from: yaml)
+    }
+    
+    private func readYamlForComponent(generateComponent: GenerateComponent, from yaml: Yaml) -> Yaml {
+        var yamlForComponent: Yaml = yaml
+        generateComponent.generateDirectoryPath.forEach { directory in
+            yamlForComponent = yamlForComponent[.string(directory)]
+            if yamlForComponent == .null {
+                fatalError("Can't find \(directory) from \(generateComponent.generateDirectoryPath)")
+            }
+        }
+        return yamlForComponent
+    }
+    
+    /* read from yaml for key. If nessecary componentType and genearteComponent
+     - parameter key: key is already define. 
+     - parameter componentType: e.g Entity, View, Presenter..., component type for generate.
+     - parameter generateComponent: generateComponent used search `componentType` argument value.
+     
+     - returns: searched value for key
+     */
+    
+    func read(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String? {
+        // only top level
+        guard let componentType = componentType else {
+            return readStringFromRoot(for: key)
+        }
         
-        return yamlForGenerateType[.string(key)].string
-            ?? yamlForComponentType[.string(key)].string
-            ?? yamlForBasic[.string(key)].string
+        // from top level search for key
+        guard let generateComponent = generateComponent else{
+            return readYamlFromComponent(for: key, and: componentType, from: yaml) ?? readStringFromRoot(for: key)
+        }
+        
+        // recursive yaml component
+        let yamlForContent = readYamlForComponent(generateComponent: generateComponent, from: yaml)
+        return readYamlFromComponent(for: key, and: componentType, from: yamlForContent) ?? readYamlFromComponent(for: key, and: componentType, from: yaml) ?? readStringFromRoot(for: key)
     }
     
-    func customSuffix(for componentType: ComponentType) -> String? {
-        return yaml[.string(componentType.name)][.string(ComponentYamlProperty.CustomSuffix.rawValue)].string
-    }
-    
-    func path(for nameProperty: ComponentYamlProperty,
-              from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        let name = nameProperty.rawValue
+    func path(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+        let name = key.rawValue
         guard let path = env[name]
-            ?? readYaml(for: name, from: typeFor)
+            ?? read(for: key, and: componentType, with: generateComponent)
             else {
                 fatalError("should write \(name) in Kuri.yml")
         }
         return path
     }
     
-    func templateRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.TemplateRootPath, from: typeFor)
+    func templateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryPath, and: componentType, with: generateComponent)
     }
     
-    func kuriTemplatePath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryName, from: typeFor)
+    func generateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+        return path(for: ComponentYamlProperty.GenerateRootPath, and: componentType, with: generateComponent)
     }
     
-    func generateRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.GenerateRootPath, from: typeFor)
+    func projectRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+        return path(for: ComponentYamlProperty.ProjectRootPath, and: componentType, with: generateComponent)
     }
     
-    func projectRootPath(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.ProjectRootPath, from: typeFor)
+    func projectFileName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+        return path(for: ComponentYamlProperty.ProjectFileName, and: componentType, with: generateComponent)
     }
     
-    func projectFileName(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.ProjectFileName, from: typeFor)
-    }
-    
-    func targetName(from typeFor: (component: ComponentType, generate: GenerateType)) -> String {
-        return path(for: ComponentYamlProperty.Target, from: typeFor)
+    func targetName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+        return path(for: ComponentYamlProperty.Target, and: componentType, with: generateComponent)
     }
 }

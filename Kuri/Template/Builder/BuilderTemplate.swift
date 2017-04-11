@@ -2,19 +2,23 @@
 import Foundation
 
 struct BuilderTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
-            "//  __BUILDER__.swift",
+            "//  __PREFIX__Builder.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import UIKit",
             "",
-            "protocol __BUILDER__ {",
+            "protocol __PREFIX__Builder {",
             "    func build() -> UIViewController",
             "}",
             ].joined(separator: "\n")
@@ -22,30 +26,20 @@ struct BuilderTemplate: Templatable {
 
     func implement() -> String {
         return [
-            "//",
-            "//  __BUILDER__Impl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
-            "//",
-            "",
-            "import UIKit",
-            "",
-            "struct __BUILDER__Impl: __BUILDER__ {",
+            "struct __PREFIX__BuilderImpl: __PREFIX__Builder {",
             "    func build() -> UIViewController {",
-            "        let viewController = __VIEW__()",
+            "        let viewController = __PREFIX__ViewController()",
             "        viewController.inject(",
-            "            presenter: __PRESENTER__Impl(",
+            "            presenter: __PREFIX__PresenterImpl(",
             "                view: viewController,",
-            "                wireframe: __WIREFRAME__Impl(",
+            "                wireframe: __PREFIX__WireframeImpl(",
             "                    viewController: viewController",
             "                ),",
-            "                useCase: __USECASE__Impl(",
-            "                    repository: __REPOSITORY__Impl (",
-            "                        dataStore: __DATASTORE__Impl()",
+            "                useCase: __PREFIX__UseCaseImpl(",
+            "                    repository: __PREFIX__RepositoryImpl (",
+            "                        dataStore: __PREFIX__DataStoreImpl()",
             "                    ),",
-            "                    translator: __TRANSLATOR__Impl()",
+            "                    translator: __PREFIX__TranslatorImpl()",
             "                )",
             "            )",
             "        )",

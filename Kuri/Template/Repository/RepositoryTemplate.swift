@@ -3,42 +3,40 @@
 import Foundation
 
 struct RepositoryTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
-            "//  __REPOSITORY__.swift",
+            "//  __PREFIX__Repository.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
-            "protocol __REPOSITORY__ {",
-            "    func fetch(_ closure: (__ENTITY__) -> Void) throws ",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
+            "import Foundation",
+            "",
+            "protocol __PREFIX__Repository {",
+            "    func fetch(_ closure: (__PREFIX__Entity) -> Void) throws ",
             "}",
         ].joined(separator: "\n")
     }
     
     func implement() -> String {
         return [
-            "//",
-            "//  __REPOSITORY__Impl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
-            "//",
-            "",
-            "struct __REPOSITORY__Impl: __REPOSITORY__ {",
-            "    private let dataStore: __DATASTORE__",
+            "struct __PREFIX__RepositoryImpl: __PREFIX__Repository {",
+            "    private let dataStore: __PREFIX__DataStore",
             "    ",
             "    init(",
-            "        dataStore: __DATASTORE__",
+            "        dataStore: __PREFIX__DataStore",
             "        ) {",
             "        self.dataStore = dataStore",
             "    }",
             "    ",
-            "    func fetch(_ closure: (__ENTITY__) -> Void) throws  {",
+            "    func fetch(_ closure: (__PREFIX__Entity) -> Void) throws  {",
             "        return try dataStore.fetch(closure)",
             "    }",
             "}",

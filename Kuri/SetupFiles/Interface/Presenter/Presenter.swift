@@ -1,13 +1,13 @@
 //
-//  __PRESENTER__.swift
+//  __PREFIX__Presenter.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import Foundation
 
-protocol __PRESENTER__: class {
+protocol __PREFIX__Presenter: class {
     
 }

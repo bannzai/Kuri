@@ -1,16 +1,16 @@
 //
-//  __TRANSLATOR__Impl.swift
+//  __PREFIX__TranslatorImpl.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
-struct __TRANSLATOR__Impl: __TRANSLATOR__ {
-    func translate(from model: __MODEL__) -> __ENTITY__ {
-        return __ENTITY__Impl(id: model.id)
+struct __PREFIX__TranslatorImpl: __PREFIX__Translator {
+    func translate(from model: __PREFIX__Model) -> __PREFIX__Entity {
+        return __PREFIX__EntityImpl(id: model.id)
     }
-    func translate(from entity: __ENTITY__) -> __MODEL__ {
-        return __MODEL__Impl(id: entity.id)
+    func translate(from entity: __PREFIX__Entity) -> __PREFIX__Model {
+        return __PREFIX__ModelImpl(id: entity.id)
     }
 }

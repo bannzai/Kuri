@@ -2,19 +2,23 @@
 import Foundation
 
 struct WireframeTemplate: Templatable {
-    func interface() -> String {
+    internal func comment() -> String {
         return [
             "//",
-            "//  __WIREFRAME__.swift",
+            "//  __PREFIX__Wireframe.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import UIKit",
             "",
-            "protocol __WIREFRAME__: class {",
+            "protocol __PREFIX__Wireframe: class {",
             "    ",
             "}",
             ].joined(separator: "\n")
@@ -22,17 +26,7 @@ struct WireframeTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "//",
-            "//  __WIREFRAME__Impl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
-            "//",
-            "",
-            "import UIKit",
-            "",
-            "class __WIREFRAME__Impl: __WIREFRAME__ {",
+            "class __PREFIX__WireframeImpl: __PREFIX__Wireframe {",
             "    private weak var viewController: UIViewController!",
             "    ",
             "    init(",

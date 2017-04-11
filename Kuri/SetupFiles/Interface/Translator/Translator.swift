@@ -1,15 +1,15 @@
 //
-//  __TRANSLATOR__.swift
+//  __PREFIX__Translator.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 
 import Foundation
 
-protocol __TRANSLATOR__ {
-    func translate(from model: __MODEL__) -> __ENTITY__ 
-    func translate(from entity: __ENTITY__) -> __MODEL__ 
+protocol __PREFIX__Translator {
+    func translate(from model: __PREFIX__Model) -> __PREFIX__Entity 
+    func translate(from entity: __PREFIX__Entity) -> __PREFIX__Model 
 }

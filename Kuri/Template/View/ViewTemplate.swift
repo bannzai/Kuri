@@ -1,19 +1,24 @@
 import Foundation
 
 struct ViewTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
-            "//  __VIEW__Output.swift",
+            "//  __PREFIX__View.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+
+    func interface() -> String {
+        return [
             "import UIKit",
             "",
-            "protocol __VIEW__Output: class {",
+            "protocol __PREFIX__View: class {",
             "    ",
             "}",
             ].joined(separator: "\n")
@@ -21,22 +26,12 @@ struct ViewTemplate: Templatable {
     
     func implement() -> String {
         return [
-            "//",
-            "//  __VIEW__.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
-            "//",
-            "",
-            "import UIKit",
-            "",
-            "class __VIEW__: UIViewController {",
+            "class __PREFIX__ViewController: UIViewController {",
             "    ",
-            "    private var presenter: __PRESENTER__!",
+            "    private var presenter: __PREFIX__Presenter!",
             "    ",
             "    func inject(",
-            "        presenter: __PRESENTER__",
+            "        presenter: __PREFIX__Presenter",
             "        ) {",
             "        self.presenter = presenter",
             "    }",
@@ -46,7 +41,7 @@ struct ViewTemplate: Templatable {
             "    }",
             "}",
             "",
-            "extension __VIEW__: __VIEW__Output {",
+            "extension __PREFIX__ViewController: __PREFIX__View {",
             "    ",
             "}",
             ].joined(separator: "\n")

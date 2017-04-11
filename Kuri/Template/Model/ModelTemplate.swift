@@ -3,36 +3,30 @@
 import Foundation
 
 struct ModelTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
-            "//  __MODEL__.swift",
+            "//  __PREFIX__Model.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
-            "protocol __MODEL__ {",
-            "    var id: Int { get }",
+            "protocol __PREFIX__Model {",
+            "   var id: Int { get }",
             "}",
             ].joined(separator: "\n")
     }
     func implement() -> String {
         return [
-            "//",
-            "//  __MODEL__Impl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
-            "//",
-            "",
-            "import Foundation",
-            "",
-            "struct __MODEL__Impl: __MODEL__ {",
+            "struct __PREFIX__ModelImpl: __PREFIX__Model {",
             "    let id: Int",
             "}",
             ].joined(separator: "\n")

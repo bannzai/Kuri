@@ -1,45 +1,38 @@
 import Foundation
 
 struct TranslatorTemplate: Templatable {
-    func interface() -> String {
+    func comment() -> String {
         return [
             "//",
-            "//  __TRANSLATOR__.swift",
+            "//  __PREFIX__Translator.swift",
             "//  Kuri",
             "//",
             "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
+            "//  Copyright © __YEAR__ __USERNAME__. All rights reserved.",
             "//",
             "",
-            "",
+            ].joined(separator: "\n")
+    }
+    func interface() -> String {
+        return [
             "import Foundation",
             "",
-            "protocol __TRANSLATOR__ {",
-            "    func translate(from model: __MODEL__) -> __ENTITY__",
-            "    func translate(from entity: __ENTITY__) -> __MODEL__",
+            "protocol __PREFIX__Translator {",
+            "    func translate(from model: __PREFIX__Model) -> __PREFIX__Entity",
+            "    func translate(from entity: __PREFIX__Entity) -> __PREFIX__Model",
             "}",
             ].joined(separator: "\n")
     }
     
     func implement() -> String {
         return [
-            "//",
-            "//  __TRANSLATOR__Impl.swift",
-            "//  Kuri",
-            "//",
-            "//  Created by __USERNAME__ on __DATE__.",
-            "//  Copyright © 2016年 __USERNAME__. All rights reserved.",
-            "//",
-            "",
-            "import Foundation",
-            "",
-            "struct __TRANSLATOR__Impl: __TRANSLATOR__ {",
-            "func translate(from model: __MODEL__) -> __ENTITY__ {",
-            "    return __ENTITY__Impl(id: model.id)",
-            "}",
-            "func translate(from entity: __ENTITY__) -> __MODEL__ {",
-            "    return __MODEL__Impl(id: entity.id)",
-            "}",
+            "struct __PREFIX__TranslatorImpl: __PREFIX__Translator {",
+            "   func translate(from model: __PREFIX__Model) -> __PREFIX__Entity {",
+            "       return __PREFIX__EntityImpl(id: model.id)",
+            "   }",
+            "   func translate(from entity: __PREFIX__Entity) -> __PREFIX__Model {",
+            "       return __PREFIX__ModelImpl(id: entity.id)",
+            "   }",
             "}",
             ].joined(separator: "\n")
     }

@@ -1,19 +1,19 @@
 //
-//  __VIEW__.swift
+//  __PREFIX__View.swift
 //  Kuri
 //
 //  Created by __USERNAME__ on __DATE__.
-//  Copyright © 2016年 __USERNAME__. All rights reserved.
+//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
 //
 
 import UIKit
 
-class __VIEW__: UIViewController {
+class __PREFIX__View: UIViewController {
     
-    private var presenter: __PRESENTER__!
+    private var presenter: __PREFIX__Presenter!
     
     func inject(
-        presenter: __PRESENTER__
+        presenter: __PREFIX__Presenter
         ) {
         self.presenter = presenter
     }
@@ -23,6 +23,6 @@ class __VIEW__: UIViewController {
     }
 }
 
-extension __VIEW__: __VIEW__Output {
+extension __PREFIX__View: __PREFIX__View {
     
 }

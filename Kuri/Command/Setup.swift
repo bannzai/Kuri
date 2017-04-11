@@ -1,4 +1,5 @@
 //
+
 //  Setup.swift
 //  Kuri
 //
@@ -8,7 +9,7 @@
 
 import Foundation
 
-struct Setup: CommandProtocol {
+struct Setup {
     let args: [String] 
     let fileOperator: FileOperator
     
@@ -23,29 +24,23 @@ struct Setup: CommandProtocol {
     
     fileprivate func setupTemplate() throws {
         let templatePath = "./\(Setup.templateDirectoryName)/"
-        try ComponentType.elements.forEach { componentType in
-            try GenerateType.elements.forEach { generateType in
-                let directoryPath = templatePath + generateType.name + "/" + componentType.name + "/"
-                try fileOperator.createDirectory(for: directoryPath)
-                
-                let filePath = directoryPath + componentType.fileName
-                fileOperator.createFile(for: filePath)
-                
-                let content = try readSetupTemplate(for: (componentType, generateType))
-                try fileOperator.write(to: filePath, this: content)
-                
-            }
+        try SetupComponentType.elements.forEach { componentType in
+            let directoryPath = templatePath + componentType.name + "/"
+            try fileOperator.createDirectory(for: directoryPath)
+            
+            let filePath = directoryPath + componentType.fileName
+            fileOperator.createFile(for: filePath)
+            
+            let content = try readSetupTemplate(for: (componentType))
+            try fileOperator.write(to: filePath, this: content)
+            
             print("created template for \(componentType.name)")
         }
     }
     
-    fileprivate func readSetupTemplate(for typeFor: (component: ComponentType ,generate: GenerateType)) throws -> String {
-        switch typeFor.generate {
-        case .Interface:
-            return typeFor.component.template().interface()
-        case .Implement:
-            return typeFor.component.template().implement()
-        }
+    fileprivate func readSetupTemplate(for typeFor: SetupComponentType) throws -> String {
+        let template = typeFor.template()
+        return template.comment() + "\n" + template.interface() + "\n\n\n" + template.implement()
     }
     
     fileprivate func setupYaml() throws {
@@ -65,15 +60,12 @@ struct Setup: CommandProtocol {
         fileOperator.createFile(for: "./Kuri.yml")
         
         let content = [
-            "\(ComponentYamlProperty.TemplateRootPath.rawValue): ./",
-            "\(ComponentYamlProperty.DefaultTemplateDirectoryName.rawValue): \(Setup.templateDirectoryName)",
+            "\(ComponentYamlProperty.DefaultTemplateDirectoryPath.rawValue): ./\(Setup.templateDirectoryName)/",
             "\(ComponentYamlProperty.ProjectRootPath.rawValue): ./",
             "\(ComponentYamlProperty.ProjectFileName.rawValue): \(xcodeProjectFileName)",
             "\(ComponentYamlProperty.GenerateRootPath.rawValue): ./\(projectName)/",
             "\(ComponentYamlProperty.Target.rawValue): \(projectName)",
             "",
-            "\(ComponentType.View.name):",
-            " \(ComponentYamlProperty.CustomSuffix.rawValue): ViewController"
             ].joined(separator: "\n")
         
         try fileOperator.write(to: "./Kuri.yml", this: content)
