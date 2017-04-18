@@ -51,6 +51,18 @@ struct Generator {
         generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
             .components(separatedBy: "\n")
             .filter { !$0.isEmpty }
+            .map { templateDirectoryFullPath -> String in
+                // remove from template directory
+                // and template directory name.
+                guard let headPathRange = templateDirectoryFullPath.range(of: templateDirectoryName) else {
+                    fatalError(
+                        "Unexpected path when decide for read template directory path. info: headPath: \(templateDirectoryName), templateDirectoryFullPath: \(templateDirectoryFullPath)"
+                    )
+                }
+                let subString = templateDirectoryFullPath.substring(with: headPathRange)
+                return subString
+ 
+            }
             .map( GenerateComponent.init )
     }
 }
