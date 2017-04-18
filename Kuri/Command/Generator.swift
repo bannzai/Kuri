@@ -13,6 +13,7 @@ struct Generator {
     let yamlReader: YamlReader
     
     fileprivate var generateComponents: [GenerateComponent] = []
+    fileprivate var templateHeadPath: String = ""
     
     init(
         argument: GenerateArgument,
@@ -20,12 +21,12 @@ struct Generator {
         ) {
         self.argument = argument
         self.yamlReader = yamlReader
-        
-        let templateDirectoryName = yamlReader.templateRootPath()
-        resetGenerateComponents(for: templateDirectoryName)
     }
     
     mutating func execute() throws {
+        templateHeadPath = yamlReader.templateRootPath()
+        resetGenerateComponents(for: templateHeadPath)
+        
         guard let entityName = argument.prefix else {
             throw KuriErrorType.missingArgument("Should input generate entity name")
         }
@@ -40,11 +41,11 @@ struct Generator {
         }
         
         guard argument.hasOption else {
-            try generate(with: entityName, for: generateComponents)
+            try generate(with: entityName, for: generateComponents, and: templateHeadPath)
             return
         }
         
-        try generate(with: entityName, for: generateComponents)
+        try generate(with: entityName, for: generateComponents, and: templateHeadPath)
     }
     
     mutating func resetGenerateComponents(for templateDirectoryName: String) {
@@ -54,17 +55,20 @@ struct Generator {
             .map { templateDirectoryFullPath -> String in
                 // remove from template directory
                 // and template directory name.
-                guard let headPathRange = templateDirectoryFullPath.range(of: templateDirectoryName) else {
+                print("templateDirectoryFullPath: \(templateDirectoryFullPath)")
+                guard let bound = templateDirectoryFullPath.range(of: templateDirectoryName)?.upperBound else {
                     fatalError(
                         "Unexpected path when decide for read template directory path. info: headPath: \(templateDirectoryName), templateDirectoryFullPath: \(templateDirectoryFullPath)"
                     )
                 }
-                let subString = templateDirectoryFullPath.substring(with: headPathRange)
+                let subString = templateDirectoryFullPath.substring(from: bound)
+                print("subString: \(subString)")
                 return subString
  
             }
             .map( GenerateComponent.init )
     }
+    
 }
 
 extension Generator {
@@ -101,8 +105,8 @@ extension Generator {
     fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
         switch option {
         case .templateSpecify:
-            let templateDirectoryName = try executeForTemplateSpecify()
-            resetGenerateComponents(for: templateDirectoryName)
+            templateHeadPath = try executeForTemplateSpecify()
+            resetGenerateComponents(for: templateHeadPath)
         case .specify:
             generateComponents = try generateComponentsForSpecity()
         case .interactive:
@@ -185,7 +189,7 @@ fileprivate extension Generator {
         return replacedContent
     }
     
-    fileprivate func generate(with prefix: String, for components: [GenerateComponent]) throws {
+    fileprivate func generate(with prefix: String, for components: [GenerateComponent], and templateHeadPath: String) throws {
         print("Begin generate")
         defer {
             print("End generate")
@@ -213,7 +217,7 @@ fileprivate extension Generator {
             }
             
             let fileOperator = FileOperator(fileManager: Files)
-            let templatePath = component.templateDirectoryPath.joined(separator: "/") + "/" + component.templateFileName
+            let templatePath = templateHeadPath + component.templateDirectoryPath.joined(separator: "/") + "/" + component.templateFileName
             guard let templateContent = try? fileOperator.read(for: templatePath) else {
                 print("can't find: \(componentType)")
                 return
