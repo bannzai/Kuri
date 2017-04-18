@@ -55,14 +55,12 @@ struct Generator {
             .map { templateDirectoryFullPath -> String in
                 // remove from template directory
                 // and template directory name.
-                print("templateDirectoryFullPath: \(templateDirectoryFullPath)")
                 guard let bound = templateDirectoryFullPath.range(of: templateDirectoryName)?.upperBound else {
                     fatalError(
                         "Unexpected path when decide for read template directory path. info: headPath: \(templateDirectoryName), templateDirectoryFullPath: \(templateDirectoryFullPath)"
                     )
                 }
                 let subString = templateDirectoryFullPath.substring(from: bound)
-                print("subString: \(subString)")
                 return subString
  
             }
