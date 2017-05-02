@@ -14,6 +14,9 @@ struct Generator {
     
     fileprivate var generateComponents: [GenerateComponent] = []
     fileprivate var templateHeadPath: String = ""
+    fileprivate var specityRanges: [String] {
+        return []
+    }
     
     init(
         argument: GenerateArgument,
@@ -163,7 +166,7 @@ fileprivate extension Generator {
         }
     }
     
-    fileprivate func convert(for content: String, to prefix: String) -> String {
+    fileprivate func replaced(for content: String, to prefix: String) -> String {
         let userName = run(bash: "echo $USER")
         let date: DateComponent = { _ -> DateComponent in
             let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
@@ -184,7 +187,19 @@ fileprivate extension Generator {
             .replacingOccurrences(of: "__YEAR__", with: "\(date.year)")
             .replacingOccurrences(of: "__MONTH__", with: "\(date.month)")
             .replacingOccurrences(of: "__DAY__", with: "\(date.day)")
+        
         return replacedContent
+    }
+    
+    fileprivate func plucked(for content: String) -> String {
+        let startRangeString = "<%"
+        guard let _ = content.range(of: startRangeString) else {
+            return content
+        }
+        
+        
+        
+        return content
     }
     
     fileprivate func generate(with prefix: String, for components: [GenerateComponent], and templateHeadPath: String) throws {
@@ -220,7 +235,8 @@ fileprivate extension Generator {
                 print("can't find: \(componentType)")
                 return
             }
-            let writeCotent = convert(for: templateContent, to: prefix)
+            let replacedContent = replaced(for: templateContent, to: prefix)
+            let writeCotent = plucked(for: replacedContent)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
