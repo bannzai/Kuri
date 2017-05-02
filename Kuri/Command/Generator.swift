@@ -71,18 +71,18 @@ struct Generator {
 
 extension Generator {
     enum OptionType: String {
-        case templateSpecify
-        case specify
+        case template
         case interactive
+        case specify
         
         init(shortCut: String) throws {
             switch shortCut {
-            case OptionType.templateSpecify.shortCut:
-                self = .templateSpecify
-            case OptionType.specify.shortCut:
-                self = .specify
+            case OptionType.template.shortCut:
+                self = .template
             case OptionType.interactive.shortCut:
                 self = .interactive
+            case OptionType.specify.shortCut:
+                self = .specify
             default:
                 throw KuriErrorType.missingArgument(assertionMessage(description: "Unknown option for \(shortCut)"))
             }
@@ -90,7 +90,7 @@ extension Generator {
         
         var shortCut: String {
             switch self {
-            case .templateSpecify:
+            case .template:
                 return "-t"
             case .specify:
                 return "-s"
@@ -102,7 +102,7 @@ extension Generator {
 
     fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
         switch option {
-        case .templateSpecify:
+        case .template:
             templateHeadPath = try executeForTemplateSpecify()
             resetGenerateComponents(for: templateHeadPath)
         case .specify:
@@ -141,7 +141,7 @@ extension Generator {
     }
     
     fileprivate func executeForTemplateSpecify() throws -> String {
-        let templateSpecity = OptionType.templateSpecify
+        let templateSpecity = OptionType.template
         
         guard let templateDirectoryName = try argument.optionArgument(for: templateSpecity).first else {
             throw KuriErrorType.missingArgument("Not enough argument for kuri \(templateSpecity.shortCut)")
