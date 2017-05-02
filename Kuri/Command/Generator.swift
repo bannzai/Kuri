@@ -14,7 +14,7 @@ struct Generator {
     
     fileprivate var generateComponents: [GenerateComponent] = []
     fileprivate var templateHeadPath: String = ""
-    fileprivate var specityRanges: [String] = []
+    fileprivate var specityComponents: [String] = []
     
     init(
         argument: GenerateArgument,
@@ -109,7 +109,7 @@ extension Generator {
         case .interactive:
             generateComponents = try generateComponentsForInteractive()
         case .specify:
-            specityRanges = try specityComponents()
+            specityComponents = try extractSpecityComponents()
         }
     }
     
@@ -127,7 +127,7 @@ extension Generator {
         return answeredComponents
     }
     
-    fileprivate func specityComponents() throws -> [String] {
+    fileprivate func extractSpecityComponents() throws -> [String] {
         let optionArguments = try argument.optionArgument(for: OptionType.specify)
         if optionArguments.isEmpty {
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
@@ -183,13 +183,20 @@ fileprivate extension Generator {
         return replacedContent
     }
     
-    fileprivate func plucked(for content: String) -> String {
-        let startRangeString = "<%"
-        guard let _ = content.range(of: startRangeString) else {
+    fileprivate func plucked(for content: String) throws -> String {
+        guard let _ = content.range(of: "<%") else {
             return content
         }
         
-        
+        try specityComponents
+            .reduce(content, { (replacedContent, specityComponent) -> String in
+                let regex = try NSRegularExpression(pattern: "<%\\s+\(specityComponent.uppercased()).+%>", options: [.anchorsMatchLines, .allowCommentsAndWhitespace])
+                guard let match = regex.matches(in: specityComponent, options: [], range: NSMakeRange(0, specityComponent.characters.count)).first else {
+                    return replacedContent
+                }
+                var _content = content
+                return _content.removeSubrange(content.range(of: "<%\\s+.+\n"))
+            }) 
         
         return content
     }
@@ -228,7 +235,7 @@ fileprivate extension Generator {
                 return
             }
             let replacedContent = replaced(for: templateContent, to: prefix)
-            let writeCotent = plucked(for: replacedContent)
+            let writeCotent = try plucked(for: replacedContent)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
