@@ -14,9 +14,7 @@ struct Generator {
     
     fileprivate var generateComponents: [GenerateComponent] = []
     fileprivate var templateHeadPath: String = ""
-    fileprivate var specityRanges: [String] {
-        return []
-    }
+    fileprivate var specityRanges: [String] = []
     
     init(
         argument: GenerateArgument,
@@ -108,10 +106,10 @@ extension Generator {
         case .template:
             templateHeadPath = try executeForTemplateSpecify()
             resetGenerateComponents(for: templateHeadPath)
-        case .specify:
-            generateComponents = try generateComponentsForSpecity()
         case .interactive:
             generateComponents = try generateComponentsForInteractive()
+        case .specify:
+            specityRanges = try specityComponents()
         }
     }
     
@@ -129,18 +127,12 @@ extension Generator {
         return answeredComponents
     }
     
-    fileprivate func generateComponentsForSpecity() throws -> [GenerateComponent] {
+    fileprivate func specityComponents() throws -> [String] {
         let optionArguments = try argument.optionArgument(for: OptionType.specify)
         if optionArguments.isEmpty {
             throw KuriErrorType.missingArgument("Should write for componentType. e.g kuri -s View")
         }
-        
-        let components = generateComponents.filter { component in
-            return optionArguments.contains { option in
-                return component.componentType == option
-            }
-        }
-        return components
+        return optionArguments
     }
     
     fileprivate func executeForTemplateSpecify() throws -> String {
