@@ -7,10 +7,19 @@
 //
 
 import Foundation
+import Yaml
 
-struct YamlReader {
-    let yaml: Yaml
-    let env: [String: String]
+public struct YamlReader {
+    public let yaml: Yaml
+    public let env: [String: String]
+    
+    public init(
+        yaml: Yaml,
+        env: [String: String]
+        ) {
+        self.yaml = yaml
+        self.env = env
+    }
     
     private func readYaml(for key: String, from yaml: Yaml) -> Yaml {
         return yaml[.string(key)]

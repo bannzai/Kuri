@@ -8,14 +8,23 @@
 //
 
 import Foundation
+import SwiftShell
 
-struct Setup {
-    let args: [String] 
-    let fileOperator: FileOperator
+public struct Setup {
+    public let args: [String]
+    public let fileOperator: FileOperator
+    
+    public init(
+        args: [String],
+        fileOperator: FileOperator
+        ) {
+        self.args = args
+        self.fileOperator = fileOperator
+    }
     
     static let templateDirectoryName = "KuriTemplate"
     
-    func execute() throws {
+    public func execute() throws {
         try setupYaml()
         try setupTemplate()
         
@@ -46,6 +55,7 @@ struct Setup {
     fileprivate func setupYaml() throws {
         guard
             let xcodeProjectFileName = run(bash: "ls | grep xcodeproj")
+                .stdout
                 .components(separatedBy: "\n")
                 .first else {
                     throw KuriErrorType.notExistsXcodeProjectFile("Please exec exists .xcodeproj directory.")

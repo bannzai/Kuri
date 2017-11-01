@@ -8,9 +8,15 @@
 
 import Foundation
 
-struct FileOperator {
-    let fileManager: Foundation.FileManager
+public struct FileOperator {
+    public let fileManager: Foundation.FileManager
     
+    public init(
+        fileManager: Foundation.FileManager
+        ) {
+        self.fileManager = fileManager
+    }
+
     func read(for path: String) throws -> String {
         let url = URL(fileURLWithPath: path)
         let content = try String(contentsOf: url)

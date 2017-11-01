@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-enum CommandType: String {
+public enum CommandType: String {
     case setup
     case generate
 //    case remove

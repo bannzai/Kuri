@@ -7,6 +7,8 @@
 //
  
 import Foundation
+import KuriCore
+import SwiftShell
 
 let env = ProcessInfo().environment
 let args = Array(ProcessInfo().arguments.dropFirst())

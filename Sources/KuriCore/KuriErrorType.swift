@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum KuriErrorType: Error {
+public enum KuriErrorType: Error {
     case urlError(String)
     case readInputError(String)
     case readYamlError(String)
@@ -19,7 +19,7 @@ enum KuriErrorType: Error {
     case notExistsXcodeProjectFile(String)
     case missingXcodeProjectFileName(String)
     
-    func errorDescription() -> String {
+    public func errorDescription() -> String {
         switch self {
         case .urlError(let message): return message
         case .readInputError(let message): return message

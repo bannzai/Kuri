@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftShell
 
 struct CommandInput {
     fileprivate static func waitStandardInput() throws -> String {

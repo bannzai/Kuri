@@ -8,9 +8,17 @@
 
 import Foundation
 
-struct GenerateArgument {
-    let args: [String]
-    let yamlReader: YamlReader
+public struct GenerateArgument {
+    public let args: [String]
+    public let yamlReader: YamlReader
+    
+    public init(
+        args: [String],
+        yamlReader: YamlReader
+        ) {
+        self.args = args
+        self.yamlReader = yamlReader
+    }
     
     var prefix: String? {
         return args.first

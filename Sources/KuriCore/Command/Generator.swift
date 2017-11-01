@@ -7,15 +7,14 @@
 //
 
 import Foundation
+import SwiftShell
+import XcodeProject
 
-struct Generator {
-    let argument: GenerateArgument
-    let yamlReader: YamlReader
+public struct Generator {
+    public let argument: GenerateArgument
+    public let yamlReader: YamlReader
     
-    fileprivate var generateComponents: [GenerateComponent] = []
-    fileprivate var templateHeadPath: String = ""
-    
-    init(
+    public init(
         argument: GenerateArgument,
         yamlReader: YamlReader
         ) {
@@ -23,7 +22,10 @@ struct Generator {
         self.yamlReader = yamlReader
     }
     
-    mutating func execute() throws {
+    fileprivate var generateComponents: [GenerateComponent] = []
+    fileprivate var templateHeadPath: String = ""
+    
+    public mutating func execute() throws {
         templateHeadPath = yamlReader.templateRootPath()
         resetGenerateComponents(for: templateHeadPath)
         
@@ -34,8 +36,8 @@ struct Generator {
         let offsetAndOption = try argument.options.enumerated()
             .filter { $1.contains("-") }
             .map { (offset: $0, option: try OptionType(shortCut: $1)) }
-            .sorted { $0.0.option.hashValue > $0.1.option.hashValue }
-        
+            .sorted { $0.option.hashValue > $1.option.hashValue }
+
         try offsetAndOption.forEach { offset, option in
             try setupForExec(with: option)
         }
@@ -50,6 +52,7 @@ struct Generator {
     
     mutating func resetGenerateComponents(for templateDirectoryName: String) {
         generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
+            .stdout
             .components(separatedBy: "\n")
             .filter { !$0.isEmpty }
             .map { templateDirectoryFullPath -> String in
@@ -164,7 +167,7 @@ fileprivate extension Generator {
     }
     
     fileprivate func convert(for content: String, to prefix: String) -> String {
-        let userName = run(bash: "echo $USER")
+        let userName = run(bash: "echo $USER").stdout
         let date: DateComponent = { _ -> DateComponent in
             let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
             guard
@@ -175,7 +178,7 @@ fileprivate extension Generator {
                     fatalError("Can't get system date")
             }
             return DateComponent(year: year, month: month, day: day)
-        }()
+        }(())
         
         let replacedContent = content
             .replacingOccurrences(of: "__PREFIX__", with: prefix)
@@ -192,7 +195,7 @@ fileprivate extension Generator {
         defer {
             print("End generate")
         }
-        var pathAndXcodeProject: [String: XCProject] = [:]
+        var pathAndXcodeProject: [String: XcodeProject] = [:]
         try components.forEach { component in
             let componentType = component.componentType
             let typeFor = componentType
@@ -205,12 +208,12 @@ fileprivate extension Generator {
             let directoryPath = generateRootPath + component.generateDirectoryPath.joined(separator: "/") + "/"
             let filePath = directoryPath + prefix + component.templateFileName
             
-            let project: XCProject
+            let project: XcodeProject
             if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
                 project = alreadyExistsProject
             } else {
                 let xcodeprojectFileUrl = URL(fileURLWithPath: projectFilePath + "project.pbxproj")
-                project = try XCProject(for: xcodeprojectFileUrl)
+                project = try XcodeProject(for: xcodeprojectFileUrl)
                 pathAndXcodeProject[projectFilePath] = project
             }
             
