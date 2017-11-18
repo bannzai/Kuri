@@ -1,8 +1,0 @@
-TemplateRootPath: ./
-ProjectRootPath: ./
-ProjectFileName: 
-GenerateRootPath: .//
-Target: 
-
-View:
- CustomSuffix: ViewController
