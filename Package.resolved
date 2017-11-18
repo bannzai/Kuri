@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Commander",
+        "repositoryURL": "https://github.com/kylef/Commander.git",
+        "state": {
+          "branch": null,
+          "revision": "e5b50ad7b2e91eeb828393e89b03577b16be7db9",
+          "version": "0.8.0"
+        }
+      },
+      {
+        "package": "Spectre",
+        "repositoryURL": "https://github.com/kylef/Spectre.git",
+        "state": {
+          "branch": null,
+          "revision": "e34d5687e1e9d865e3527dd58bc2f7464ef6d936",
+          "version": "0.8.0"
+        }
+      },
+      {
+        "package": "SwiftShell",
+        "repositoryURL": "https://github.com/kareman/SwiftShell.git",
+        "state": {
+          "branch": null,
+          "revision": "ecf0544d740c8d729275ac3d52543511153909d6",
+          "version": "4.0.0"
+        }
+      },
+      {
+        "package": "XcodeProject",
+        "repositoryURL": "https://github.com/bannzai/XcodeProject.git",
+        "state": {
+          "branch": null,
+          "revision": "087bd460043a82791c6bacb3823081c587b2e417",
+          "version": "0.1.2"
+        }
+      },
+      {
+        "package": "Yaml",
+        "repositoryURL": "https://github.com/behrang/YamlSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "901c4943f3206afb3b965bad2d1338e3c4fdbeba",
+          "version": "3.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

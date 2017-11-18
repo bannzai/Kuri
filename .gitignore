@@ -1,2 +1,5 @@
 
 Kuri.xcodeproj/xcuserdata/
+Kuri.xcodeproj/
+.gitsubmodule
+/.build
