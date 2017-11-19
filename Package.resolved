@@ -3,11 +3,20 @@
     "pins": [
       {
         "package": "Commander",
-        "repositoryURL": "https://github.com/kylef/Commander.git",
+        "repositoryURL": "https://github.com/bannzai/Commander.git",
         "state": {
           "branch": null,
-          "revision": "e5b50ad7b2e91eeb828393e89b03577b16be7db9",
-          "version": "0.8.0"
+          "revision": "22b34f8b7fcc323e941a2070040e2bb67ef79f1f",
+          "version": "0.8.1"
+        }
+      },
+      {
+        "package": "PathKit",
+        "repositoryURL": "https://github.com/bannzai/PathKit.git",
+        "state": {
+          "branch": null,
+          "revision": "e9e4baf733d3fa9a39029c6c8389b68c5864d9ba",
+          "version": "0.8.1"
         }
       },
       {
@@ -17,6 +26,15 @@
           "branch": null,
           "revision": "e34d5687e1e9d865e3527dd58bc2f7464ef6d936",
           "version": "0.8.0"
+        }
+      },
+      {
+        "package": "Stencil",
+        "repositoryURL": "https://github.com/bannzai/Stencil.git",
+        "state": {
+          "branch": null,
+          "revision": "a294139d7fac12a6e5c37e742652c6b0d6fd143a",
+          "version": "0.10.7"
         }
       },
       {
