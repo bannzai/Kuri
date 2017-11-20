@@ -10,7 +10,7 @@ import Foundation
 import SwiftShell
 import Yaml
 
-enum ComponentYamlProperty: String {
+public enum ComponentYamlProperty: String {
     case Target
     case DefaultTemplateDirectoryPath
     case ProjectRootPath
@@ -19,8 +19,8 @@ enum ComponentYamlProperty: String {
 }
 
 public struct YamlResource {
-    fileprivate static func findYamlFile() -> URL? {
-        let path = run(bash: "ls | grep Kuri.yml").stdout
+    fileprivate static func findYamlFile(for path: String) -> URL? {
+        let path = run(bash: "ls \(path) | grep Kuri.yml").stdout
         return URL(fileURLWithPath: path)
     }
     
@@ -28,9 +28,9 @@ public struct YamlResource {
         return try String(contentsOf: fileUrl)
     }
     
-    public static func loadYamlIfPossible() throws -> Yaml {
+    public static func loadYamlIfPossible(for path: String) throws -> Yaml {
         let yaml: Yaml
-        if let yamlFile = findYamlFile() {
+        if let yamlFile = findYamlFile(for: path) {
             do {
                 let yamlContent = try readYamlContent(for: yamlFile)
                 yaml = try Yaml.load(yamlContent)

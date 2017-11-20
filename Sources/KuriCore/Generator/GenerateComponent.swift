@@ -14,31 +14,50 @@ public struct GenerateComponent {
     public let templateRelativePath: String
     public let yamlReader: YamlReader
     
-    var templateFileName: String {
-        return URL(fileURLWithPath: templateRelativePath).lastPathComponent
-    }
-    
-    var componentType: String {
+    public var componentType: String {
         guard
             let componentType = Array(templateRelativePath.components(separatedBy: "/").dropLast()).last
             else {
-            fatalError("Unexpected format file name \(templateFileName)")
+                fatalError("Unexpected format file name \(templateFileName)")
         }
         return componentType
     }
     
-    var componentTypeVariable: String {
-        return "__\(componentType.uppercased())__"
+    public var generateRootPath: String {
+        return yamlReader.generateRootPath(for: componentType)
     }
     
-    var templateDirectoryPath: [String] {
+    public var projectRootPath: String {
+        return yamlReader.projectRootPath(for: componentType)
+    }
+    
+    public var projectFileName: String {
+        return yamlReader.projectFileName(for: componentType)
+    }
+    
+    public var templateFileName: String {
+        return URL(fileURLWithPath: templateRelativePath).lastPathComponent
+    }
+    
+    public var templateDirectoryPathComponents: [String] {
         // remove file name
         return Array(templateRelativePath.components(separatedBy: "/").dropLast())
     }
     
-    var generateDirectoryPath: [String] {
-        return templateDirectoryPath
+    public var generateDirectoryPathComponents: [String] {
+        return templateDirectoryPathComponents
+    }
+    
+    public var targetName: String {
+        return yamlReader.targetName(for: componentType)
     }
 }
 
+// MARK: - Private
 
+extension GenerateComponent {
+    private var componentTypeVariable: String {
+        return "__\(componentType.uppercased())__"
+    }
+    
+}

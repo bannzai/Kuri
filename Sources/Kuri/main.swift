@@ -85,7 +85,7 @@ do {
     case .setup:
         try Setup(args: options, fileOperator: FileOperator(fileManager: Files)).execute()
     case .generate:
-        let yaml = try YamlResource.loadYamlIfPossible()
+        let yaml = try YamlResource.loadYamlIfPossible(for: "./")
         let yamlReader = YamlReader(yaml: yaml, env: env)
         let argument = GenerateArgument(args: options, yamlReader: yamlReader)
         var generater = Generator(argument: argument, yamlReader: yamlReader)

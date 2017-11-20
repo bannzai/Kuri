@@ -123,16 +123,13 @@ fileprivate extension Generator {
         }
         var pathAndXcodeProject: [String: XcodeProject] = [:]
         try components.forEach { component in
-            let componentType = component.componentType
-            let typeFor = componen
-            tType
-            
-            let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
-            let projectRootPath = yamlReader.projectRootPath(for: typeFor)
-            let projectFileName = yamlReader.projectFileName(for: typeFor)
+
+            let generateRootPath = component.generateRootPath + prefix + "/"
+            let projectRootPath = component.projectRootPath
+            let projectFileName = component.projectFileName
             
             let projectFilePath = projectRootPath + projectFileName + "/"
-            let directoryPath = generateRootPath + component.generateDirectoryPath.joined(separator: "/") + "/"
+            let directoryPath = generateRootPath + component.generateDirectoryPathComponents.joined(separator: "/") + "/"
             let filePath = directoryPath + prefix + component.templateFileName
             
             let project: XcodeProject
@@ -145,16 +142,16 @@ fileprivate extension Generator {
             }
             
             let fileOperator = FileOperator(fileManager: Files)
-            let templatePath = templateRootPath + component.templateDirectoryPath.joined(separator: "/") + "/" + component.templateFileName
+            let templatePath = templateRootPath + component.templateDirectoryPathComponents.joined(separator: "/") + "/" + component.templateFileName
             guard let templateContent = try? fileOperator.read(for: templatePath) else {
-                print("can't find: \(componentType)")
+                print("can't find: \(component.componentType)")
                 return
             }
             let writeCotent = convert(for: templateContent, to: prefix)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
-            let targetName = yamlReader.targetName(for: typeFor)
+            let targetName = component.targetName
             project.appendFilePath(
                 with: projectRootPath,
                 filePath: filePath,
