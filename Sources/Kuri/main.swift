@@ -9,6 +9,8 @@
 import Foundation
 import KuriCore
 import SwiftShell
+import Stencil
+import Commander
 
 let env = ProcessInfo().environment
 let args = Array(ProcessInfo().arguments.dropFirst())
@@ -16,6 +18,15 @@ let args = Array(ProcessInfo().arguments.dropFirst())
 if let debugPath = env["WorkingDirectory"] {
     main.currentdirectory = debugPath
 }
+
+
+let group = Commander.Group {
+    $0.command("generate", { (hoge: String, f: ArgumentParser) in
+        print("hoge: \(hoge)")
+        print("f: \(f.hasOption("paths"))")
+    })
+    }
+    .run()
 
 do {
     guard
@@ -44,6 +55,7 @@ do {
     exit(2)
 } catch {
     print("unknown error")
+    
     exit(3)
 }
 
