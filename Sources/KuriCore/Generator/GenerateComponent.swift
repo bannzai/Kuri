@@ -8,10 +8,11 @@
 
 import Foundation
 
-struct GenerateComponent {
+public struct GenerateComponent {
     // e.g from KuriTemplate/Repository/Repository.swift
     // templateRelativePath is Repository/Repository.swift
-    let templateRelativePath: String
+    public let templateRelativePath: String
+    public let yamlReader: YamlReader
     
     var templateFileName: String {
         return URL(fileURLWithPath: templateRelativePath).lastPathComponent
@@ -39,3 +40,5 @@ struct GenerateComponent {
         return templateDirectoryPath
     }
 }
+
+

@@ -20,13 +20,57 @@ if let debugPath = env["WorkingDirectory"] {
 }
 
 
-let group = Commander.Group {
-    $0.command("generate", { (hoge: String, f: ArgumentParser) in
-        print("hoge: \(hoge)")
-        print("f: \(f.hasOption("paths"))")
-    })
-    }
-    .run()
+do {
+    let group = Commander.Group {
+        $0.command("generate", { (commandName: String, options: ArgumentParser) in
+            func hasOption(_ type: Generator.OptionType) -> Bool {
+                return options.hasOption(type.rawValue)
+            }
+            
+            func value(_ type: Generator.OptionType) throws -> String {
+                guard let value = try? options.shiftValue(for: type.rawValue) else {
+                    throw KuriErrorType.missingArgument("Not enough argument for kuri \(type.rawValue)")
+                }
+                
+                return value
+            }
+
+            let templatePath: String
+            switch hasOption(.templatePath) {
+            case true:
+                templatePath = value(.templatePath)
+            case false:
+                let yaml = try YamlResource.loadYamlIfPossible()
+                let yamlReader = YamlReader(yaml: yaml, env: env)
+                templatePath = yamlReader.templateRootPath()
+            }
+            switch (hasOption(.templatePath), hasOption(.specify), hasOption(.interactive)) {
+            case (false, false, false):
+                return
+            case (true, _, _):
+                templatePath = value(.templatePath)
+                return
+            case (true, false, _):
+                return
+            case (true, _, false):
+                return
+            case (false, true, _):
+                return
+            case (_, true, false):
+                return
+            case (false, _, true):
+                return
+            case (_, false, true):
+                return
+            }
+        })
+        }
+        .run()
+    
+} catch {
+    
+    
+}
 
 do {
     guard

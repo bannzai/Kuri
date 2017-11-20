@@ -11,103 +11,36 @@ import SwiftShell
 import XcodeProject
 
 public struct Generator {
-    public let argument: GenerateArgument
-    public let yamlReader: YamlReader
-    
-    public init(
-        argument: GenerateArgument,
-        yamlReader: YamlReader
-        ) {
-        self.argument = argument
-        self.yamlReader = yamlReader
-    }
-    
-    fileprivate var generateComponents: [GenerateComponent] = []
-    fileprivate var templateHeadPath: String = ""
-    
-    public mutating func execute() throws {
-        templateHeadPath = yamlReader.templateRootPath()
-        resetGenerateComponents(for: templateHeadPath)
-        
-        guard let entityName = argument.prefix else {
-            throw KuriErrorType.missingArgument("Should input generate entity name")
-        }
-        
-        let offsetAndOption = try argument.options.enumerated()
-            .filter { $1.contains("-") }
-            .map { (offset: $0, option: try OptionType(shortCut: $1)) }
-            .sorted { $0.option.hashValue > $1.option.hashValue }
+    public let name: String
+    public let templateRootPath: String
+    public let generateComponents: [GenerateComponent]
 
-        try offsetAndOption.forEach { offset, option in
-            try setupForExec(with: option)
-        }
-        
-        guard argument.hasOption else {
-            try generate(with: entityName, for: generateComponents, and: templateHeadPath)
-            return
-        }
-        
-        try generate(with: entityName, for: generateComponents, and: templateHeadPath)
+    public init(
+        name: String,
+        templateRootPath: String,
+        generateComponents: [GenerateComponent]
+        ) {
+        self.name = name
+        self.templateRootPath = templateRootPath
+        self.generateComponents = generateComponents
     }
     
-    mutating func resetGenerateComponents(for templateDirectoryName: String) {
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
-            .stdout
-            .components(separatedBy: "\n")
-            .filter { !$0.isEmpty }
-            .map { templateDirectoryFullPath -> String in
-                // remove from template directory
-                // and template directory name.
-                guard let bound = templateDirectoryFullPath.range(of: templateDirectoryName)?.upperBound else {
-                    fatalError(
-                        "Unexpected path when decide for read template directory path. info: headPath: \(templateDirectoryName), templateDirectoryFullPath: \(templateDirectoryFullPath)"
-                    )
-                }
-                let subString = templateDirectoryFullPath.substring(from: bound)
-                return subString
- 
-            }
-            .map( GenerateComponent.init )
+    public func execute() throws {
+        try generate(with: name, for: generateComponents, and: templateRootPath)
     }
-    
 }
 
 extension Generator {
-    enum OptionType: String {
-        case templateSpecify
+    public enum OptionType: String {
+        case templatePath
         case specify
         case interactive
-        
-        init(shortCut: String) throws {
-            switch shortCut {
-            case OptionType.templateSpecify.shortCut:
-                self = .templateSpecify
-            case OptionType.specify.shortCut:
-                self = .specify
-            case OptionType.interactive.shortCut:
-                self = .interactive
-            default:
-                throw KuriErrorType.missingArgument(assertionMessage(description: "Unknown option for \(shortCut)"))
-            }
-        }
-        
-        var shortCut: String {
-            switch self {
-            case .templateSpecify:
-                return "-t"
-            case .specify:
-                return "-s"
-            case .interactive:
-                return "-i"
-            }
-        }
     }
 
     fileprivate mutating func setupForExec(with option: Generator.OptionType) throws {
         switch option {
-        case .templateSpecify:
-            templateHeadPath = try executeForTemplateSpecify()
-            resetGenerateComponents(for: templateHeadPath)
+        case .templatePath:
+            
         case .specify:
             generateComponents = try generateComponentsForSpecity()
         case .interactive:
@@ -142,17 +75,6 @@ extension Generator {
         }
         return components
     }
-    
-    fileprivate func executeForTemplateSpecify() throws -> String {
-        let templateSpecity = OptionType.templateSpecify
-        
-        guard let templateDirectoryName = try argument.optionArgument(for: templateSpecity).first else {
-            throw KuriErrorType.missingArgument("Not enough argument for kuri \(templateSpecity.shortCut)")
-        }
-        
-        return templateDirectoryName
-    }
-    
 }
 
 fileprivate extension Generator {
@@ -190,7 +112,11 @@ fileprivate extension Generator {
         return replacedContent
     }
     
-    fileprivate func generate(with prefix: String, for components: [GenerateComponent], and templateHeadPath: String) throws {
+    fileprivate func generate(
+        with prefix: String,
+        for components: [GenerateComponent],
+        and templateRootPath: String
+        ) throws {
         print("Begin generate")
         defer {
             print("End generate")
@@ -198,7 +124,8 @@ fileprivate extension Generator {
         var pathAndXcodeProject: [String: XcodeProject] = [:]
         try components.forEach { component in
             let componentType = component.componentType
-            let typeFor = componentType
+            let typeFor = componen
+            tType
             
             let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
             let projectRootPath = yamlReader.projectRootPath(for: typeFor)
@@ -218,7 +145,7 @@ fileprivate extension Generator {
             }
             
             let fileOperator = FileOperator(fileManager: Files)
-            let templatePath = templateHeadPath + component.templateDirectoryPath.joined(separator: "/") + "/" + component.templateFileName
+            let templatePath = templateRootPath + component.templateDirectoryPath.joined(separator: "/") + "/" + component.templateFileName
             guard let templateContent = try? fileOperator.read(for: templatePath) else {
                 print("can't find: \(componentType)")
                 return
