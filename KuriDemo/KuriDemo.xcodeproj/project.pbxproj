@@ -14,6 +14,7 @@
 		BA265F331FFBAB850016E7DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA265F311FFBAB850016E7DE /* LaunchScreen.storyboard */; };
 		BA265F3E1FFBAB850016E7DE /* KuriDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F3D1FFBAB850016E7DE /* KuriDemoTests.swift */; };
 		BA265F491FFBAB850016E7DE /* KuriDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F481FFBAB850016E7DE /* KuriDemoUITests.swift */; };
+		BA265F631FFBACBF0016E7DE /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA265F621FFBACBF0016E7DE /* ViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		BA265F441FFBAB850016E7DE /* KuriDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuriDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA265F481FFBAB850016E7DE /* KuriDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuriDemoUITests.swift; sourceTree = "<group>"; };
 		BA265F4A1FFBAB850016E7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA265F621FFBACBF0016E7DE /* ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				BA265F2F1FFBAB850016E7DE /* Assets.xcassets */,
 				BA265F311FFBAB850016E7DE /* LaunchScreen.storyboard */,
 				BA265F341FFBAB850016E7DE /* Info.plist */,
+				BA265F621FFBACBF0016E7DE /* ViewController.storyboard */,
 			);
 			path = KuriDemo;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				BA265F331FFBAB850016E7DE /* LaunchScreen.storyboard in Resources */,
 				BA265F301FFBAB850016E7DE /* Assets.xcassets in Resources */,
 				BA265F2E1FFBAB850016E7DE /* Main.storyboard in Resources */,
+				BA265F631FFBACBF0016E7DE /* ViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
