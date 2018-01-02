@@ -13,9 +13,10 @@ protocol __PREFIX__View: class {
 }
 
 
-class __PREFIX__ViewController: UIViewController {
+class __PREFIX__TableViewController: UIViewController {
     
     private var presenter: __PREFIX__Presenter!
+    @IBOutlet weak var tableView: UITableView!
     
     func inject(
         presenter: __PREFIX__Presenter
