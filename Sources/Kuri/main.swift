@@ -1,4 +1,5 @@
-//
+ .//
+
 //  main.swift
 //  Kuri
 //
@@ -28,7 +29,7 @@ do {
             }
             
             func value(_ type: Generator.OptionType) throws -> String {
-                guard let value = try? options.shiftValue(for: type.rawValue) else {
+                guard let value = try options.shiftValue(for: type.rawValue) else {
                     throw KuriErrorType.missingArgument("Not enough argument for kuri \(type.rawValue)")
                 }
                 
@@ -38,12 +39,18 @@ do {
             let templatePath: String
             switch hasOption(.templatePath) {
             case true:
-                templatePath = value(.templatePath)
+                templatePath = try value(.templatePath)
             case false:
                 let yaml = try YamlResource.loadYamlIfPossible()
                 let yamlReader = YamlReader(yaml: yaml, env: env)
                 templatePath = yamlReader.templateRootPath()
             }
+            
+            switch hasOption(.specify) {
+            case true:
+            case false:
+            }
+            
             switch (hasOption(.templatePath), hasOption(.specify), hasOption(.interactive)) {
             case (false, false, false):
                 return
