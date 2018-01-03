@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/bannzai/XcodeProject.git", from: Version(0, 1, 3)),
+        .package(url: "https://github.com/bannzai/XcodeProject.git", from: Version(0, 1, 5)),
         .package(url: "https://github.com/behrang/YamlSwift.git", from: Version(3, 4, 0)),
         .package(url: "https://github.com/kareman/SwiftShell.git", from: Version(4, 0, 0)),
         .package(url: "https://github.com/kylef/Commander.git", from: Version(0, 8, 0))
