@@ -1,0 +1,989 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0OP6VDDZERD8ZRJWQC5QI6IJ /* PiyoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0LVP5T26GZJ0KTQKOI3Z2BPX /* PiyoPresenter.swift */; };
+		1GOISMFREV12TGR7NU9AHCK9 /* FugaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */; };
+		1RSKL6NOIYK22XS4DBCW36QN /* PiyoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */; };
+		2BUPCANGPW1G1PDEOPL51470 /* PiyoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */; };
+		467PA6ZE954JAHZGQ8IKJXPD /* HogeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = NGPAQPTWKST64KQM46XRGGY6 /* HogeEntity.swift */; };
+		4PGJI10SW8WBZNC2TJO60MI8 /* FugaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZVRJGE5YNYOI7XLAC6SN65AR /* FugaUseCase.swift */; };
+		5LLGAKMM6CR3SRNOBPNXAR30 /* PiyoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */; };
+		5TO0B4CZFYQDWFXSBE7LUYFR /* FugaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4JSWFJIAT0HNCIWWBV75JFN3 /* FugaCollectionViewCell.xib */; };
+		6IJ2W30FDV1LY4GGZ8YEULW7 /* FugaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EN3FN8UIE7TQ4ZFGZWYBWIFU /* FugaModel.swift */; };
+		6N1U0YD1TRLJOQ19SXZ5TGOY /* HogeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = O9C6CTQU6OF4JF9COI86ZVCL /* HogeRepository.swift */; };
+		6RX6ZF9WTIW79GZUV6X08LE0 /* HogeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */; };
+		83ZBBQIKXVOHT7748GK42ABV /* PiyoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */; };
+		AOBLBEM90WF58I1RNL429JTM /* HogeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = XKLNNTJMYJG1CQTDFLS6MR6C /* HogeBuilder.swift */; };
+		BA265F291FFBAB850016E7DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F281FFBAB850016E7DE /* AppDelegate.swift */; };
+		BA265F2B1FFBAB850016E7DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F2A1FFBAB850016E7DE /* ViewController.swift */; };
+		BA265F2E1FFBAB850016E7DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA265F2C1FFBAB850016E7DE /* Main.storyboard */; };
+		BA265F301FFBAB850016E7DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA265F2F1FFBAB850016E7DE /* Assets.xcassets */; };
+		BA265F331FFBAB850016E7DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA265F311FFBAB850016E7DE /* LaunchScreen.storyboard */; };
+		BA265F3E1FFBAB850016E7DE /* KuriDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F3D1FFBAB850016E7DE /* KuriDemoTests.swift */; };
+		BA265F491FFBAB850016E7DE /* KuriDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F481FFBAB850016E7DE /* KuriDemoUITests.swift */; };
+		BA265F631FFBACBF0016E7DE /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA265F621FFBACBF0016E7DE /* ViewController.storyboard */; };
+		BA265F6A1FFBAD270016E7DE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F681FFBAD270016E7DE /* CollectionViewCell.swift */; };
+		BA265F6B1FFBAD270016E7DE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */; };
+		BA265F6E1FFBAD3F0016E7DE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F6C1FFBAD3F0016E7DE /* TableViewCell.swift */; };
+		BA265F6F1FFBAD3F0016E7DE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */; };
+		CD6M0H8J5XYTOW57ALRNMD1O /* FugaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2OLK7SITMXYMWH2LPSOZ3IT /* FugaEntity.swift */; };
+		CP4U9ZZ1IXI9O69I88Z5U36U /* FugaTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = X2WIQRY2KSG9D63V0CLEY1LG /* FugaTranslator.swift */; };
+		D4ODL498YWYVATSNKCIHBIBS /* HogeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */; };
+		GXCWRPEEFHIUAYGHI7Q8PGCV /* PiyoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */; };
+		HWJOJ0T71ODBZ8DOW57HOR46 /* PiyoTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */; };
+		J4QXUUP0H88BEQ5F78PLJCS9 /* HogeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */; };
+		KA67GINSIV1LC97SDMI37XDF /* PiyoTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */; };
+		LCEVTGOH286TAOET53QBACR1 /* PiyoDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */; };
+		ML4EFUYIGIJ5DZ8XWQT5E7SM /* PiyoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */; };
+		ODDIN2YDCIIWM3DIBRQFT6F1 /* HogeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */; };
+		P5PYEDZJG2Z0DW44KIE4K0FU /* FugaWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = NK90RPQFCUJNWGHICIVW9ZM9 /* FugaWireframe.swift */; };
+		PAXCIXA2R4OQ759HVGFG2HY2 /* HogeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ISKDBK20PC87U4HG2W8M8OIB /* HogeTranslator.swift */; };
+		PPBUU0U5TVVP22PFK9HATVM3 /* PiyoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */; };
+		R0RFH0579JA3QMIDVVRZIY0H /* PiyoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */; };
+		RT8AAFMAZQB0AZZHV9C24T1U /* PiyoWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */; };
+		RUS35PKYW0IBU2Q51HWZNE8J /* FugaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = O8C7E66V26O7BHLOYMD67C0V /* FugaCollectionViewController.swift */; };
+		SCL1MAAAVQVJWABG8OFJYHRG /* FugaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = UAAUI6E13FZAIK1P3RPOVSKD /* FugaCollectionViewCell.swift */; };
+		TVVMEBOPCN81TBFVN9PRISUL /* HogePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */; };
+		UBB9SR63U97BUHC14C1QJIN4 /* FugaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = R0ZWL75196MO0G7X61I561DY /* FugaRepository.swift */; };
+		UMJMIL4FSD3D5VO34Y7MYBI1 /* HogeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = YZ77AXR5K8OCJ62DC8D64S0T /* HogeModel.swift */; };
+		UYINUWEOEMJ3EZVCSB39AMXM /* HogeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = TORQINLEYHX59M4KR07YFK4I /* HogeViewController.storyboard */; };
+		VZVV40D0T1JGZPEMW6NZT9RS /* FugaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = HXHBEAOEMAL6WLI6S1I0KZ8G /* FugaPresenter.swift */; };
+		W32OOZZGZTQQASY770EOJVVI /* FugaCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = RDMKKI58T3FC0Y9DIFFCDC9C /* FugaCollectionViewController.storyboard */; };
+		X0YSNWUPGADHP9ZXCDN8RQBB /* FugaDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4L7GANNRR2O7HX4M38YNH500 /* FugaDataStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA265F3A1FFBAB850016E7DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA265F1D1FFBAB850016E7DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA265F241FFBAB850016E7DE;
+			remoteInfo = KuriDemo;
+		};
+		BA265F451FFBAB850016E7DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA265F1D1FFBAB850016E7DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA265F241FFBAB850016E7DE;
+			remoteInfo = KuriDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0LVP5T26GZJ0KTQKOI3Z2BPX /* PiyoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoPresenter.swift; sourceTree = "<group>"; };
+		228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoModel.swift; sourceTree = "<group>"; };
+		4JSWFJIAT0HNCIWWBV75JFN3 /* FugaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FugaCollectionViewCell.xib; sourceTree = "<group>"; };
+		4L7GANNRR2O7HX4M38YNH500 /* FugaDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaDataStore.swift; sourceTree = "<group>"; };
+		57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoDataStore.swift; sourceTree = "<group>"; };
+		8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTableViewCell.swift; sourceTree = "<group>"; };
+		9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoBuilder.swift; sourceTree = "<group>"; };
+		BA265F251FFBAB850016E7DE /* KuriDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuriDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA265F281FFBAB850016E7DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BA265F2A1FFBAB850016E7DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA265F2D1FFBAB850016E7DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA265F2F1FFBAB850016E7DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA265F321FFBAB850016E7DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA265F341FFBAB850016E7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA265F391FFBAB850016E7DE /* KuriDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuriDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA265F3D1FFBAB850016E7DE /* KuriDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuriDemoTests.swift; sourceTree = "<group>"; };
+		BA265F3F1FFBAB850016E7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA265F441FFBAB850016E7DE /* KuriDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuriDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA265F481FFBAB850016E7DE /* KuriDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuriDemoUITests.swift; sourceTree = "<group>"; };
+		BA265F4A1FFBAB850016E7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA265F621FFBACBF0016E7DE /* ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewController.storyboard; sourceTree = "<group>"; };
+		BA265F681FFBAD270016E7DE /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		BA265F6C1FFBAD3F0016E7DE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PiyoTableViewCell.xib; sourceTree = "<group>"; };
+		EN3FN8UIE7TQ4ZFGZWYBWIFU /* FugaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaModel.swift; sourceTree = "<group>"; };
+		F2OLK7SITMXYMWH2LPSOZ3IT /* FugaEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaEntity.swift; sourceTree = "<group>"; };
+		GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoEntity.swift; sourceTree = "<group>"; };
+		HXHBEAOEMAL6WLI6S1I0KZ8G /* FugaPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaPresenter.swift; sourceTree = "<group>"; };
+		ISKDBK20PC87U4HG2W8M8OIB /* HogeTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeTranslator.swift; sourceTree = "<group>"; };
+		JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoWireframe.swift; sourceTree = "<group>"; };
+		M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTableViewController.swift; sourceTree = "<group>"; };
+		NGPAQPTWKST64KQM46XRGGY6 /* HogeEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeEntity.swift; sourceTree = "<group>"; };
+		NK90RPQFCUJNWGHICIVW9ZM9 /* FugaWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaWireframe.swift; sourceTree = "<group>"; };
+		O8C7E66V26O7BHLOYMD67C0V /* FugaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaCollectionViewController.swift; sourceTree = "<group>"; };
+		O9C6CTQU6OF4JF9COI86ZVCL /* HogeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeRepository.swift; sourceTree = "<group>"; };
+		OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeViewController.swift; sourceTree = "<group>"; };
+		OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogePresenter.swift; sourceTree = "<group>"; };
+		OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeDataStore.swift; sourceTree = "<group>"; };
+		QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoUseCase.swift; sourceTree = "<group>"; };
+		R0ZWL75196MO0G7X61I561DY /* FugaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaRepository.swift; sourceTree = "<group>"; };
+		RDMKKI58T3FC0Y9DIFFCDC9C /* FugaCollectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FugaCollectionViewController.storyboard; sourceTree = "<group>"; };
+		TORQINLEYHX59M4KR07YFK4I /* HogeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HogeViewController.storyboard; sourceTree = "<group>"; };
+		UAAUI6E13FZAIK1P3RPOVSKD /* FugaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaCollectionViewCell.swift; sourceTree = "<group>"; };
+		WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoRepository.swift; sourceTree = "<group>"; };
+		X2WIQRY2KSG9D63V0CLEY1LG /* FugaTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaTranslator.swift; sourceTree = "<group>"; };
+		XKLNNTJMYJG1CQTDFLS6MR6C /* HogeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeBuilder.swift; sourceTree = "<group>"; };
+		XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeWireframe.swift; sourceTree = "<group>"; };
+		YZ77AXR5K8OCJ62DC8D64S0T /* HogeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeModel.swift; sourceTree = "<group>"; };
+		Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTranslator.swift; sourceTree = "<group>"; };
+		Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaBuilder.swift; sourceTree = "<group>"; };
+		ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PiyoTableViewController.storyboard; sourceTree = "<group>"; };
+		ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeUseCase.swift; sourceTree = "<group>"; };
+		ZVRJGE5YNYOI7XLAC6SN65AR /* FugaUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaUseCase.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA265F221FFBAB850016E7DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA265F361FFBAB850016E7DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA265F411FFBAB850016E7DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0S64CHTL64HHD90SSEV7LZ59 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				4L7GANNRR2O7HX4M38YNH500 /* FugaDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		28LU2TOKP8EGRYAC8ZCQ6LQX /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		2WJJ6WQQP0A8PBMX6FV4WU5G /* Hoge */ = {
+			isa = PBXGroup;
+			children = (
+				WAH4KCG4WNG8ZYAOF2C0Z4VE /* Repository */,
+				L83TSKRYNHT712RCFJ15W2V8 /* Entity */,
+				X9V0N53X16OGYLHJ9VU1GBMY /* Presenter */,
+				5355CJ05VGKNA18ZJMPBKB08 /* Wireframe */,
+				TEXXR7EBTMK2X5GGQ0UW6FBW /* Translator */,
+				4Y07IZJ45SEY6C5XZW4DSGLK /* DataStore */,
+				X4QDNGRJY9LOB90PIYJX0GRV /* Model */,
+				6QEHK1RS5SPP75TS6ZN29UTQ /* View */,
+				NO2Q7N0U8E7L0UDIBR7DWCEB /* Builder */,
+				N82T550MCC6YBOTEL4GVA99B /* UseCase */,
+			);
+			path = Hoge;
+			sourceTree = "<group>";
+		};
+		49O349OEHBBRH27HXV91UGTU /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F2OLK7SITMXYMWH2LPSOZ3IT /* FugaEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4Y07IZJ45SEY6C5XZW4DSGLK /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		5355CJ05VGKNA18ZJMPBKB08 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		6QEHK1RS5SPP75TS6ZN29UTQ /* View */ = {
+			isa = PBXGroup;
+			children = (
+				OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */,
+				TORQINLEYHX59M4KR07YFK4I /* HogeViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8WW70D8BBFYK9XA8DFV7WV7D /* Piyo */ = {
+			isa = PBXGroup;
+			children = (
+				DRM9VHXN2NLP4R06WK1Q91NK /* Repository */,
+				YKNVI69S2XE5HU0GV2FGKOCE /* Entity */,
+				HDYE5GNE2NA13HL9ALHSATLU /* Presenter */,
+				R2OQZAA6EKXU7CHSEX5LAQIZ /* Wireframe */,
+				QQVVGZSRX2DQ9FRTFSZATJ7Z /* Translator */,
+				28LU2TOKP8EGRYAC8ZCQ6LQX /* DataStore */,
+				YFSGP6AZEJUEA1F54L8TUKCH /* Model */,
+				YEBDY0OV71KZ3GZ9DCMRZI96 /* View */,
+				U4NO67Y1MGZCIS83YY51I4F2 /* Builder */,
+				O0HX2ZALII8KIX0M96OM1OFQ /* UseCase */,
+			);
+			path = Piyo;
+			sourceTree = "<group>";
+		};
+		9I9DCOMIGQ9NHINTNOQBTRMK /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				R0ZWL75196MO0G7X61I561DY /* FugaRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		BA265F1C1FFBAB850016E7DE = {
+			isa = PBXGroup;
+			children = (
+				BA265F271FFBAB850016E7DE /* KuriDemo */,
+				BA265F3C1FFBAB850016E7DE /* KuriDemoTests */,
+				BA265F471FFBAB850016E7DE /* KuriDemoUITests */,
+				BA265F261FFBAB850016E7DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA265F261FFBAB850016E7DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA265F251FFBAB850016E7DE /* KuriDemo.app */,
+				BA265F391FFBAB850016E7DE /* KuriDemoTests.xctest */,
+				BA265F441FFBAB850016E7DE /* KuriDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA265F271FFBAB850016E7DE /* KuriDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BA265F281FFBAB850016E7DE /* AppDelegate.swift */,
+				BA265F2A1FFBAB850016E7DE /* ViewController.swift */,
+				BA265F2C1FFBAB850016E7DE /* Main.storyboard */,
+				BA265F2F1FFBAB850016E7DE /* Assets.xcassets */,
+				BA265F311FFBAB850016E7DE /* LaunchScreen.storyboard */,
+				BA265F341FFBAB850016E7DE /* Info.plist */,
+				BA265F621FFBACBF0016E7DE /* ViewController.storyboard */,
+				BA265F6C1FFBAD3F0016E7DE /* TableViewCell.swift */,
+				BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */,
+				BA265F681FFBAD270016E7DE /* CollectionViewCell.swift */,
+				BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */,
+				2WJJ6WQQP0A8PBMX6FV4WU5G /* Hoge */,
+				8WW70D8BBFYK9XA8DFV7WV7D /* Piyo */,
+				KQVLUFRXINZWJF5YU60JG7CD /* Fuga */,
+			);
+			path = KuriDemo;
+			sourceTree = "<group>";
+		};
+		BA265F3C1FFBAB850016E7DE /* KuriDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA265F3D1FFBAB850016E7DE /* KuriDemoTests.swift */,
+				BA265F3F1FFBAB850016E7DE /* Info.plist */,
+			);
+			path = KuriDemoTests;
+			sourceTree = "<group>";
+		};
+		BA265F471FFBAB850016E7DE /* KuriDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA265F481FFBAB850016E7DE /* KuriDemoUITests.swift */,
+				BA265F4A1FFBAB850016E7DE /* Info.plist */,
+			);
+			path = KuriDemoUITests;
+			sourceTree = "<group>";
+		};
+		CRIO01YHSG669S7X02VQVON8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				RDMKKI58T3FC0Y9DIFFCDC9C /* FugaCollectionViewController.storyboard */,
+				UAAUI6E13FZAIK1P3RPOVSKD /* FugaCollectionViewCell.swift */,
+				4JSWFJIAT0HNCIWWBV75JFN3 /* FugaCollectionViewCell.xib */,
+				O8C7E66V26O7BHLOYMD67C0V /* FugaCollectionViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DRM9VHXN2NLP4R06WK1Q91NK /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		HDYE5GNE2NA13HL9ALHSATLU /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0LVP5T26GZJ0KTQKOI3Z2BPX /* PiyoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		IFIG4X8DO9PK6VXSIZUZ006D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EN3FN8UIE7TQ4ZFGZWYBWIFU /* FugaModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		KQVLUFRXINZWJF5YU60JG7CD /* Fuga */ = {
+			isa = PBXGroup;
+			children = (
+				9I9DCOMIGQ9NHINTNOQBTRMK /* Repository */,
+				49O349OEHBBRH27HXV91UGTU /* Entity */,
+				ZKPTAISSGHYPZ50RLLGXO9OZ /* Presenter */,
+				Q3LL9FPG19KRJA2AEBLWQ51O /* Wireframe */,
+				QSWYYFSR3VW3VK1YA7UYH1M4 /* Translator */,
+				0S64CHTL64HHD90SSEV7LZ59 /* DataStore */,
+				IFIG4X8DO9PK6VXSIZUZ006D /* Model */,
+				CRIO01YHSG669S7X02VQVON8 /* View */,
+				ORU5H7CU9Y9H1VVNN5OFB2R3 /* Builder */,
+				WF2JY7I70GAV5UTVNOW7QB1O /* UseCase */,
+			);
+			path = Fuga;
+			sourceTree = "<group>";
+		};
+		L83TSKRYNHT712RCFJ15W2V8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				NGPAQPTWKST64KQM46XRGGY6 /* HogeEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		N82T550MCC6YBOTEL4GVA99B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		NO2Q7N0U8E7L0UDIBR7DWCEB /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				XKLNNTJMYJG1CQTDFLS6MR6C /* HogeBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		O0HX2ZALII8KIX0M96OM1OFQ /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		ORU5H7CU9Y9H1VVNN5OFB2R3 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		Q3LL9FPG19KRJA2AEBLWQ51O /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				NK90RPQFCUJNWGHICIVW9ZM9 /* FugaWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		QQVVGZSRX2DQ9FRTFSZATJ7Z /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		QSWYYFSR3VW3VK1YA7UYH1M4 /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				X2WIQRY2KSG9D63V0CLEY1LG /* FugaTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		R2OQZAA6EKXU7CHSEX5LAQIZ /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		TEXXR7EBTMK2X5GGQ0UW6FBW /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				ISKDBK20PC87U4HG2W8M8OIB /* HogeTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		U4NO67Y1MGZCIS83YY51I4F2 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		WAH4KCG4WNG8ZYAOF2C0Z4VE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				O9C6CTQU6OF4JF9COI86ZVCL /* HogeRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		WF2JY7I70GAV5UTVNOW7QB1O /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				ZVRJGE5YNYOI7XLAC6SN65AR /* FugaUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		X4QDNGRJY9LOB90PIYJX0GRV /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				YZ77AXR5K8OCJ62DC8D64S0T /* HogeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		X9V0N53X16OGYLHJ9VU1GBMY /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		YEBDY0OV71KZ3GZ9DCMRZI96 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */,
+				8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */,
+				CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */,
+				M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		YFSGP6AZEJUEA1F54L8TUKCH /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		YKNVI69S2XE5HU0GV2FGKOCE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		ZKPTAISSGHYPZ50RLLGXO9OZ /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				HXHBEAOEMAL6WLI6S1I0KZ8G /* FugaPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA265F241FFBAB850016E7DE /* KuriDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA265F4D1FFBAB850016E7DE /* Build configuration list for PBXNativeTarget "KuriDemo" */;
+			buildPhases = (
+				BA265F211FFBAB850016E7DE /* Sources */,
+				BA265F221FFBAB850016E7DE /* Frameworks */,
+				BA265F231FFBAB850016E7DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KuriDemo;
+			productName = KuriDemo;
+			productReference = BA265F251FFBAB850016E7DE /* KuriDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA265F381FFBAB850016E7DE /* KuriDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA265F501FFBAB850016E7DE /* Build configuration list for PBXNativeTarget "KuriDemoTests" */;
+			buildPhases = (
+				BA265F351FFBAB850016E7DE /* Sources */,
+				BA265F361FFBAB850016E7DE /* Frameworks */,
+				BA265F371FFBAB850016E7DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA265F3B1FFBAB850016E7DE /* PBXTargetDependency */,
+			);
+			name = KuriDemoTests;
+			productName = KuriDemoTests;
+			productReference = BA265F391FFBAB850016E7DE /* KuriDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BA265F431FFBAB850016E7DE /* KuriDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA265F531FFBAB850016E7DE /* Build configuration list for PBXNativeTarget "KuriDemoUITests" */;
+			buildPhases = (
+				BA265F401FFBAB850016E7DE /* Sources */,
+				BA265F411FFBAB850016E7DE /* Frameworks */,
+				BA265F421FFBAB850016E7DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA265F461FFBAB850016E7DE /* PBXTargetDependency */,
+			);
+			name = KuriDemoUITests;
+			productName = KuriDemoUITests;
+			productReference = BA265F441FFBAB850016E7DE /* KuriDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA265F1D1FFBAB850016E7DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "廣瀬雄大";
+				TargetAttributes = {
+					BA265F241FFBAB850016E7DE = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					BA265F381FFBAB850016E7DE = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA265F241FFBAB850016E7DE;
+					};
+					BA265F431FFBAB850016E7DE = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA265F241FFBAB850016E7DE;
+					};
+				};
+			};
+			buildConfigurationList = BA265F201FFBAB850016E7DE /* Build configuration list for PBXProject "KuriDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA265F1C1FFBAB850016E7DE;
+			productRefGroup = BA265F261FFBAB850016E7DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA265F241FFBAB850016E7DE /* KuriDemo */,
+				BA265F381FFBAB850016E7DE /* KuriDemoTests */,
+				BA265F431FFBAB850016E7DE /* KuriDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA265F231FFBAB850016E7DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA265F331FFBAB850016E7DE /* LaunchScreen.storyboard in Resources */,
+				BA265F6F1FFBAD3F0016E7DE /* TableViewCell.xib in Resources */,
+				BA265F6B1FFBAD270016E7DE /* CollectionViewCell.xib in Resources */,
+				BA265F301FFBAB850016E7DE /* Assets.xcassets in Resources */,
+				BA265F2E1FFBAB850016E7DE /* Main.storyboard in Resources */,
+				BA265F631FFBACBF0016E7DE /* ViewController.storyboard in Resources */,
+				UYINUWEOEMJ3EZVCSB39AMXM /* HogeViewController.storyboard in Resources */,
+				HWJOJ0T71ODBZ8DOW57HOR46 /* PiyoTableViewController.storyboard in Resources */,
+				1RSKL6NOIYK22XS4DBCW36QN /* PiyoTableViewCell.xib in Resources */,
+				W32OOZZGZTQQASY770EOJVVI /* FugaCollectionViewController.storyboard in Resources */,
+				5TO0B4CZFYQDWFXSBE7LUYFR /* FugaCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA265F371FFBAB850016E7DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA265F421FFBAB850016E7DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA265F211FFBAB850016E7DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA265F2B1FFBAB850016E7DE /* ViewController.swift in Sources */,
+				BA265F6E1FFBAD3F0016E7DE /* TableViewCell.swift in Sources */,
+				BA265F6A1FFBAD270016E7DE /* CollectionViewCell.swift in Sources */,
+				BA265F291FFBAB850016E7DE /* AppDelegate.swift in Sources */,
+				6N1U0YD1TRLJOQ19SXZ5TGOY /* HogeRepository.swift in Sources */,
+				467PA6ZE954JAHZGQ8IKJXPD /* HogeEntity.swift in Sources */,
+				TVVMEBOPCN81TBFVN9PRISUL /* HogePresenter.swift in Sources */,
+				ODDIN2YDCIIWM3DIBRQFT6F1 /* HogeWireframe.swift in Sources */,
+				PAXCIXA2R4OQ759HVGFG2HY2 /* HogeTranslator.swift in Sources */,
+				6RX6ZF9WTIW79GZUV6X08LE0 /* HogeDataStore.swift in Sources */,
+				UMJMIL4FSD3D5VO34Y7MYBI1 /* HogeModel.swift in Sources */,
+				D4ODL498YWYVATSNKCIHBIBS /* HogeViewController.swift in Sources */,
+				AOBLBEM90WF58I1RNL429JTM /* HogeBuilder.swift in Sources */,
+				J4QXUUP0H88BEQ5F78PLJCS9 /* HogeUseCase.swift in Sources */,
+				PPBUU0U5TVVP22PFK9HATVM3 /* PiyoRepository.swift in Sources */,
+				5LLGAKMM6CR3SRNOBPNXAR30 /* PiyoEntity.swift in Sources */,
+				0OP6VDDZERD8ZRJWQC5QI6IJ /* PiyoPresenter.swift in Sources */,
+				RT8AAFMAZQB0AZZHV9C24T1U /* PiyoWireframe.swift in Sources */,
+				KA67GINSIV1LC97SDMI37XDF /* PiyoTranslator.swift in Sources */,
+				LCEVTGOH286TAOET53QBACR1 /* PiyoDataStore.swift in Sources */,
+				83ZBBQIKXVOHT7748GK42ABV /* PiyoModel.swift in Sources */,
+				ML4EFUYIGIJ5DZ8XWQT5E7SM /* PiyoTableViewCell.swift in Sources */,
+				2BUPCANGPW1G1PDEOPL51470 /* PiyoTableViewController.swift in Sources */,
+				R0RFH0579JA3QMIDVVRZIY0H /* PiyoBuilder.swift in Sources */,
+				GXCWRPEEFHIUAYGHI7Q8PGCV /* PiyoUseCase.swift in Sources */,
+				UBB9SR63U97BUHC14C1QJIN4 /* FugaRepository.swift in Sources */,
+				CD6M0H8J5XYTOW57ALRNMD1O /* FugaEntity.swift in Sources */,
+				VZVV40D0T1JGZPEMW6NZT9RS /* FugaPresenter.swift in Sources */,
+				P5PYEDZJG2Z0DW44KIE4K0FU /* FugaWireframe.swift in Sources */,
+				CP4U9ZZ1IXI9O69I88Z5U36U /* FugaTranslator.swift in Sources */,
+				X0YSNWUPGADHP9ZXCDN8RQBB /* FugaDataStore.swift in Sources */,
+				6IJ2W30FDV1LY4GGZ8YEULW7 /* FugaModel.swift in Sources */,
+				SCL1MAAAVQVJWABG8OFJYHRG /* FugaCollectionViewCell.swift in Sources */,
+				RUS35PKYW0IBU2Q51HWZNE8J /* FugaCollectionViewController.swift in Sources */,
+				1GOISMFREV12TGR7NU9AHCK9 /* FugaBuilder.swift in Sources */,
+				4PGJI10SW8WBZNC2TJO60MI8 /* FugaUseCase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA265F351FFBAB850016E7DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA265F3E1FFBAB850016E7DE /* KuriDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA265F401FFBAB850016E7DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA265F491FFBAB850016E7DE /* KuriDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA265F3B1FFBAB850016E7DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA265F241FFBAB850016E7DE /* KuriDemo */;
+			targetProxy = BA265F3A1FFBAB850016E7DE /* PBXContainerItemProxy */;
+		};
+		BA265F461FFBAB850016E7DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA265F241FFBAB850016E7DE /* KuriDemo */;
+			targetProxy = BA265F451FFBAB850016E7DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA265F2C1FFBAB850016E7DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA265F2D1FFBAB850016E7DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BA265F311FFBAB850016E7DE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA265F321FFBAB850016E7DE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA265F4B1FFBAB850016E7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BA265F4C1FFBAB850016E7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA265F4E1FFBAB850016E7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KuriDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA265F4F1FFBAB850016E7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KuriDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BA265F511FFBAB850016E7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KuriDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KuriDemo.app/KuriDemo";
+			};
+			name = Debug;
+		};
+		BA265F521FFBAB850016E7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KuriDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KuriDemo.app/KuriDemo";
+			};
+			name = Release;
+		};
+		BA265F541FFBAB850016E7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KuriDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KuriDemo;
+			};
+			name = Debug;
+		};
+		BA265F551FFBAB850016E7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KuriDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KuriDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA265F201FFBAB850016E7DE /* Build configuration list for PBXProject "KuriDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA265F4B1FFBAB850016E7DE /* Debug */,
+				BA265F4C1FFBAB850016E7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA265F4D1FFBAB850016E7DE /* Build configuration list for PBXNativeTarget "KuriDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA265F4E1FFBAB850016E7DE /* Debug */,
+				BA265F4F1FFBAB850016E7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA265F501FFBAB850016E7DE /* Build configuration list for PBXNativeTarget "KuriDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA265F511FFBAB850016E7DE /* Debug */,
+				BA265F521FFBAB850016E7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA265F531FFBAB850016E7DE /* Build configuration list for PBXNativeTarget "KuriDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA265F541FFBAB850016E7DE /* Debug */,
+				BA265F551FFBAB850016E7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA265F1D1FFBAB850016E7DE /* Project object */;
+}

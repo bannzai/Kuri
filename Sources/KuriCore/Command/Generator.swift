@@ -51,7 +51,7 @@ public struct Generator {
     }
     
     mutating func resetGenerateComponents(for templateDirectoryName: String) {
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift' -o -name '*.xib' -o -name '*.storyboard'")
             .stdout
             .components(separatedBy: "\n")
             .filter { !$0.isEmpty }
@@ -63,9 +63,8 @@ public struct Generator {
                         "Unexpected path when decide for read template directory path. info: headPath: \(templateDirectoryName), templateDirectoryFullPath: \(templateDirectoryFullPath)"
                     )
                 }
-                let subString = templateDirectoryFullPath.substring(from: bound)
-                return subString
- 
+                let subString = templateDirectoryFullPath[bound...]
+                return String(subString)
             }
             .map( GenerateComponent.init )
     }
@@ -166,7 +165,7 @@ fileprivate extension Generator {
         }
     }
     
-    fileprivate func convert(for content: String, to prefix: String) -> String {
+    fileprivate func convert(content: String, prefix: String, targetName: String) -> String {
         let userName = run(bash: "echo $USER").stdout
         let date: DateComponent = { _ -> DateComponent in
             let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
@@ -182,6 +181,7 @@ fileprivate extension Generator {
         
         let replacedContent = content
             .replacingOccurrences(of: "__PREFIX__", with: prefix)
+            .replacingOccurrences(of: "__TARGET__", with: targetName)
             .replacingOccurrences(of: "__USERNAME__", with: userName)
             .replacingOccurrences(of: "__DATE__", with: date.date)
             .replacingOccurrences(of: "__YEAR__", with: "\(date.year)")
@@ -223,11 +223,11 @@ fileprivate extension Generator {
                 print("can't find: \(componentType)")
                 return
             }
-            let writeCotent = convert(for: templateContent, to: prefix)
+            let targetName = yamlReader.targetName(for: typeFor)
+            let writeCotent = convert(content: templateContent, prefix: prefix, targetName: targetName)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
-            let targetName = yamlReader.targetName(for: typeFor)
             project.appendFilePath(
                 with: projectRootPath,
                 filePath: filePath,

@@ -11,12 +11,13 @@ import SwiftShell
 
 struct CommandInput {
     fileprivate static func waitStandardInput() throws -> String {
+        
         guard
-            let characters = main.stdin.readSome()?.characters.dropLast()
+            let subString = main.stdin.readSome()?.dropLast()
             else{
                 throw KuriErrorType.readInputError("Should type any character")
         }
-        return String(characters)
+        return String(subString)
     }
     
     static func waitStandardInputWhileInvalid(with message: String, validation: ((String) -> Bool)) throws -> String {
