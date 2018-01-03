@@ -18,23 +18,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUg-zm-4wi">
-                                <rect key="frame" x="178" y="297" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUg-zm-4wi">
+                                <rect key="frame" x="87.5" y="303.5" width="200" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.69884383179999998" blue="0.1861154156" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="mdx-HO-x87"/>
+                                    <constraint firstAttribute="width" constant="200" id="wSC-De-Sli"/>
+                                </constraints>
+                                <state key="normal" title="TableView">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb5-e5-B4R">
+                                <rect key="frame" x="87.5" y="383.5" width="200" height="60"/>
+                                <color key="backgroundColor" red="0.078431372549019607" green="0.58823529411764708" blue="0.078431372549019607" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="JlG-Xf-g2W"/>
+                                    <constraint firstAttribute="height" constant="60" id="tqX-9h-Sq6"/>
+                                </constraints>
+                                <state key="normal" title="CollectionView">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="nextButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S1d-Ss-omr"/>
+                                    <action selector="collectionViewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qBJ-qH-y4R"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bb5-e5-B4R" firstAttribute="top" secondItem="gUg-zm-4wi" secondAttribute="bottom" constant="20" id="Hvk-rV-Ibg"/>
+                            <constraint firstItem="gUg-zm-4wi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kVn-xX-5ZE"/>
+                            <constraint firstItem="Bb5-e5-B4R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rQo-ya-kF1"/>
+                            <constraint firstItem="gUg-zm-4wi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w8I-5c-7Kg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="AdU-5A-O6N"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="33.733133433283363"/>
+            <point key="canvasLocation" x="634" y="100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z0f-Mz-HUs">
@@ -52,7 +76,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYd-OF-UaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="716.79999999999995" y="168.21589205397302"/>
+            <point key="canvasLocation" x="9" y="106"/>
         </scene>
     </scenes>
 </document>

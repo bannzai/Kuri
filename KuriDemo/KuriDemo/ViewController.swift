@@ -20,10 +20,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func nextButtonPressed(_ sender: Any) {
+    @IBAction func tableViewButtonPressed(_ sender: Any) {
         let viewController = PiyoBuilderImpl().build()
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+    @IBAction func collectionViewButtonPressed(_ sender: Any) {
+        let viewController = PiyoBuilderImpl().build()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
