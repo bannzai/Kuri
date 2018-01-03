@@ -15,7 +15,8 @@ protocol __PREFIX__Builder {
 
 struct __PREFIX__BuilderImpl: __PREFIX__Builder {
     func build() -> UIViewController {
-        let viewController = __PREFIX__ViewController()
+        let storyboard = UIStoryboard(name: "__PREFIX__TableViewController", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController() as! __PREFIX__TableViewController
         viewController.inject(
             presenter: __PREFIX__PresenterImpl(
                 view: viewController,
@@ -33,3 +34,4 @@ struct __PREFIX__BuilderImpl: __PREFIX__Builder {
         return viewController
     }
 }
+
