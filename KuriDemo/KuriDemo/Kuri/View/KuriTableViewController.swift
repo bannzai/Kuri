@@ -1,24 +1,24 @@
 //
-//  __PREFIX__View.swift
+//  KuriView.swift
 //  Kuri
 //
-//  Created by __USERNAME__ on __DATE__.
-//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
+//  Created by hiroseyuudai on 2018/1/3.
+//  Copyright © 2018 hiroseyuudai. All rights reserved.
 //
 
 import UIKit
 
-protocol __PREFIX__View: class {
+protocol KuriView: class {
     
 }
 
-class __PREFIX__TableViewController: UIViewController {
+class KuriTableViewController: UIViewController {
     
-    private var presenter: __PREFIX__Presenter!
+    private var presenter: KuriPresenter!
     @IBOutlet weak var tableView: UITableView!
     
     func inject(
-        presenter: __PREFIX__Presenter
+        presenter: KuriPresenter
         ) {
         self.presenter = presenter
     }
@@ -29,7 +29,7 @@ class __PREFIX__TableViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: "__PREFIX__TableViewCell", bundle: nil), forCellReuseIdentifier: "PiyoTableViewCell")
+        tableView.register(UINib(nibName: "KuriTableViewCell", bundle: nil), forCellReuseIdentifier: "PiyoTableViewCell")
         
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -42,23 +42,23 @@ class __PREFIX__TableViewController: UIViewController {
     }
 }
 
-extension __PREFIX__TableViewController: PiyoView {
+extension KuriTableViewController: PiyoView {
     
 }
 
-extension __PREFIX__TableViewController: UITableViewDataSource {
+extension KuriTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "__PREFIX__TableViewCell") as! PiyoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "KuriTableViewCell") as! PiyoTableViewCell
         cell.textLabel?.text = "section: \(indexPath.section), row: \(indexPath.row)"
         return cell
     }
 }
 
-extension __PREFIX__TableViewController: UITableViewDelegate {
+extension KuriTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("section: \(indexPath.section), row: \(indexPath.row)")
     }
