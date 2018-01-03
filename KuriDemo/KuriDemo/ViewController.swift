@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "HogeViewController", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()!
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
 
