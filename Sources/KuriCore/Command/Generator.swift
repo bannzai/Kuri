@@ -51,7 +51,7 @@ public struct Generator {
     }
     
     mutating func resetGenerateComponents(for templateDirectoryName: String) {
-        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift'")
+        generateComponents = main.run(bash: "find \(templateDirectoryName) -name '*.swift' -o -name '*.xib' -o -name '*.storyboard'")
             .stdout
             .components(separatedBy: "\n")
             .filter { !$0.isEmpty }
@@ -63,9 +63,8 @@ public struct Generator {
                         "Unexpected path when decide for read template directory path. info: headPath: \(templateDirectoryName), templateDirectoryFullPath: \(templateDirectoryFullPath)"
                     )
                 }
-                let subString = templateDirectoryFullPath.substring(from: bound)
-                return subString
- 
+                let subString = templateDirectoryFullPath[bound...]
+                return String(subString)
             }
             .map( GenerateComponent.init )
     }
