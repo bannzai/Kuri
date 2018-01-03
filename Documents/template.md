@@ -6,6 +6,7 @@ The prepared variables can be used for the files prepared under the KuriTemplate
 
 - \_\_PREFIX\_\_ - If you execute `kuri generate Item`, `__PREFIX__` is `Item`.
 - \_\_USERNAME\_\_ - Equal `echo $USER`
+- \_\_TARGET\_\_ - Generate for Xcode target name.
 - \_\_DATE\_\_ - Current system date format from `yyyy/MM/dd`
 - \_\_YEAR\_\_ - Current system year.
 - \_\_MONTH\_\_ - Current system month.

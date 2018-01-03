@@ -1,29 +1,21 @@
 # Kuri
 
-**Kuri** is a tool that automatically generates necessary code for _iOS CleanArchitecture_ and imports it into Xcode project.
+**Kuri** is a tool that automatically generates necessary code and imports it into Xcode project.
 
 #### Usage tutorial.
 I gave youtube a video explaining how to use **Kuri** so please refer also [here](https://www.youtube.com/watch?v=Ae9ETnSgENY&feature=youtu.be).
 
-## What is *CleanArchitecture*?
-Reference source [here](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+## Why Kuri?
+I was use [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) for my product.
+*Clean Architecture* is a very wonderful way of thinking.
+But very written some boiler plate code.
 
-#### Features of *CleanArchitecture* are as follows.
-1. Independent of Frameworks.
-2. Testable.
-3. Independent of UI.
-4. Independent of Database.
-5. Independent of any external agency.
+So, I thought about making a tool to automatically generate code from some templates. 
 
 <img width="320px" src="https://cloud.githubusercontent.com/assets/10897361/21470324/24bf3102-cac7-11e6-8d70-1a6e8623407b.jpeg"/>
 
-## Why Kuri?
-*CleanArchitecture* is a very wonderful way of thinking.
-In the case of products operated in the medium to long term, profits will be large.
-However, it is not without drawbacks.
-The amount of code that one writes is large.
-
-So, I thought about making a tool to automatically generate code from some templates. That is **Kuri**.
+But Kuri is not only use *Clean Architecture*.
+You can use VIPER, MVVM... and your own architecture.
 
 ### Components(Default)
 I believe that the following concepts are necessary in iOS CleanArchitecture.
@@ -65,12 +57,19 @@ $ kuri generate Kuri
 
 Instructions with options [here](./Documents/generate.md).
 
+
+## Supported file
+- `.swift`
+- `.storyboard`
+- `.xib`
+
 ## Customize
 **Kuri.yml** and **KuriTemplate** can be customized respectively.
 
 - [Kuri.yml](./Documents/yaml.md)
 - [KuriTemplate](./Documents/template.md)
 
+and you can check [KuriDemo](./KuriDemo/)'s templates.
 
 ## Installation
 ### Homebrew(recommended)
