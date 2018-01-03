@@ -1,23 +1,23 @@
 //
-//  __PREFIX__CollectionViewController.swift
+//  FugaCollectionViewController.swift
 //  Kuri
 //
-//  Created by __USERNAME__ on __DATE__.
-//  Copyright © __YEAR__ __USERNAME__. All rights reserved.
+//  Created by hiroseyuudai on 2018/1/3.
+//  Copyright © 2018 hiroseyuudai. All rights reserved.
 //
 import UIKit
 
-protocol __PREFIX__View: class {
+protocol FugaView: class {
     
 }
 
-class __PREFIX__CollectionViewController: UIViewController {
+class FugaCollectionViewController: UIViewController {
     
-    private var presenter: __PREFIX__Presenter!
+    private var presenter: FugaPresenter!
     @IBOutlet weak var collectionView: UICollectionView!
     
     func inject(
-        presenter: __PREFIX__Presenter
+        presenter: FugaPresenter
         ) {
         self.presenter = presenter
     }
@@ -25,7 +25,7 @@ class __PREFIX__CollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(UINib(nibName: "__PREFIX__CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "__PREFIX__CollectionViewCell")
+        collectionView.register(UINib(nibName: "FugaCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FugaCollectionViewCell")
         
         collectionView.dataSource = self
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -42,22 +42,22 @@ class __PREFIX__CollectionViewController: UIViewController {
     }
 }
 
-extension __PREFIX__CollectionViewController: __PREFIX__View {
+extension FugaCollectionViewController: FugaView {
     
 }
 
-extension __PREFIX__CollectionViewController: UICollectionViewDataSource {
+extension FugaCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "__PREFIX__CollectionViewCell", for: indexPath) as! __PREFIX__CollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FugaCollectionViewCell", for: indexPath) as! FugaCollectionViewCell
         return cell
     }
 }
 
-extension __PREFIX__CollectionViewController: UICollectionViewDelegateFlowLayout {
+extension FugaCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("section: \(indexPath.section), item: \(indexPath.item)")
     }

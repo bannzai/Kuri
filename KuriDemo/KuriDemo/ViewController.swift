@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func collectionViewButtonPressed(_ sender: Any) {
-        let viewController = PiyoBuilderImpl().build()
+        let viewController = FugaBuilderImpl().build()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

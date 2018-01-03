@@ -13,7 +13,7 @@
         <!--Fuga Collection View Controller-->
         <scene sceneID="Q8y-X1-bi3">
             <objects>
-                <viewController id="Muw-p4-tJJ" customClass="__PREFIX__CollectionViewController" customModule="__TARGET__" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Muw-p4-tJJ" customClass="FugaCollectionViewController" customModule="KuriDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y0G-OM-QoL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
