@@ -8,7 +8,8 @@ I gave youtube a video explaining how to use **Kuri** so please refer also [here
 ## Why Kuri?
 I was use [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) for my product.
 *Clean Architecture* is a very wonderful way of thinking.
-But very written some boiler plate code.
+But very very written some boiler plate code and many many file create and import xcode.
+This is so hard.
 
 So, I thought about making a tool to automatically generate code from some templates. 
 
