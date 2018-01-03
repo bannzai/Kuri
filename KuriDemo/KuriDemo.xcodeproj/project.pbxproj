@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0OP6VDDZERD8ZRJWQC5QI6IJ /* PiyoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0LVP5T26GZJ0KTQKOI3Z2BPX /* PiyoPresenter.swift */; };
+		1RSKL6NOIYK22XS4DBCW36QN /* PiyoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */; };
+		2BUPCANGPW1G1PDEOPL51470 /* PiyoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */; };
+		467PA6ZE954JAHZGQ8IKJXPD /* HogeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = NGPAQPTWKST64KQM46XRGGY6 /* HogeEntity.swift */; };
+		5LLGAKMM6CR3SRNOBPNXAR30 /* PiyoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */; };
+		6N1U0YD1TRLJOQ19SXZ5TGOY /* HogeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = O9C6CTQU6OF4JF9COI86ZVCL /* HogeRepository.swift */; };
+		6RX6ZF9WTIW79GZUV6X08LE0 /* HogeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */; };
+		83ZBBQIKXVOHT7748GK42ABV /* PiyoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */; };
+		AOBLBEM90WF58I1RNL429JTM /* HogeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = XKLNNTJMYJG1CQTDFLS6MR6C /* HogeBuilder.swift */; };
 		BA265F291FFBAB850016E7DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F281FFBAB850016E7DE /* AppDelegate.swift */; };
 		BA265F2B1FFBAB850016E7DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F2A1FFBAB850016E7DE /* ViewController.swift */; };
 		BA265F2E1FFBAB850016E7DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA265F2C1FFBAB850016E7DE /* Main.storyboard */; };
@@ -19,6 +28,21 @@
 		BA265F6B1FFBAD270016E7DE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */; };
 		BA265F6E1FFBAD3F0016E7DE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F6C1FFBAD3F0016E7DE /* TableViewCell.swift */; };
 		BA265F6F1FFBAD3F0016E7DE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */; };
+		D4ODL498YWYVATSNKCIHBIBS /* HogeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */; };
+		GXCWRPEEFHIUAYGHI7Q8PGCV /* PiyoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */; };
+		HWJOJ0T71ODBZ8DOW57HOR46 /* PiyoTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */; };
+		J4QXUUP0H88BEQ5F78PLJCS9 /* HogeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */; };
+		KA67GINSIV1LC97SDMI37XDF /* PiyoTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */; };
+		LCEVTGOH286TAOET53QBACR1 /* PiyoDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */; };
+		ML4EFUYIGIJ5DZ8XWQT5E7SM /* PiyoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */; };
+		ODDIN2YDCIIWM3DIBRQFT6F1 /* HogeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */; };
+		PAXCIXA2R4OQ759HVGFG2HY2 /* HogeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ISKDBK20PC87U4HG2W8M8OIB /* HogeTranslator.swift */; };
+		PPBUU0U5TVVP22PFK9HATVM3 /* PiyoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */; };
+		R0RFH0579JA3QMIDVVRZIY0H /* PiyoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */; };
+		RT8AAFMAZQB0AZZHV9C24T1U /* PiyoWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */; };
+		TVVMEBOPCN81TBFVN9PRISUL /* HogePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */; };
+		UMJMIL4FSD3D5VO34Y7MYBI1 /* HogeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = YZ77AXR5K8OCJ62DC8D64S0T /* HogeModel.swift */; };
+		UYINUWEOEMJ3EZVCSB39AMXM /* HogeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = TORQINLEYHX59M4KR07YFK4I /* HogeViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +63,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0LVP5T26GZJ0KTQKOI3Z2BPX /* PiyoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoPresenter.swift; sourceTree = "<group>"; };
+		228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoModel.swift; sourceTree = "<group>"; };
+		57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoDataStore.swift; sourceTree = "<group>"; };
+		8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTableViewCell.swift; sourceTree = "<group>"; };
+		9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoBuilder.swift; sourceTree = "<group>"; };
 		BA265F251FFBAB850016E7DE /* KuriDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuriDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA265F281FFBAB850016E7DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA265F2A1FFBAB850016E7DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +86,25 @@
 		BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		BA265F6C1FFBAD3F0016E7DE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PiyoTableViewCell.xib; sourceTree = "<group>"; };
+		GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoEntity.swift; sourceTree = "<group>"; };
+		ISKDBK20PC87U4HG2W8M8OIB /* HogeTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeTranslator.swift; sourceTree = "<group>"; };
+		JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoWireframe.swift; sourceTree = "<group>"; };
+		M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTableViewController.swift; sourceTree = "<group>"; };
+		NGPAQPTWKST64KQM46XRGGY6 /* HogeEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeEntity.swift; sourceTree = "<group>"; };
+		O9C6CTQU6OF4JF9COI86ZVCL /* HogeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeRepository.swift; sourceTree = "<group>"; };
+		OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeViewController.swift; sourceTree = "<group>"; };
+		OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogePresenter.swift; sourceTree = "<group>"; };
+		OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeDataStore.swift; sourceTree = "<group>"; };
+		QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoUseCase.swift; sourceTree = "<group>"; };
+		TORQINLEYHX59M4KR07YFK4I /* HogeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HogeViewController.storyboard; sourceTree = "<group>"; };
+		WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoRepository.swift; sourceTree = "<group>"; };
+		XKLNNTJMYJG1CQTDFLS6MR6C /* HogeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeBuilder.swift; sourceTree = "<group>"; };
+		XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeWireframe.swift; sourceTree = "<group>"; };
+		YZ77AXR5K8OCJ62DC8D64S0T /* HogeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeModel.swift; sourceTree = "<group>"; };
+		Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTranslator.swift; sourceTree = "<group>"; };
+		ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PiyoTableViewController.storyboard; sourceTree = "<group>"; };
+		ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +132,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28LU2TOKP8EGRYAC8ZCQ6LQX /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		2WJJ6WQQP0A8PBMX6FV4WU5G /* Hoge */ = {
+			isa = PBXGroup;
+			children = (
+				WAH4KCG4WNG8ZYAOF2C0Z4VE /* Repository */,
+				L83TSKRYNHT712RCFJ15W2V8 /* Entity */,
+				X9V0N53X16OGYLHJ9VU1GBMY /* Presenter */,
+				5355CJ05VGKNA18ZJMPBKB08 /* Wireframe */,
+				TEXXR7EBTMK2X5GGQ0UW6FBW /* Translator */,
+				4Y07IZJ45SEY6C5XZW4DSGLK /* DataStore */,
+				X4QDNGRJY9LOB90PIYJX0GRV /* Model */,
+				6QEHK1RS5SPP75TS6ZN29UTQ /* View */,
+				NO2Q7N0U8E7L0UDIBR7DWCEB /* Builder */,
+				N82T550MCC6YBOTEL4GVA99B /* UseCase */,
+			);
+			path = Hoge;
+			sourceTree = "<group>";
+		};
+		4Y07IZJ45SEY6C5XZW4DSGLK /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		5355CJ05VGKNA18ZJMPBKB08 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		6QEHK1RS5SPP75TS6ZN29UTQ /* View */ = {
+			isa = PBXGroup;
+			children = (
+				OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */,
+				TORQINLEYHX59M4KR07YFK4I /* HogeViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8WW70D8BBFYK9XA8DFV7WV7D /* Piyo */ = {
+			isa = PBXGroup;
+			children = (
+				DRM9VHXN2NLP4R06WK1Q91NK /* Repository */,
+				YKNVI69S2XE5HU0GV2FGKOCE /* Entity */,
+				HDYE5GNE2NA13HL9ALHSATLU /* Presenter */,
+				R2OQZAA6EKXU7CHSEX5LAQIZ /* Wireframe */,
+				QQVVGZSRX2DQ9FRTFSZATJ7Z /* Translator */,
+				28LU2TOKP8EGRYAC8ZCQ6LQX /* DataStore */,
+				YFSGP6AZEJUEA1F54L8TUKCH /* Model */,
+				YEBDY0OV71KZ3GZ9DCMRZI96 /* View */,
+				U4NO67Y1MGZCIS83YY51I4F2 /* Builder */,
+				O0HX2ZALII8KIX0M96OM1OFQ /* UseCase */,
+			);
+			path = Piyo;
+			sourceTree = "<group>";
+		};
 		BA265F1C1FFBAB850016E7DE = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +233,8 @@
 				BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */,
 				BA265F681FFBAD270016E7DE /* CollectionViewCell.swift */,
 				BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */,
+				2WJJ6WQQP0A8PBMX6FV4WU5G /* Hoge */,
+				8WW70D8BBFYK9XA8DFV7WV7D /* Piyo */,
 			);
 			path = KuriDemo;
 			sourceTree = "<group>";
@@ -138,6 +255,137 @@
 				BA265F4A1FFBAB850016E7DE /* Info.plist */,
 			);
 			path = KuriDemoUITests;
+			sourceTree = "<group>";
+		};
+		DRM9VHXN2NLP4R06WK1Q91NK /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		HDYE5GNE2NA13HL9ALHSATLU /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0LVP5T26GZJ0KTQKOI3Z2BPX /* PiyoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		L83TSKRYNHT712RCFJ15W2V8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				NGPAQPTWKST64KQM46XRGGY6 /* HogeEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		N82T550MCC6YBOTEL4GVA99B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		NO2Q7N0U8E7L0UDIBR7DWCEB /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				XKLNNTJMYJG1CQTDFLS6MR6C /* HogeBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		O0HX2ZALII8KIX0M96OM1OFQ /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		QQVVGZSRX2DQ9FRTFSZATJ7Z /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		R2OQZAA6EKXU7CHSEX5LAQIZ /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		TEXXR7EBTMK2X5GGQ0UW6FBW /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				ISKDBK20PC87U4HG2W8M8OIB /* HogeTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		U4NO67Y1MGZCIS83YY51I4F2 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		WAH4KCG4WNG8ZYAOF2C0Z4VE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				O9C6CTQU6OF4JF9COI86ZVCL /* HogeRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		X4QDNGRJY9LOB90PIYJX0GRV /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				YZ77AXR5K8OCJ62DC8D64S0T /* HogeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		X9V0N53X16OGYLHJ9VU1GBMY /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		YEBDY0OV71KZ3GZ9DCMRZI96 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */,
+				8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */,
+				CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */,
+				M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		YFSGP6AZEJUEA1F54L8TUKCH /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		YKNVI69S2XE5HU0GV2FGKOCE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +501,9 @@
 				BA265F301FFBAB850016E7DE /* Assets.xcassets in Resources */,
 				BA265F2E1FFBAB850016E7DE /* Main.storyboard in Resources */,
 				BA265F631FFBACBF0016E7DE /* ViewController.storyboard in Resources */,
+				UYINUWEOEMJ3EZVCSB39AMXM /* HogeViewController.storyboard in Resources */,
+				HWJOJ0T71ODBZ8DOW57HOR46 /* PiyoTableViewController.storyboard in Resources */,
+				1RSKL6NOIYK22XS4DBCW36QN /* PiyoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +532,27 @@
 				BA265F6E1FFBAD3F0016E7DE /* TableViewCell.swift in Sources */,
 				BA265F6A1FFBAD270016E7DE /* CollectionViewCell.swift in Sources */,
 				BA265F291FFBAB850016E7DE /* AppDelegate.swift in Sources */,
+				6N1U0YD1TRLJOQ19SXZ5TGOY /* HogeRepository.swift in Sources */,
+				467PA6ZE954JAHZGQ8IKJXPD /* HogeEntity.swift in Sources */,
+				TVVMEBOPCN81TBFVN9PRISUL /* HogePresenter.swift in Sources */,
+				ODDIN2YDCIIWM3DIBRQFT6F1 /* HogeWireframe.swift in Sources */,
+				PAXCIXA2R4OQ759HVGFG2HY2 /* HogeTranslator.swift in Sources */,
+				6RX6ZF9WTIW79GZUV6X08LE0 /* HogeDataStore.swift in Sources */,
+				UMJMIL4FSD3D5VO34Y7MYBI1 /* HogeModel.swift in Sources */,
+				D4ODL498YWYVATSNKCIHBIBS /* HogeViewController.swift in Sources */,
+				AOBLBEM90WF58I1RNL429JTM /* HogeBuilder.swift in Sources */,
+				J4QXUUP0H88BEQ5F78PLJCS9 /* HogeUseCase.swift in Sources */,
+				PPBUU0U5TVVP22PFK9HATVM3 /* PiyoRepository.swift in Sources */,
+				5LLGAKMM6CR3SRNOBPNXAR30 /* PiyoEntity.swift in Sources */,
+				0OP6VDDZERD8ZRJWQC5QI6IJ /* PiyoPresenter.swift in Sources */,
+				RT8AAFMAZQB0AZZHV9C24T1U /* PiyoWireframe.swift in Sources */,
+				KA67GINSIV1LC97SDMI37XDF /* PiyoTranslator.swift in Sources */,
+				LCEVTGOH286TAOET53QBACR1 /* PiyoDataStore.swift in Sources */,
+				83ZBBQIKXVOHT7748GK42ABV /* PiyoModel.swift in Sources */,
+				ML4EFUYIGIJ5DZ8XWQT5E7SM /* PiyoTableViewCell.swift in Sources */,
+				2BUPCANGPW1G1PDEOPL51470 /* PiyoTableViewController.swift in Sources */,
+				R0RFH0579JA3QMIDVVRZIY0H /* PiyoBuilder.swift in Sources */,
+				GXCWRPEEFHIUAYGHI7Q8PGCV /* PiyoUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,8 +21,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func nextButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "HogeViewController", bundle: nil)
-        let viewController = storyboard.instantiateInitialViewController()!
+        let viewController = PiyoBuilderImpl().build()
         navigationController?.pushViewController(viewController, animated: true)
     }
     
