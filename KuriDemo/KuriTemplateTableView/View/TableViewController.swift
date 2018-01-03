@@ -29,7 +29,7 @@ class __PREFIX__TableViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: "__PREFIX__TableViewCell", bundle: nil), forCellReuseIdentifier: "PiyoTableViewCell")
+        tableView.register(UINib(nibName: "__PREFIX__TableViewCell", bundle: nil), forCellReuseIdentifier: "__PREFIX__TableViewCell")
         
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -42,7 +42,7 @@ class __PREFIX__TableViewController: UIViewController {
     }
 }
 
-extension __PREFIX__TableViewController: PiyoView {
+extension __PREFIX__TableViewController: __PREFIX__View {
     
 }
 
@@ -52,7 +52,7 @@ extension __PREFIX__TableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "__PREFIX__TableViewCell") as! PiyoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "__PREFIX__TableViewCell") as! __PREFIX__TableViewCell
         cell.textLabel?.text = "section: \(indexPath.section), row: \(indexPath.row)"
         return cell
     }
