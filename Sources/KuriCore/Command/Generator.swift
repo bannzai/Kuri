@@ -14,6 +14,22 @@ public struct Generator {
     public let argument: GenerateArgument
     public let yamlReader: YamlReader
     
+    private var dateComponent: DateComponent = { _ -> DateComponent in
+        let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
+        guard
+            let year = component.year,
+            let month = component.month,
+            let day = component.day
+            else {
+                fatalError("Can't get system date")
+        }
+        return DateComponent(year: year, month: month, day: day)
+    }(())
+    
+    private var userName: String {
+        return run(bash: "echo $USER").stdout
+    }
+    
     public init(
         argument: GenerateArgument,
         yamlReader: YamlReader
@@ -165,20 +181,7 @@ fileprivate extension Generator {
         }
     }
     
-    fileprivate func convert(content: String, prefix: String, targetName: String) -> String {
-        let userName = run(bash: "echo $USER").stdout
-        let date: DateComponent = { _ -> DateComponent in
-            let component = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
-            guard
-                let year = component.year,
-                let month = component.month,
-                let day = component.day
-                else {
-                    fatalError("Can't get system date")
-            }
-            return DateComponent(year: year, month: month, day: day)
-        }(())
-        
+    private func replaceEnvironmentText(content: String, prefix: String, targetName: String, userName: String, date: DateComponent) -> String {
         let replacedContent = content
             .replacingOccurrences(of: "__PREFIX__", with: prefix)
             .replacingOccurrences(of: "__TARGET__", with: targetName)
@@ -189,7 +192,7 @@ fileprivate extension Generator {
             .replacingOccurrences(of: "__DAY__", with: "\(date.day)")
         return replacedContent
     }
-    
+
     fileprivate func generate(with prefix: String, for components: [GenerateComponent], and templateHeadPath: String) throws {
         print("Begin generate")
         defer {
@@ -224,7 +227,7 @@ fileprivate extension Generator {
                 return
             }
             let targetName = yamlReader.targetName(for: typeFor)
-            let writeCotent = convert(content: templateContent, prefix: prefix, targetName: targetName)
+            let writeCotent = replaceEnvironmentText(content: templateContent, prefix: prefix, targetName: targetName, userName: userName, date: dateComponent)
             try fileOperator.createDirectory(for: directoryPath)
             fileOperator.createFile(for: filePath)
             
