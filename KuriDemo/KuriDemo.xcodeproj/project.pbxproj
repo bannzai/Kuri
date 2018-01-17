@@ -40,6 +40,7 @@
 		J4QXUUP0H88BEQ5F78PLJCS9 /* HogeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZGRWNTN8TDJ8TUKXMDRQOLB9 /* HogeUseCase.swift */; };
 		KA67GINSIV1LC97SDMI37XDF /* PiyoTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */; };
 		LCEVTGOH286TAOET53QBACR1 /* PiyoDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */; };
+		LTJ981SDPE3TNX3R201QM3QS /* HogeHogeDynamicGenerateFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = PQ5JEAIFBWC3V88T7NWBEIKE /* HogeHogeDynamicGenerateFilePath.swift */; };
 		ML4EFUYIGIJ5DZ8XWQT5E7SM /* PiyoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */; };
 		ODDIN2YDCIIWM3DIBRQFT6F1 /* HogeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = XNEBQPI9HE0M2AITC251LCPG /* HogeWireframe.swift */; };
 		P5PYEDZJG2Z0DW44KIE4K0FU /* FugaWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = NK90RPQFCUJNWGHICIVW9ZM9 /* FugaWireframe.swift */; };
@@ -116,6 +117,7 @@
 		OA20QBGSZDSSQI2UC3DZ23T8 /* HogeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeViewController.swift; sourceTree = "<group>"; };
 		OE4ZX4ZSISCR5ZNKMR72PNZK /* HogePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogePresenter.swift; sourceTree = "<group>"; };
 		OOBOKU2OILY2WVLNQI5XQQ83 /* HogeDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeDataStore.swift; sourceTree = "<group>"; };
+		PQ5JEAIFBWC3V88T7NWBEIKE /* HogeHogeDynamicGenerateFilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeHogeDynamicGenerateFilePath.swift; sourceTree = "<group>"; };
 		QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoUseCase.swift; sourceTree = "<group>"; };
 		R0ZWL75196MO0G7X61I561DY /* FugaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaRepository.swift; sourceTree = "<group>"; };
 		RDMKKI58T3FC0Y9DIFFCDC9C /* FugaCollectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FugaCollectionViewController.storyboard; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				6QEHK1RS5SPP75TS6ZN29UTQ /* View */,
 				NO2Q7N0U8E7L0UDIBR7DWCEB /* Builder */,
 				N82T550MCC6YBOTEL4GVA99B /* UseCase */,
+				XUBAC1MYOMKZANL2S3SHUIQ5 /* Hoge */,
 			);
 			path = Hoge;
 			sourceTree = "<group>";
@@ -480,6 +483,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		XUBAC1MYOMKZANL2S3SHUIQ5 /* Hoge */ = {
+			isa = PBXGroup;
+			children = (
+				PQ5JEAIFBWC3V88T7NWBEIKE /* HogeHogeDynamicGenerateFilePath.swift */,
+			);
+			path = Hoge;
+			sourceTree = "<group>";
+		};
 		YEBDY0OV71KZ3GZ9DCMRZI96 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +704,7 @@
 				RUS35PKYW0IBU2Q51HWZNE8J /* FugaCollectionViewController.swift in Sources */,
 				1GOISMFREV12TGR7NU9AHCK9 /* FugaBuilder.swift in Sources */,
 				4PGJI10SW8WBZNC2TJO60MI8 /* FugaUseCase.swift in Sources */,
+				LTJ981SDPE3TNX3R201QM3QS /* HogeHogeDynamicGenerateFilePath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
