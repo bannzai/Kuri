@@ -25,11 +25,7 @@ struct GenerateComponent {
         }
         return componentType
     }
-    
-    var componentTypeVariable: String {
-        return "__\(componentType.uppercased())__"
-    }
-    
+
     var templateDirectoryPath: [String] {
         // remove file name
         return Array(templateRelativePath.components(separatedBy: "/").dropLast())
