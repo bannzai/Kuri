@@ -34,4 +34,9 @@ struct GenerateComponent {
         // remove file name
         return Array(templateRelativePath.components(separatedBy: "/").dropLast())
     }
+    
+    func makeGeneratingDirectoryPath(prefix: String, targetName: String) -> [String] {
+        let replacedPath = templateDirectoryPath.map { $0.replaceEnvironmentText(prefix: prefix, targetName: targetName) }
+        return replacedPath
+    }
 }

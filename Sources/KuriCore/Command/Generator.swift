@@ -171,8 +171,8 @@ fileprivate extension Generator {
             
             let targetName = yamlReader.targetName(for: typeFor)
             let projectFilePath = projectRootPath + projectFileName + "/"
-            let directoryPath = generateRootPath + component.templateDirectoryPath.joined(separator: "/") + "/"
-            let filePath = (directoryPath + prefix + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
+            let generatingDirectoryPath = generateRootPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+            let filePath = (generatingDirectoryPath + prefix + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
             
             let project: XcodeProject
             if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
@@ -190,7 +190,7 @@ fileprivate extension Generator {
                 return
             }
             let writeCotent = templateContent.replaceEnvironmentText(prefix: prefix, targetName: targetName)
-            try fileOperator.createDirectory(for: directoryPath)
+            try fileOperator.createDirectory(for: generatingDirectoryPath)
             fileOperator.createFile(for: filePath)
             
             project.appendFilePath(
