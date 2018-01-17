@@ -35,7 +35,8 @@ struct GenerateComponent {
         return Array(templateRelativePath.components(separatedBy: "/").dropLast())
     }
     
-    var generateDirectoryPath: [String] {
-        return templateDirectoryPath
+    func makeDirectoryPath(prefix: String, targetName: String) -> [String] {
+        let replacedPath = templateDirectoryPath.map { $0.replaceEnvironmentText(prefix: prefix, targetName: targetName) }
+        return replacedPath
     }
 }
