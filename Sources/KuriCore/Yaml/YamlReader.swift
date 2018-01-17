@@ -50,10 +50,10 @@ public struct YamlReader {
     
     private func readYamlForComponent(generateComponent: GenerateComponent, from yaml: Yaml) -> Yaml {
         var yamlForComponent: Yaml = yaml
-        generateComponent.generateDirectoryPath.forEach { directory in
+        generateComponent.templateDirectoryPath.forEach { directory in
             yamlForComponent = yamlForComponent[.string(directory)]
             if yamlForComponent == .null {
-                fatalError("Can't find \(directory) from \(generateComponent.generateDirectoryPath)")
+                fatalError("Can't find \(directory) from \(generateComponent.templateDirectoryPath)")
             }
         }
         return yamlForComponent
