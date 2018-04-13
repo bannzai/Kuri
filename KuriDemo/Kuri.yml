@@ -5,8 +5,68 @@ GenerateRootPath: ./KuriDemo/
 Target: KuriDemo
 
 Tests:
-  DefaultTemplateDirectoryPath: ./templates/KuriTemplate
   ProjectRootPath: ./
   ProjectFileName: KuriDemo.xcodeproj
   GenerateRootPath: ./KuriDemoTests/
   Target: KuriDemoTests
+
+Builder:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+DataStore:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+Entity:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+Model:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+Presenter:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+Repository:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+Translator:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+UseCase:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+View:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
+Wireframe:
+  ProjectRootPath: ./
+  ProjectFileName: KuriDemo.xcodeproj
+  GenerateRootPath: ./KuriDemo/
+  Target: KuriDemo
+
