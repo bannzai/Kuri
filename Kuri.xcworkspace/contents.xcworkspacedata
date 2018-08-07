@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Kuri.xcodeproj">
+      location = "group:Kuri.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:KuriDemo.xcodeproj">
+      location = "group:KuriDemo/KuriDemo.xcodeproj">
    </FileRef>
 </Workspace>
