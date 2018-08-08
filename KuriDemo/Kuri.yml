@@ -3,6 +3,7 @@ ProjectRootPath: ./
 ProjectFileName: KuriDemo.xcodeproj
 GenerateRootPath: ./KuriDemo/
 Target: KuriDemo
+ShouldRemoveLayerNameFromDirectory: false
 
 Tests:
   ProjectRootPath: ./
@@ -15,6 +16,7 @@ Builder:
   ProjectFileName: KuriDemo.xcodeproj
   GenerateRootPath: ./KuriDemo/
   Target: KuriDemo
+  ShouldRemoveLayerNameFromDirectory: true
 
 DataStore:
   ProjectRootPath: ./
@@ -27,6 +29,7 @@ Entity:
   ProjectFileName: KuriDemo.xcodeproj
   GenerateRootPath: ./KuriDemo/
   Target: KuriDemo
+  ShouldRemoveLayerNameFromDirectory: true
 
 Model:
   ProjectRootPath: ./

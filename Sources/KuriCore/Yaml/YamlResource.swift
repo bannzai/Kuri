@@ -16,6 +16,7 @@ enum ComponentYamlProperty: String {
     case ProjectRootPath
     case ProjectFileName
     case GenerateRootPath
+    case ShouldRemoveLayerNameFromDirectory
 }
 
 public struct YamlResource {

@@ -9,24 +9,26 @@
 import Foundation
 import SwiftShell
 import XcodeProject
+import Yaml
 
 public struct Generator {
     public let argument: GenerateArgument
-    public let yamlReader: YamlReader
+    public let yaml: Yaml
     
     public init(
         argument: GenerateArgument,
-        yamlReader: YamlReader
+        yaml: Yaml
         ) {
         self.argument = argument
-        self.yamlReader = yamlReader
+        self.yaml = yaml
     }
     
     fileprivate var generateComponents: [GenerateComponent] = []
     fileprivate var templateHeadPath: String = ""
     
     public mutating func execute() throws {
-        templateHeadPath = yamlReader.templateRootPath()
+        let yamlReader = YamlReader<String>(yaml: yaml)
+        templateHeadPath = yamlReader.value(for: .DefaultTemplateDirectoryPath)
         resetGenerateComponents(for: templateHeadPath)
         
         guard let entityName = argument.prefix else {
@@ -163,15 +165,26 @@ fileprivate extension Generator {
         var pathAndXcodeProject: [String: XcodeProject] = [:]
         try components.forEach { component in
             let componentType = component.componentType
-            let typeFor = componentType
+
+            let stringYamlReader = YamlReader<String>(yaml: yaml)
+            let booleanYamlReader = YamlReader<Bool>(yaml: yaml)
             
-            let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
-            let projectRootPath = yamlReader.projectRootPath(for: typeFor)
-            let projectFileName = yamlReader.projectFileName(for: typeFor)
+            let generateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: componentType) + prefix + "/"
+            let projectRootPath = stringYamlReader.value(for: .ProjectRootPath, componentType: componentType)
+            let projectFileName = stringYamlReader.value(for: .ProjectFileName, componentType: componentType)
             
-            let targetName = yamlReader.targetName(for: typeFor)
+            let targetName = stringYamlReader.value(for: .Target, componentType: componentType)
             let projectFilePath = projectRootPath + projectFileName + "/"
-            let generatingDirectoryPath = generateRootPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+            let baseGeneratingDirectoryPath = generateRootPath
+            let ShouldRemoveLayerNameFromDirectoryName = booleanYamlReader.value(for: .ShouldRemoveLayerNameFromDirectory, componentType: componentType)
+            let generatingDirectoryPath: String
+            switch ShouldRemoveLayerNameFromDirectoryName {
+            case true:
+                generatingDirectoryPath = baseGeneratingDirectoryPath
+            case false:
+                generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+            }
+            
             let filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
             
             let project: XcodeProject

@@ -12,6 +12,10 @@ struct GenerateComponent {
     // e.g from KuriTemplate/Repository/Repository.swift
     // templateRelativePath is Repository/Repository.swift
     let templateRelativePath: String
+
+    init(templateRelativePath: String) {
+        self.templateRelativePath = templateRelativePath
+    }
     
     var templateFileName: String {
         return URL(fileURLWithPath: templateRelativePath).lastPathComponent

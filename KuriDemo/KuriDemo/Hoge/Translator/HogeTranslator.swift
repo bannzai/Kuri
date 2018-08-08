@@ -2,7 +2,7 @@
 //  HogeTranslator.swift
 //  Kuri
 //
-//  Created by hiroseyuudai on 2018/8/7.
+//  Created by hiroseyuudai on 2018/8/8.
 //  Copyright © 2018 hiroseyuudai. All rights reserved.
 //
 
