@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenerateComponent {
+struct GenerateComponent {
     // e.g from KuriTemplate/Repository/Repository.swift
     // templateRelativePath is Repository/Repository.swift
     let templateRelativePath: String
