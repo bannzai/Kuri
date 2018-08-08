@@ -11,14 +11,11 @@ import Yaml
 
 public struct YamlReader<T: YamlReadableType> {
     public let yaml: Yaml
-    public let env: [String: String]
-    
+
     public init(
-        yaml: Yaml,
-        env: [String: String]
+        yaml: Yaml
         ) {
         self.yaml = yaml
-        self.env = env
     }
     
     private func readYaml(for key: String, from yaml: Yaml) -> Yaml {
