@@ -35,6 +35,19 @@ enum ComponentYamlProperty: String {
     var isOptionalProperty: Bool {
         return !isRequiredProperty
     }
+    
+    var readableType: YamlReadableType.Type {
+        switch self {
+        case .Target,
+             .DefaultTemplateDirectoryPath,
+             .ProjectRootPath,
+             .ProjectFileName,
+             .GenerateRootPath:
+            return String.self
+        case .ShouldRemoveComponentDirectory:
+            return Bool.self
+        }
+    }
 }
 
 public struct YamlResource {

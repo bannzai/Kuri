@@ -11,6 +11,7 @@ import Yaml
 public protocol YamlReadableType {
     static func read(for key: String, from yaml: Yaml) -> Self?
 }
+
 extension String: YamlReadableType {
     public static func read(for key: String, from yaml: Yaml) -> String? {
         return yaml[.string(key)].string
