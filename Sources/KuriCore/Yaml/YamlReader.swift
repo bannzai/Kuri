@@ -9,7 +9,7 @@
 import Foundation
 import Yaml
 
-public struct YamlReader {
+public struct YamlReader<T: YamlReadableType> {
     public let yaml: Yaml
     public let env: [String: String]
     
@@ -25,11 +25,11 @@ public struct YamlReader {
         return yaml[.string(key)]
     }
     
-    private func readString(for key: String, from yaml: Yaml) -> String? {
+    private func readString(for key: String, from yaml: Yaml) -> T? {
         return readYaml(for: key, from: yaml).string
     }
     
-    private func readStringFromRoot(for key: ComponentYamlProperty) -> String? {
+    private func readStringFromRoot(for key: ComponentYamlProperty) -> T? {
         let readValue = readString(for: key.rawValue, from: yaml)
         switch readValue {
         case .none where key.isOptionalProperty:
@@ -41,7 +41,7 @@ public struct YamlReader {
         }
     }
     
-    private func readYamlFromComponent(for key: ComponentYamlProperty, and componentType: String, from yaml: Yaml) -> String? {
+    private func readYamlFromComponent(for key: ComponentYamlProperty, and componentType: String, from yaml: Yaml) -> T? {
         let yamlForCompoennt = yaml[.string(componentType)]
         return yamlForCompoennt[.string(key.rawValue)].string
     }
@@ -72,7 +72,7 @@ public struct YamlReader {
      - returns: searched value for key
      */
     
-    func read(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String? {
+    func read(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> T? {
         // only top level
         guard let componentType = componentType else {
             return readStringFromRoot(for: key)
