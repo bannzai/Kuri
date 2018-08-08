@@ -27,7 +27,8 @@ public struct Generator {
     fileprivate var templateHeadPath: String = ""
     
     public mutating func execute() throws {
-        templateHeadPath = yamlReader.templateRootPath()
+        let yamlReader = YamlReader<String>(yaml: yaml)
+        templateHeadPath = yamlReader.value(for: .DefaultTemplateDirectoryPath)
         resetGenerateComponents(for: templateHeadPath)
         
         guard let entityName = argument.prefix else {
@@ -166,13 +167,17 @@ fileprivate extension Generator {
             let componentType = component.componentType
             let typeFor = componentType
             
-            let shouldRemoveComponentDirectoryName = yamlReader.shouldRemoveComponentDirectory(for: typeFor)
-            component.shouldRemoveComponentDirectoryName = shouldRemoveComponentDirectoryName
-            let generateRootPath = yamlReader.generateRootPath(for: typeFor) + prefix + "/"
-            let projectRootPath = yamlReader.projectRootPath(for: typeFor)
-            let projectFileName = yamlReader.projectFileName(for: typeFor)
+            let stringYamlReader = YamlReader<String>(yaml: yaml)
+            let booleanYamlReader = YamlReader<Bool>(yaml: yaml)
             
-            let targetName = yamlReader.targetName(for: typeFor)
+            let shouldRemoveComponentDirectoryName = booleanYamlReader.value(for: .ShouldRemoveComponentDirectory, componentType: typeFor)
+            component.shouldRemoveComponentDirectoryName = shouldRemoveComponentDirectoryName
+            
+            let generateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: typeFor) + prefix + "/"
+            let projectRootPath = stringYamlReader.value(for: .ProjectRootPath, componentType: typeFor)
+            let projectFileName = stringYamlReader.value(for: .ProjectFileName, componentType: typeFor)
+            
+            let targetName = stringYamlReader.value(for: .Target, componentType: typeFor)
             let projectFilePath = projectRootPath + projectFileName + "/"
             let generatingDirectoryPath = generateRootPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
             let filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
