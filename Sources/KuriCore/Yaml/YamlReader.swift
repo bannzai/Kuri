@@ -30,10 +30,15 @@ public struct YamlReader {
     }
     
     private func readStringFromRoot(for key: ComponentYamlProperty) -> String? {
-        guard let value = readString(for: key.rawValue, from: yaml) else {
+        let readValue = readString(for: key.rawValue, from: yaml)
+        switch readValue {
+        case .none where key.isOptionalProperty:
+            return nil
+        case .none:
             fatalError("Can't find for \(key.rawValue)")
+        case let value?:
+            return value
         }
-        return value
     }
     
     private func readYamlFromComponent(for key: ComponentYamlProperty, and componentType: String, from yaml: Yaml) -> String? {
@@ -85,12 +90,16 @@ public struct YamlReader {
     
     func path(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
         let name = key.rawValue
-        guard let path = env[name]
-            ?? read(for: key, and: componentType, with: generateComponent)
-            else {
-                fatalError("should write \(name) in Kuri.yml")
+        let value = env[name] ?? read(for: key, and: componentType, with: generateComponent)
+        
+        switch value {
+        case .none where key.isOptionalProperty:
+            return ""
+        case .none:
+            fatalError("should write \(name) in Kuri.yml")
+        case let value?:
+            return value
         }
-        return path
     }
     
     func templateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
