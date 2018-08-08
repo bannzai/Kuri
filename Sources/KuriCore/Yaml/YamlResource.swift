@@ -17,24 +17,6 @@ enum ComponentYamlProperty: String {
     case ProjectFileName
     case GenerateRootPath
     case ShouldRemoveComponentDirectory
-    
-    var isRequiredProperty: Bool {
-        switch self {
-        case .Target,
-             .DefaultTemplateDirectoryPath,
-             .ProjectRootPath,
-             .ProjectFileName,
-             .GenerateRootPath:
-            return true
-        case .ShouldRemoveComponentDirectory:
-            return false
-        }
-        
-    }
-    
-    var isOptionalProperty: Bool {
-        return !isRequiredProperty
-    }
 }
 
 public struct YamlResource {
