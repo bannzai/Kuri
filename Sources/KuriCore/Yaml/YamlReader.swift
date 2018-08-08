@@ -22,15 +22,13 @@ public struct YamlReader<T: YamlReadableType> {
         return yaml[.string(key)]
     }
     
-    private func readString(for key: String, from yaml: Yaml) -> T? {
-        return readYaml(for: key, from: yaml).string
+    private func read(for key: String, from yaml: Yaml) -> T? {
+        return T.read(for: key, from: yaml)
     }
     
-    private func readStringFromRoot(for key: ComponentYamlProperty) -> T? {
-        let readValue = readString(for: key.rawValue, from: yaml)
+    private func readFromRoot(for key: ComponentYamlProperty) -> T? {
+        let readValue = read(for: key.rawValue, from: yaml)
         switch readValue {
-        case .none where key.isOptionalProperty:
-            return nil
         case .none:
             fatalError("Can't find for \(key.rawValue)")
         case let value?:
@@ -40,7 +38,7 @@ public struct YamlReader<T: YamlReadableType> {
     
     private func readYamlFromComponent(for key: ComponentYamlProperty, and componentType: String, from yaml: Yaml) -> T? {
         let yamlForCompoennt = yaml[.string(componentType)]
-        return yamlForCompoennt[.string(key.rawValue)].string
+        return T.read(for: key.rawValue, from: yamlForCompoennt)
     }
     
     private func readYamlForComponent(componentType: String, from yaml: Yaml) -> Yaml {
@@ -72,26 +70,24 @@ public struct YamlReader<T: YamlReadableType> {
     func read(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> T? {
         // only top level
         guard let componentType = componentType else {
-            return readStringFromRoot(for: key)
+            return readFromRoot(for: key)
         }
         
         // from top level search for key
         guard let generateComponent = generateComponent else{
-            return readYamlFromComponent(for: key, and: componentType, from: yaml) ?? readStringFromRoot(for: key)
+            return readYamlFromComponent(for: key, and: componentType, from: yaml) ?? readFromRoot(for: key)
         }
         
         // recursive yaml component
         let yamlForContent = readYamlForComponent(generateComponent: generateComponent, from: yaml)
-        return readYamlFromComponent(for: key, and: componentType, from: yamlForContent) ?? readYamlFromComponent(for: key, and: componentType, from: yaml) ?? readStringFromRoot(for: key)
+        return readYamlFromComponent(for: key, and: componentType, from: yamlForContent) ?? readYamlFromComponent(for: key, and: componentType, from: yaml) ?? readFromRoot(for: key)
     }
     
-    func path(for key: ComponentYamlProperty, and componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+    func value(for key: ComponentYamlProperty, componentType: String? = nil, generateComponent: GenerateComponent? = nil) -> T {
         let name = key.rawValue
-        let value = env[name] ?? read(for: key, and: componentType, with: generateComponent)
+        let value = read(for: key, and: componentType, with: generateComponent)
         
         switch value {
-        case .none where key.isOptionalProperty:
-            return ""
         case .none:
             fatalError("should write \(name) in Kuri.yml")
         case let value?:
@@ -99,38 +95,38 @@ public struct YamlReader<T: YamlReadableType> {
         }
     }
     
-    func templateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryPath, and: componentType, with: generateComponent)
-    }
-    
-    func generateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.GenerateRootPath, and: componentType, with: generateComponent)
-    }
-    
-    func projectRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.ProjectRootPath, and: componentType, with: generateComponent)
-    }
-    
-    func projectFileName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.ProjectFileName, and: componentType, with: generateComponent)
-    }
-    
-    func targetName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-        return path(for: ComponentYamlProperty.Target, and: componentType, with: generateComponent)
-    }
-    
-    func shouldRemoveComponentDirectory(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> Bool {
-        let value = path(for: ComponentYamlProperty.ShouldRemoveComponentDirectory, and: componentType, with: generateComponent)
-        switch value {
-        case "true":
-            return true
-        case "false":
-            return false
-        case "":
-            // Not setting
-            return false
-        case _:
-            fatalError("Can not use \(value). Should specifity true or false")
-        }
-    }
+//    func templateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) ->  {
+//        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryPath, and: componentType, with: generateComponent)
+//    }
+//
+//    func generateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+//        return path(for: ComponentYamlProperty.GenerateRootPath, and: componentType, with: generateComponent)
+//    }
+//
+//    func projectRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+//        return path(for: ComponentYamlProperty.ProjectRootPath, and: componentType, with: generateComponent)
+//    }
+//
+//    func projectFileName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+//        return path(for: ComponentYamlProperty.ProjectFileName, and: componentType, with: generateComponent)
+//    }
+//
+//    func targetName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
+//        return path(for: ComponentYamlProperty.Target, and: componentType, with: generateComponent)
+//    }
+//
+//    func shouldRemoveComponentDirectory(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> Bool {
+//        let value = path(for: ComponentYamlProperty.ShouldRemoveComponentDirectory, and: componentType, with: generateComponent)
+//        switch value {
+//        case "true":
+//            return true
+//        case "false":
+//            return false
+//        case "":
+//            // Not setting
+//            return false
+//        case _:
+//            fatalError("Can not use \(value). Should specifity true or false")
+//        }
+//    }
 }
