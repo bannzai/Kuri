@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Yaml
 
 public protocol YamlReadableType {
     static func read(for key: String, from yaml: Yaml) -> Self?
