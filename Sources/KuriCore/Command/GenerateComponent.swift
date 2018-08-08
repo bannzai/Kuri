@@ -37,7 +37,13 @@ class GenerateComponent {
     
     var templateDirectoryPath: [String] {
         // remove file name
-        return Array(templateRelativePath.components(separatedBy: "/").dropLast())
+        let baseSlice = templateRelativePath.components(separatedBy: "/").dropLast()
+        switch shouldRemoveComponentDirectoryName {
+        case true:
+            return Array(baseSlice.dropLast())
+        case false:
+            return Array(baseSlice)
+        }
     }
     
     func makeGeneratingDirectoryPath(prefix: String, targetName: String) -> [String] {
