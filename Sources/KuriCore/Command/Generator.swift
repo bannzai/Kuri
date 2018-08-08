@@ -9,17 +9,18 @@
 import Foundation
 import SwiftShell
 import XcodeProject
+import Yaml
 
 public struct Generator {
     public let argument: GenerateArgument
-    public let yamlReader: YamlReader
+    public let yaml: Yaml
     
     public init(
         argument: GenerateArgument,
-        yamlReader: YamlReader
+        yaml: Yaml
         ) {
         self.argument = argument
-        self.yamlReader = yamlReader
+        self.yaml = yaml
     }
     
     fileprivate var generateComponents: [GenerateComponent] = []
