@@ -75,6 +75,7 @@ public struct Setup {
             "\(ComponentYamlProperty.ProjectFileName.rawValue): \(xcodeProjectFileName)",
             "\(ComponentYamlProperty.GenerateRootPath.rawValue): ./\(projectName)/",
             "\(ComponentYamlProperty.Target.rawValue): \(projectName)",
+            "\(ComponentYamlProperty.ShouldRemoveComponentDirectory.rawValue): \(false)",
             "",
             ].joined(separator: "\n")
         
