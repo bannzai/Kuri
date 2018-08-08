@@ -165,19 +165,18 @@ fileprivate extension Generator {
         var pathAndXcodeProject: [String: XcodeProject] = [:]
         try components.forEach { component in
             let componentType = component.componentType
-            let typeFor = componentType
-            
+
             let stringYamlReader = YamlReader<String>(yaml: yaml)
             let booleanYamlReader = YamlReader<Bool>(yaml: yaml)
             
-            let generateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: typeFor) + prefix + "/"
-            let projectRootPath = stringYamlReader.value(for: .ProjectRootPath, componentType: typeFor)
-            let projectFileName = stringYamlReader.value(for: .ProjectFileName, componentType: typeFor)
+            let generateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: componentType) + prefix + "/"
+            let projectRootPath = stringYamlReader.value(for: .ProjectRootPath, componentType: componentType)
+            let projectFileName = stringYamlReader.value(for: .ProjectFileName, componentType: componentType)
             
-            let targetName = stringYamlReader.value(for: .Target, componentType: typeFor)
+            let targetName = stringYamlReader.value(for: .Target, componentType: componentType)
             let projectFilePath = projectRootPath + projectFileName + "/"
             let baseGeneratingDirectoryPath = generateRootPath
-            let shouldRemoveComponentDirectoryName = booleanYamlReader.value(for: .ShouldRemoveComponentDirectory, componentType: typeFor)
+            let shouldRemoveComponentDirectoryName = booleanYamlReader.value(for: .ShouldRemoveComponentDirectory, componentType: componentType)
             let generatingDirectoryPath: String
             switch shouldRemoveComponentDirectoryName {
             case true:
