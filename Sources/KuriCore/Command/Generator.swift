@@ -171,8 +171,7 @@ fileprivate extension Generator {
             let booleanYamlReader = YamlReader<Bool>(yaml: yaml)
             
             let shouldRemoveComponentDirectoryName = booleanYamlReader.value(for: .ShouldRemoveComponentDirectory, componentType: typeFor)
-            component.shouldRemoveComponentDirectoryName = shouldRemoveComponentDirectoryName
-            
+
             let baseGenerateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: typeFor)
             let generateRootPath: String
             switch shouldRemoveComponentDirectoryName {
