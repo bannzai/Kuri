@@ -170,22 +170,22 @@ fileprivate extension Generator {
             let stringYamlReader = YamlReader<String>(yaml: yaml)
             let booleanYamlReader = YamlReader<Bool>(yaml: yaml)
             
-            let shouldRemoveComponentDirectoryName = booleanYamlReader.value(for: .ShouldRemoveComponentDirectory, componentType: typeFor)
-
-            let baseGenerateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: typeFor)
-            let generateRootPath: String
-            switch shouldRemoveComponentDirectoryName {
-            case true:
-                generateRootPath = baseGenerateRootPath
-            case false:
-                generateRootPath = baseGenerateRootPath + prefix + "/"
-            }
+            let generateRootPath = stringYamlReader.value(for: .GenerateRootPath, componentType: typeFor) + prefix + "/"
             let projectRootPath = stringYamlReader.value(for: .ProjectRootPath, componentType: typeFor)
             let projectFileName = stringYamlReader.value(for: .ProjectFileName, componentType: typeFor)
             
             let targetName = stringYamlReader.value(for: .Target, componentType: typeFor)
             let projectFilePath = projectRootPath + projectFileName + "/"
-            let generatingDirectoryPath = generateRootPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+            let baseGeneratingDirectoryPath = generateRootPath
+            let shouldRemoveComponentDirectoryName = booleanYamlReader.value(for: .ShouldRemoveComponentDirectory, componentType: typeFor)
+            let generatingDirectoryPath: String
+            switch shouldRemoveComponentDirectoryName {
+            case true:
+                generatingDirectoryPath = baseGeneratingDirectoryPath
+            case false:
+                generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+            }
+            
             let filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
             
             let project: XcodeProject
