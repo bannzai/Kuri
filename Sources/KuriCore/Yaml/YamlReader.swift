@@ -95,38 +95,4 @@ public struct YamlReader<T: YamlReadableType> {
         }
     }
     
-//    func templateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) ->  {
-//        return path(for: ComponentYamlProperty.DefaultTemplateDirectoryPath, and: componentType, with: generateComponent)
-//    }
-//
-//    func generateRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-//        return path(for: ComponentYamlProperty.GenerateRootPath, and: componentType, with: generateComponent)
-//    }
-//
-//    func projectRootPath(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-//        return path(for: ComponentYamlProperty.ProjectRootPath, and: componentType, with: generateComponent)
-//    }
-//
-//    func projectFileName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-//        return path(for: ComponentYamlProperty.ProjectFileName, and: componentType, with: generateComponent)
-//    }
-//
-//    func targetName(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> String {
-//        return path(for: ComponentYamlProperty.Target, and: componentType, with: generateComponent)
-//    }
-//
-//    func shouldRemoveComponentDirectory(for componentType: String? = nil, with generateComponent: GenerateComponent? = nil) -> Bool {
-//        let value = path(for: ComponentYamlProperty.ShouldRemoveComponentDirectory, and: componentType, with: generateComponent)
-//        switch value {
-//        case "true":
-//            return true
-//        case "false":
-//            return false
-//        case "":
-//            // Not setting
-//            return false
-//        case _:
-//            fatalError("Can not use \(value). Should specifity true or false")
-//        }
-//    }
 }
