@@ -15,7 +15,20 @@ release:
 
 dry-run: build
 	cd $(DEMO_DIRECTORY)
-	kuri generate Demo
+	rm -rf KuriDemo.xcodeproj/project.pbxproj \ 
+		KuriDemo/Hoge/DataStore/HogeDataStore.swift \ 
+		KuriDemo/Hoge/HogeBuilder.swift \ 
+		KuriDemo/Hoge/HogeEntity.swift \ 
+		KuriDemo/Hoge/Model/HogeModel.swift \ 
+		KuriDemo/Hoge/Presenter/HogePresenter.swift \ 
+		KuriDemo/Hoge/Repository/HogeRepository.swift \ 
+		KuriDemo/Hoge/Translator/HogeTranslator.swift \ 
+		KuriDemo/Hoge/UseCase/HogeUseCase.swift \ 
+		KuriDemo/Hoge/View/HogeViewController.storyboard \ 
+		KuriDemo/Hoge/View/HogeViewController.swift \  
+		KuriDemo/Hoge/Wireframe/HogeWireframe.swift \ 
+		KuriDemoTests/Hoge/Tests/HogeTests.swift
+	kuri generate Hoge
 	cd -
 
 build:
