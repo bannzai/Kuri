@@ -11,7 +11,7 @@ install: release
 	cp -f $(RELEASE_BINARY_DIRECTORY) bin/$(EXECUTE)
 
 release:
-	swift build -c release -Xswiftc -static-stdlib --disable-sandbox
+	swift build -c release 
 
 dry-run: build
 	cd $(DEMO_DIRECTORY)
