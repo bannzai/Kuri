@@ -15,8 +15,7 @@ release:
 
 dry-run: build
 	cd $(DEMO_DIRECTORY)
-	rm -rf KuriDemo.xcodeproj/project.pbxproj \ 
-		KuriDemo/Hoge/DataStore/HogeDataStore.swift \ 
+	rm -rf KuriDemo/Hoge/DataStore/HogeDataStore.swift \ 
 		KuriDemo/Hoge/HogeBuilder.swift \ 
 		KuriDemo/Hoge/HogeEntity.swift \ 
 		KuriDemo/Hoge/Model/HogeModel.swift \ 
