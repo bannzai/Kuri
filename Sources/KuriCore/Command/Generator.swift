@@ -156,8 +156,8 @@ extension Generator {
     
 }
 
-fileprivate extension Generator {
-    fileprivate func generate(with prefix: String, for components: [GenerateComponent], and templateHeadPath: String) throws {
+private extension Generator {
+    func generate(with prefix: String, for components: [GenerateComponent], and templateHeadPath: String) throws {
         print("Begin generate")
         defer {
             print("End generate")

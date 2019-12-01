@@ -73,9 +73,9 @@ Instructions with options [here](./Documents/generate.md).
 and you can check [KuriDemo](./KuriDemo/)'s templates.
 
 ## Installation
-### Homebrew(recommended)
-`$ brew tap bannzai/homebrew-Kuri`  
-`$ brew install kuri`
+### Mint (Recommended)
+[Mint](https://github.com/yonaskolb/Mint) is a package manager for created by swift package manager executable libraries. 
+`$ mint install bannzai/kuri
 
 ### Manual
 1. Download **Kuri** from [latest release version](https://github.com/bannzai/Kuri/releases)

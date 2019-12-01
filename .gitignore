@@ -3,3 +3,4 @@ Kuri.xcodeproj/xcuserdata/
 Kuri.xcodeproj/
 .gitsubmodule
 /.build
+bin/kuri
