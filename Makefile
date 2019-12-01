@@ -16,6 +16,12 @@ release:
 build:
 	swift build
 
+localmint:
+	$(eval HASH=$(shell git rev-parse HEAD))
+	echo "COMMIT HASH is $(HASH)"
+	git tag $(HASH)
+	mint install file://$(shell pwd -P)@$(HASH)
+
 xcodeproj: 
 	swift package generate-xcodeproj
 
