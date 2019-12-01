@@ -1,7 +1,17 @@
+EXECUTE?=kuri
 PROJECT?=Kuri
 PACKAGE?=Kuri
-DEMO_DIRECTORY=KuriDemo
+DEMO_DIRECTORY?=KuriDemo
 BUILD_DIRECTORY?=.build
+RELEASE_BINARY_DIRECTORY?=$(BUILD_DIRECTORY)/release/$(PROJECT)
+
+install: release
+	rm -rf ./bin/$(EXECUTE)
+	mkdir -p ./bin
+	cp -f $(RELEASE_BINARY_DIRECTORY) bin/$(EXECUTE)
+
+release:
+		swift build -c release -Xswiftc -static-stdlib --disable-sandbox
 
 dry-run: build
 	cd $(DEMO_DIRECTORY)
