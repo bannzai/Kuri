@@ -26,7 +26,7 @@ let package = Package(
             dependencies: ["KuriCore"]),
         .target(
             name: "KuriCore",
-            dependencies: ["XcodeProject", "Yaml", "SwiftShell"]),
+            dependencies: ["XcodeProjectCore", "Yaml", "SwiftShell"]),
         .testTarget(
             name: "KuriCoreTests",
             dependencies: ["KuriCore", "SwiftShell"]),
