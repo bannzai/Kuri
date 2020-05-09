@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftShell
-import XcodeProject
+import XcodeProjectCore
 import Yaml
 
 public struct Generator {
@@ -192,7 +192,7 @@ private extension Generator {
                 project = alreadyExistsProject
             } else {
                 let xcodeprojectFileUrl = URL(fileURLWithPath: projectFilePath + "project.pbxproj")
-                project = try XcodeProject(for: xcodeprojectFileUrl)
+                project = try XcodeProject(xcodeprojectURL: xcodeprojectFileUrl)
                 pathAndXcodeProject[projectFilePath] = project
             }
             
@@ -206,21 +206,16 @@ private extension Generator {
             try fileOperator.createDirectory(for: generatingDirectoryPath)
             fileOperator.createFile(for: filePath)
             
-            project.appendFilePath(
-                with: projectRootPath,
-                filePath: filePath,
-                targetName: targetName
-            )
-            
+            project.appendFile(path: projectRootPath + "/" + filePath, targetName: targetName)
+
             try fileOperator.write(to: filePath, this: writeCotent)
             
             print("created: \(filePath)")
         }
         
-        try pathAndXcodeProject.values.forEach {
-            try $0.write()
-            
-            print("write in project: \($0.projectName).xcodeproj")
+        try pathAndXcodeProject.forEach { (key, project) in
+            try project.write()
+            print("write in project: \(key).xcodeproj")
         }
     }
 }
