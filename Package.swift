@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/bannzai/XcodeProject.git", from: Version(1, 0, 2)),
+        .package(url: "https://github.com/bannzai/XcodeProject.git", from: Version(1, 0, 3)),
         .package(url: "https://github.com/behrang/YamlSwift.git", from: Version(3, 4, 4)),
         .package(url: "https://github.com/kareman/SwiftShell.git", from: Version(5, 0, 1)),
     ],
@@ -26,7 +26,7 @@ let package = Package(
             dependencies: ["KuriCore"]),
         .target(
             name: "KuriCore",
-            dependencies: ["XcodeProjectCore", "Yaml", "SwiftShell"]),
+            dependencies: ["XcodeProject", "Yaml", "SwiftShell"]),
         .testTarget(
             name: "KuriCoreTests",
             dependencies: ["KuriCore", "SwiftShell"]),
