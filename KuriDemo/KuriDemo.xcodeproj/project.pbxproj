@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,11 +11,15 @@
 		1GOISMFREV12TGR7NU9AHCK9 /* FugaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */; };
 		1RSKL6NOIYK22XS4DBCW36QN /* PiyoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */; };
 		2BUPCANGPW1G1PDEOPL51470 /* PiyoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */; };
+		3326724B2468506600AB3E66 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 3326724A2468506600AB3E66 /* Gedatsu */; };
 		37K8Q854IL5JCRYNW7OYSZOY /* HogeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = YQO8KXENQ1SXBXF8S6F5B48S /* HogeEntity.swift */; };
+		3NSHW4VAWV2H6LWJBJ5ZEH0J /* SPMTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = KC60QIXLSKFOJ10Z8D8YQU8Z /* SPMTranslator.swift */; };
 		4PGJI10SW8WBZNC2TJO60MI8 /* FugaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZVRJGE5YNYOI7XLAC6SN65AR /* FugaUseCase.swift */; };
 		5LLGAKMM6CR3SRNOBPNXAR30 /* PiyoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */; };
 		5TO0B4CZFYQDWFXSBE7LUYFR /* FugaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4JSWFJIAT0HNCIWWBV75JFN3 /* FugaCollectionViewCell.xib */; };
+		63Q386VGTPJV4THPG1LVU2U0 /* SPMPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = U5142RJUFJ0V4ITXV5WJPVDA /* SPMPresenter.swift */; };
 		6IJ2W30FDV1LY4GGZ8YEULW7 /* FugaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EN3FN8UIE7TQ4ZFGZWYBWIFU /* FugaModel.swift */; };
+		81W5BNVTNCLOOCU0IKOZT8P6 /* SPMUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DIFJO6586QV0CH7E792WBCDR /* SPMUseCase.swift */; };
 		83ZBBQIKXVOHT7748GK42ABV /* PiyoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228O2H4V9D2BXWNSQ4QRXMTG /* PiyoModel.swift */; };
 		BA265F291FFBAB850016E7DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F281FFBAB850016E7DE /* AppDelegate.swift */; };
 		BA265F2B1FFBAB850016E7DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F2A1FFBAB850016E7DE /* ViewController.swift */; };
@@ -29,30 +33,39 @@
 		BA265F6B1FFBAD270016E7DE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA265F691FFBAD270016E7DE /* CollectionViewCell.xib */; };
 		BA265F6E1FFBAD3F0016E7DE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA265F6C1FFBAD3F0016E7DE /* TableViewCell.swift */; };
 		BA265F6F1FFBAD3F0016E7DE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */; };
+		C9EVRJAFE85CI1ZCL1E2ERPO /* SPMEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = MHTY0KS7BT7R7OODDE8GPALC /* SPMEntity.swift */; };
 		CD6M0H8J5XYTOW57ALRNMD1O /* FugaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2OLK7SITMXYMWH2LPSOZ3IT /* FugaEntity.swift */; };
 		CP4U9ZZ1IXI9O69I88Z5U36U /* FugaTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = X2WIQRY2KSG9D63V0CLEY1LG /* FugaTranslator.swift */; };
+		D3NLXS8YWQGJC478G6UZ9NWN /* SPMViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = X5II1JCINE8OZFQA5IXSKNNE /* SPMViewController.storyboard */; };
 		E9RSHCMRQC3VJJG8S7P2EE3O /* HogeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = R5IBJ57A0242WG4DP0QCGT4L /* HogeModel.swift */; };
 		G2VFEAWAQQ4KFB257T152ENI /* HogeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = NCBHAYC5TFRKV45Y2X1O4Y0K /* HogeTests.swift */; };
 		GXCWRPEEFHIUAYGHI7Q8PGCV /* PiyoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */; };
 		HFBW84G5F4IZRT6JDP8GHY96 /* HogeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = RRRJQT6J03F3QKSETIX0TO8P /* HogeRepository.swift */; };
 		HQ4AZDBFEPXRKHHOV6C30XI0 /* HogeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = IHNBBJILGWC9RIGIJIX8WIZO /* HogeViewController.swift */; };
 		HWJOJ0T71ODBZ8DOW57HOR46 /* PiyoTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */; };
+		I7XJL3WGF4A2U262TBK1VQSM /* SPMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZQ007AYATASN981AHBFEGNRB /* SPMTests.swift */; };
 		IFJHJ2D8V7646U7AOUDHBLWR /* HogeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FZD8TF2B3427EJILHBGYIB20 /* HogeDataStore.swift */; };
 		KA67GINSIV1LC97SDMI37XDF /* PiyoTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */; };
 		LCEVTGOH286TAOET53QBACR1 /* PiyoDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FBVZGRP03V8IY6PGH4S0OT /* PiyoDataStore.swift */; };
+		M1BB8JGD8NVO9EP9GNHPJ9LJ /* SPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = MU2W1HGO8UNRCB3XK34D6LGC /* SPMViewController.swift */; };
 		M6MLNYXOFT3WZNQJJR1AQH4R /* HogeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = S7XZ4BYE5D33E2A4EIUA4789 /* HogeBuilder.swift */; };
 		ML4EFUYIGIJ5DZ8XWQT5E7SM /* PiyoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */; };
 		P5PYEDZJG2Z0DW44KIE4K0FU /* FugaWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = NK90RPQFCUJNWGHICIVW9ZM9 /* FugaWireframe.swift */; };
 		PPBUU0U5TVVP22PFK9HATVM3 /* PiyoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */; };
+		PVA5QU6AP20RJI26MOPYSPK1 /* SPMBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AV2TLYF4MX8CA53PWX452X5O /* SPMBuilder.swift */; };
 		R0RFH0579JA3QMIDVVRZIY0H /* PiyoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */; };
 		R4VII1Z0P57I9N591BJL25ON /* HogeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4WJ7MAA01OFPSTQQPB7KQ8LY /* HogeTranslator.swift */; };
 		R6E0E144A8IE7VOOPHSCNSUE /* HogeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = JVE0BNMH8X0PCTJEEHU1DX0C /* HogeTests.swift */; };
+		R8FG3XT8R6A9RS8VZ218B8LJ /* SPMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = PZRUE0TQL2ASU2XH0H0WILPB /* SPMRepository.swift */; };
 		RT8AAFMAZQB0AZZHV9C24T1U /* PiyoWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */; };
 		RUS35PKYW0IBU2Q51HWZNE8J /* FugaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = O8C7E66V26O7BHLOYMD67C0V /* FugaCollectionViewController.swift */; };
+		RWOJZBY6YFRB6O9L9EIETPW8 /* SPMDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = SNU2T3W8XTZ9NIJV9HQTDLAA /* SPMDataStore.swift */; };
 		RX6NFL4YYA0E5BYYMZYHY465 /* HogePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = JK61FENCRYUC4Q4W7V9BPCVP /* HogePresenter.swift */; };
 		SCL1MAAAVQVJWABG8OFJYHRG /* FugaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = UAAUI6E13FZAIK1P3RPOVSKD /* FugaCollectionViewCell.swift */; };
+		SRU8361O8R50LA6S2U12YD2F /* SPMWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1LAZ5I0FNTAQ3KPQMI904US /* SPMWireframe.swift */; };
 		SSR2VY36I60V5HXJMKPOVNMX /* HogeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = XOCJ9JGZI8K7DYFV0LX6ISV8 /* HogeWireframe.swift */; };
 		UBB9SR63U97BUHC14C1QJIN4 /* FugaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = R0ZWL75196MO0G7X61I561DY /* FugaRepository.swift */; };
+		VDG7CD4T5PKPYWSGFTFAFOTG /* SPMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = NKVTM8ZM4K0L6MZNS6OZRQIH /* SPMModel.swift */; };
 		VL667T70BLXK9VSQL7B8ESEC /* HogeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8YXF2SNZPSUGDL56X366TW7J /* HogeTests.swift */; };
 		VZVV40D0T1JGZPEMW6NZT9RS /* FugaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = HXHBEAOEMAL6WLI6S1I0KZ8G /* FugaPresenter.swift */; };
 		W32OOZZGZTQQASY770EOJVVI /* FugaCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = RDMKKI58T3FC0Y9DIFFCDC9C /* FugaCollectionViewController.storyboard */; };
@@ -88,7 +101,9 @@
 		8MEFM9QW3B181IE6HSTB8KZ4 /* PiyoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTableViewCell.swift; sourceTree = "<group>"; };
 		8YXF2SNZPSUGDL56X366TW7J /* HogeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeTests.swift; sourceTree = "<group>"; };
 		9OYP9CCEQO600S7HO72NLTYW /* PiyoBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoBuilder.swift; sourceTree = "<group>"; };
+		AV2TLYF4MX8CA53PWX452X5O /* SPMBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMBuilder.swift; sourceTree = "<group>"; };
 		B19K9WC0P1W0NBU99DLOW74Y /* HogeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HogeViewController.storyboard; sourceTree = "<group>"; };
+		B1LAZ5I0FNTAQ3KPQMI904US /* SPMWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMWireframe.swift; sourceTree = "<group>"; };
 		BA265F251FFBAB850016E7DE /* KuriDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuriDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA265F281FFBAB850016E7DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA265F2A1FFBAB850016E7DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +124,7 @@
 		BA265F6D1FFBAD3F0016E7DE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		CMGMX39LC6T2IAX58OW1OISK /* HogeUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeUseCase.swift; sourceTree = "<group>"; };
 		CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PiyoTableViewCell.xib; sourceTree = "<group>"; };
+		DIFJO6586QV0CH7E792WBCDR /* SPMUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMUseCase.swift; sourceTree = "<group>"; };
 		EN3FN8UIE7TQ4ZFGZWYBWIFU /* FugaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaModel.swift; sourceTree = "<group>"; };
 		F2OLK7SITMXYMWH2LPSOZ3IT /* FugaEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaEntity.swift; sourceTree = "<group>"; };
 		FZD8TF2B3427EJILHBGYIB20 /* HogeDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeDataStore.swift; sourceTree = "<group>"; };
@@ -118,24 +134,33 @@
 		JE8M5285AK7YFXL6QHXDG2VJ /* PiyoWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoWireframe.swift; sourceTree = "<group>"; };
 		JK61FENCRYUC4Q4W7V9BPCVP /* HogePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogePresenter.swift; sourceTree = "<group>"; };
 		JVE0BNMH8X0PCTJEEHU1DX0C /* HogeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeTests.swift; sourceTree = "<group>"; };
+		KC60QIXLSKFOJ10Z8D8YQU8Z /* SPMTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMTranslator.swift; sourceTree = "<group>"; };
 		M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTableViewController.swift; sourceTree = "<group>"; };
+		MHTY0KS7BT7R7OODDE8GPALC /* SPMEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMEntity.swift; sourceTree = "<group>"; };
+		MU2W1HGO8UNRCB3XK34D6LGC /* SPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMViewController.swift; sourceTree = "<group>"; };
 		NCBHAYC5TFRKV45Y2X1O4Y0K /* HogeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeTests.swift; sourceTree = "<group>"; };
 		NK90RPQFCUJNWGHICIVW9ZM9 /* FugaWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaWireframe.swift; sourceTree = "<group>"; };
+		NKVTM8ZM4K0L6MZNS6OZRQIH /* SPMModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMModel.swift; sourceTree = "<group>"; };
 		O8C7E66V26O7BHLOYMD67C0V /* FugaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaCollectionViewController.swift; sourceTree = "<group>"; };
+		PZRUE0TQL2ASU2XH0H0WILPB /* SPMRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMRepository.swift; sourceTree = "<group>"; };
 		QEM4X3DTKPGJS28F9531Q8LQ /* PiyoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoUseCase.swift; sourceTree = "<group>"; };
 		R0ZWL75196MO0G7X61I561DY /* FugaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaRepository.swift; sourceTree = "<group>"; };
 		R5IBJ57A0242WG4DP0QCGT4L /* HogeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeModel.swift; sourceTree = "<group>"; };
 		RDMKKI58T3FC0Y9DIFFCDC9C /* FugaCollectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FugaCollectionViewController.storyboard; sourceTree = "<group>"; };
 		RRRJQT6J03F3QKSETIX0TO8P /* HogeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeRepository.swift; sourceTree = "<group>"; };
 		S7XZ4BYE5D33E2A4EIUA4789 /* HogeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeBuilder.swift; sourceTree = "<group>"; };
+		SNU2T3W8XTZ9NIJV9HQTDLAA /* SPMDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMDataStore.swift; sourceTree = "<group>"; };
+		U5142RJUFJ0V4ITXV5WJPVDA /* SPMPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMPresenter.swift; sourceTree = "<group>"; };
 		UAAUI6E13FZAIK1P3RPOVSKD /* FugaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaCollectionViewCell.swift; sourceTree = "<group>"; };
 		WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoRepository.swift; sourceTree = "<group>"; };
 		X2WIQRY2KSG9D63V0CLEY1LG /* FugaTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaTranslator.swift; sourceTree = "<group>"; };
+		X5II1JCINE8OZFQA5IXSKNNE /* SPMViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPMViewController.storyboard; sourceTree = "<group>"; };
 		XOCJ9JGZI8K7DYFV0LX6ISV8 /* HogeWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeWireframe.swift; sourceTree = "<group>"; };
 		YQO8KXENQ1SXBXF8S6F5B48S /* HogeEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HogeEntity.swift; sourceTree = "<group>"; };
 		Z1CTBJE9GTGLY1I2HJFPB6BE /* PiyoTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiyoTranslator.swift; sourceTree = "<group>"; };
 		Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaBuilder.swift; sourceTree = "<group>"; };
 		ZFDZ5CN169J83W4F6NX328Q4 /* PiyoTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PiyoTableViewController.storyboard; sourceTree = "<group>"; };
+		ZQ007AYATASN981AHBFEGNRB /* SPMTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMTests.swift; sourceTree = "<group>"; };
 		ZVRJGE5YNYOI7XLAC6SN65AR /* FugaUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FugaUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3326724B2468506600AB3E66 /* Gedatsu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +232,14 @@
 			path = DataStore;
 			sourceTree = "<group>";
 		};
+		2R6FXPENKZ2VV0ZMNJM3X8V5 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				DIFJO6586QV0CH7E792WBCDR /* SPMUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		35S8ACH3219OY3SW4NOU6G9R /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +262,14 @@
 				WP6WG366Q041TZB7CJ6LDZ2M /* Tests */,
 			);
 			path = Hoge;
+			sourceTree = "<group>";
+		};
+		5L70RSNKDV24KG3TWFXX8ADC /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				KC60QIXLSKFOJ10Z8D8YQU8Z /* SPMTranslator.swift */,
+			);
+			path = Translator;
 			sourceTree = "<group>";
 		};
 		7FH5GSZ4KHAYLAWPMDI6R17G /* UseCase */ = {
@@ -308,6 +350,7 @@
 				8WW70D8BBFYK9XA8DFV7WV7D /* Piyo */,
 				KQVLUFRXINZWJF5YU60JG7CD /* Fuga */,
 				1IXSA95QEWIVETTWK505LLI1 /* Hoge */,
+				PU87NSGBKWPDTC3VJA4VYP71 /* SPM */,
 			);
 			path = KuriDemo;
 			sourceTree = "<group>";
@@ -318,6 +361,7 @@
 				BA265F3D1FFBAB850016E7DE /* KuriDemoTests.swift */,
 				BA265F3F1FFBAB850016E7DE /* Info.plist */,
 				4O3R1ELAWQVS6B3SNP9B9QVF /* Hoge */,
+				FM6H83EVXK5C37DJ8VS7BOEC /* SPM */,
 			);
 			path = KuriDemoTests;
 			sourceTree = "<group>";
@@ -342,12 +386,37 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D032X5IJLUYH14IF0D38AT5V /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				PZRUE0TQL2ASU2XH0H0WILPB /* SPMRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		DRM9VHXN2NLP4R06WK1Q91NK /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				WU3RAM5UTZSRNU54TU0XEHX3 /* PiyoRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		FBLPOUF2425WVBGWY6621VQT /* View */ = {
+			isa = PBXGroup;
+			children = (
+				X5II1JCINE8OZFQA5IXSKNNE /* SPMViewController.storyboard */,
+				MU2W1HGO8UNRCB3XK34D6LGC /* SPMViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FM6H83EVXK5C37DJ8VS7BOEC /* SPM */ = {
+			isa = PBXGroup;
+			children = (
+				MY270OQMJRQUKUFEWMHLNIQ6 /* Tests */,
+			);
+			path = SPM;
 			sourceTree = "<group>";
 		};
 		G1NI9GZKKFSH9XO3K5Z1HQ0A /* Wireframe */ = {
@@ -382,6 +451,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		JQUG6IZUVUK0PKCY3Z2TGMC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				NKVTM8ZM4K0L6MZNS6OZRQIH /* SPMModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		KQVLUFRXINZWJF5YU60JG7CD /* Fuga */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +476,22 @@
 			path = Fuga;
 			sourceTree = "<group>";
 		};
+		M9SITA7388LAWTSLOU7S4WNO /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				SNU2T3W8XTZ9NIJV9HQTDLAA /* SPMDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		MY270OQMJRQUKUFEWMHLNIQ6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ZQ007AYATASN981AHBFEGNRB /* SPMTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		O0HX2ZALII8KIX0M96OM1OFQ /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +506,23 @@
 				Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		PU87NSGBKWPDTC3VJA4VYP71 /* SPM */ = {
+			isa = PBXGroup;
+			children = (
+				D032X5IJLUYH14IF0D38AT5V /* Repository */,
+				MHTY0KS7BT7R7OODDE8GPALC /* SPMEntity.swift */,
+				WHO2OEVH7NPCLDHZAVBFVJOG /* Presenter */,
+				YKNYMNOW9A7EB4YNF8MUNUJD /* Wireframe */,
+				5L70RSNKDV24KG3TWFXX8ADC /* Translator */,
+				M9SITA7388LAWTSLOU7S4WNO /* DataStore */,
+				JQUG6IZUVUK0PKCY3Z2TGMC7 /* Model */,
+				FBLPOUF2425WVBGWY6621VQT /* View */,
+				AV2TLYF4MX8CA53PWX452X5O /* SPMBuilder.swift */,
+				2R6FXPENKZ2VV0ZMNJM3X8V5 /* UseCase */,
+			);
+			path = SPM;
 			sourceTree = "<group>";
 		};
 		Q3LL9FPG19KRJA2AEBLWQ51O /* Wireframe */ = {
@@ -479,6 +589,14 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		WHO2OEVH7NPCLDHZAVBFVJOG /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				U5142RJUFJ0V4ITXV5WJPVDA /* SPMPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		WP6WG366Q041TZB7CJ6LDZ2M /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +634,14 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		YKNYMNOW9A7EB4YNF8MUNUJD /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B1LAZ5I0FNTAQ3KPQMI904US /* SPMWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		ZKPTAISSGHYPZ50RLLGXO9OZ /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +666,9 @@
 			dependencies = (
 			);
 			name = KuriDemo;
+			packageProductDependencies = (
+				3326724A2468506600AB3E66 /* Gedatsu */,
+			);
 			productName = KuriDemo;
 			productReference = BA265F251FFBAB850016E7DE /* KuriDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -615,6 +744,9 @@
 				Base,
 			);
 			mainGroup = BA265F1C1FFBAB850016E7DE;
+			packageReferences = (
+				332672492468506600AB3E66 /* XCRemoteSwiftPackageReference "gedatsu" */,
+			);
 			productRefGroup = BA265F261FFBAB850016E7DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -642,6 +774,7 @@
 				W32OOZZGZTQQASY770EOJVVI /* FugaCollectionViewController.storyboard in Resources */,
 				5TO0B4CZFYQDWFXSBE7LUYFR /* FugaCollectionViewCell.xib in Resources */,
 				ZVBNWVTGQ97QYEM1MW7XMR9J /* HogeViewController.storyboard in Resources */,
+				D3NLXS8YWQGJC478G6UZ9NWN /* SPMViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +835,16 @@
 				HQ4AZDBFEPXRKHHOV6C30XI0 /* HogeViewController.swift in Sources */,
 				M6MLNYXOFT3WZNQJJR1AQH4R /* HogeBuilder.swift in Sources */,
 				ZXUMB06I8QHKE2HFNMWC3KM7 /* HogeUseCase.swift in Sources */,
+				R8FG3XT8R6A9RS8VZ218B8LJ /* SPMRepository.swift in Sources */,
+				C9EVRJAFE85CI1ZCL1E2ERPO /* SPMEntity.swift in Sources */,
+				63Q386VGTPJV4THPG1LVU2U0 /* SPMPresenter.swift in Sources */,
+				SRU8361O8R50LA6S2U12YD2F /* SPMWireframe.swift in Sources */,
+				3NSHW4VAWV2H6LWJBJ5ZEH0J /* SPMTranslator.swift in Sources */,
+				RWOJZBY6YFRB6O9L9EIETPW8 /* SPMDataStore.swift in Sources */,
+				VDG7CD4T5PKPYWSGFTFAFOTG /* SPMModel.swift in Sources */,
+				M1BB8JGD8NVO9EP9GNHPJ9LJ /* SPMViewController.swift in Sources */,
+				PVA5QU6AP20RJI26MOPYSPK1 /* SPMBuilder.swift in Sources */,
+				81W5BNVTNCLOOCU0IKOZT8P6 /* SPMUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +856,7 @@
 				R6E0E144A8IE7VOOPHSCNSUE /* HogeTests.swift in Sources */,
 				G2VFEAWAQQ4KFB257T152ENI /* HogeTests.swift in Sources */,
 				VL667T70BLXK9VSQL7B8ESEC /* HogeTests.swift in Sources */,
+				I7XJL3WGF4A2U262TBK1VQSM /* SPMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,7 +1005,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -872,7 +1017,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -886,7 +1034,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -901,7 +1052,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -917,7 +1072,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -932,7 +1091,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -947,7 +1110,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -996,6 +1163,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		332672492468506600AB3E66 /* XCRemoteSwiftPackageReference "gedatsu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3326724A2468506600AB3E66 /* Gedatsu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 332672492468506600AB3E66 /* XCRemoteSwiftPackageReference "gedatsu" */;
+			productName = Gedatsu;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BA265F1D1FFBAB850016E7DE /* Project object */;
 }

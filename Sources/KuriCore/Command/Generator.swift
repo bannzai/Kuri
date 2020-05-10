@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftShell
-import XcodeProject
+import XcodeProjectCore
 import Yaml
 
 public struct Generator {
@@ -176,23 +176,26 @@ private extension Generator {
             let targetName = stringYamlReader.value(for: .Target, componentType: componentType)
             let projectFilePath = projectRootPath + projectFileName + "/"
             let baseGeneratingDirectoryPath = generateRootPath
-            let ShouldRemoveLayerNameFromDirectoryName = booleanYamlReader.value(for: .ShouldRemoveLayerNameFromDirectory, componentType: componentType)
+            let shouldRemoveLayerNameFromDirectoryName = booleanYamlReader.value(for: .ShouldRemoveLayerNameFromDirectory, componentType: componentType)
             let generatingDirectoryPath: String
-            switch ShouldRemoveLayerNameFromDirectoryName {
+            switch shouldRemoveLayerNameFromDirectoryName {
             case true:
                 generatingDirectoryPath = baseGeneratingDirectoryPath
             case false:
-                generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+                generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).filter { !$0.isEmpty }.joined(separator: "/") + "/"
             }
             
-            let filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
-            
+            var filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
+            if filePath.hasPrefix("./") {
+                filePath.removeFirst("./".count)
+            }
+
             let project: XcodeProject
             if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
                 project = alreadyExistsProject
             } else {
                 let xcodeprojectFileUrl = URL(fileURLWithPath: projectFilePath + "project.pbxproj")
-                project = try XcodeProject(for: xcodeprojectFileUrl)
+                project = try XcodeProject(xcodeprojectURL: xcodeprojectFileUrl)
                 pathAndXcodeProject[projectFilePath] = project
             }
             
@@ -206,21 +209,16 @@ private extension Generator {
             try fileOperator.createDirectory(for: generatingDirectoryPath)
             fileOperator.createFile(for: filePath)
             
-            project.appendFilePath(
-                with: projectRootPath,
-                filePath: filePath,
-                targetName: targetName
-            )
-            
+            project.appendFile(path: filePath, targetName: targetName)
+
             try fileOperator.write(to: filePath, this: writeCotent)
             
             print("created: \(filePath)")
         }
         
-        try pathAndXcodeProject.values.forEach {
-            try $0.write()
-            
-            print("write in project: \($0.projectName).xcodeproj")
+        try pathAndXcodeProject.forEach { (key, project) in
+            try project.write()
+            print("write in project: \(key).xcodeproj")
         }
     }
 }
