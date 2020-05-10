@@ -21,6 +21,7 @@ localmint:
 	echo "COMMIT HASH is $(HASH)"
 	git tag $(HASH)
 	mint install file://$(shell pwd -P)@$(HASH)
+	git tag -d $(HASH)
 
 xcodeproj: 
 	swift package generate-xcodeproj
