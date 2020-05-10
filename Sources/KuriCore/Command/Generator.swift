@@ -185,8 +185,11 @@ private extension Generator {
                 generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
             }
             
-            let filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
-            
+            var filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
+            if filePath.hasPrefix("./") {
+                filePath.removeFirst("./".count)
+            }
+
             let project: XcodeProject
             if let alreadyExistsProject = pathAndXcodeProject[projectFilePath] {
                 project = alreadyExistsProject
