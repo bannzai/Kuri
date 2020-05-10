@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Gedatsu",
+        "repositoryURL": "https://github.com/bannzai/Gedatsu",
+        "state": {
+          "branch": null,
+          "revision": "97860af03a9ccc8693eb9b2166171ec5a85073c1",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

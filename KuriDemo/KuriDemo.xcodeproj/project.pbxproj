@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		1GOISMFREV12TGR7NU9AHCK9 /* FugaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z5MLLPQU5F235PIDWVX9F7HZ /* FugaBuilder.swift */; };
 		1RSKL6NOIYK22XS4DBCW36QN /* PiyoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CWC7GA8NL0XRAMBNB5X87RQN /* PiyoTableViewCell.xib */; };
 		2BUPCANGPW1G1PDEOPL51470 /* PiyoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = M9HO7NAAL6LB7AQSWHA2RWL6 /* PiyoTableViewController.swift */; };
+		3326724B2468506600AB3E66 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 3326724A2468506600AB3E66 /* Gedatsu */; };
 		37K8Q854IL5JCRYNW7OYSZOY /* HogeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = YQO8KXENQ1SXBXF8S6F5B48S /* HogeEntity.swift */; };
 		4PGJI10SW8WBZNC2TJO60MI8 /* FugaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ZVRJGE5YNYOI7XLAC6SN65AR /* FugaUseCase.swift */; };
 		5LLGAKMM6CR3SRNOBPNXAR30 /* PiyoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = GMN0G5FVGH64NC1DTVYGTPND /* PiyoEntity.swift */; };
@@ -144,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3326724B2468506600AB3E66 /* Gedatsu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +542,9 @@
 			dependencies = (
 			);
 			name = KuriDemo;
+			packageProductDependencies = (
+				3326724A2468506600AB3E66 /* Gedatsu */,
+			);
 			productName = KuriDemo;
 			productReference = BA265F251FFBAB850016E7DE /* KuriDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -615,6 +620,9 @@
 				Base,
 			);
 			mainGroup = BA265F1C1FFBAB850016E7DE;
+			packageReferences = (
+				332672492468506600AB3E66 /* XCRemoteSwiftPackageReference "Gedatsu" */,
+			);
 			productRefGroup = BA265F261FFBAB850016E7DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -861,7 +869,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -872,7 +881,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -886,7 +898,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -901,7 +916,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -917,7 +936,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -932,7 +955,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -947,7 +974,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = KuriDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yudai.hirose.KuriDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -996,6 +1027,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		332672492468506600AB3E66 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3326724A2468506600AB3E66 /* Gedatsu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 332672492468506600AB3E66 /* XCRemoteSwiftPackageReference "Gedatsu" */;
+			productName = Gedatsu;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BA265F1D1FFBAB850016E7DE /* Project object */;
 }
