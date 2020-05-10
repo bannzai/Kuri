@@ -182,7 +182,7 @@ private extension Generator {
             case true:
                 generatingDirectoryPath = baseGeneratingDirectoryPath
             case false:
-                generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).joined(separator: "/") + "/"
+                generatingDirectoryPath = baseGeneratingDirectoryPath + component.makeGeneratingDirectoryPath(prefix: prefix, targetName: targetName).filter { !$0.isEmpty }.joined(separator: "/") + "/"
             }
             
             var filePath = (generatingDirectoryPath + component.templateFileName).replaceEnvironmentText(prefix: prefix, targetName: targetName)
