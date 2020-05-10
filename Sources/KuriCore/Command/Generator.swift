@@ -209,7 +209,6 @@ private extension Generator {
             try fileOperator.createDirectory(for: generatingDirectoryPath)
             fileOperator.createFile(for: filePath)
             
-            project.appendGroup(path: generatingDirectoryPath, targetName: targetName)
             project.appendFile(path: filePath, targetName: targetName)
 
             try fileOperator.write(to: filePath, this: writeCotent)
